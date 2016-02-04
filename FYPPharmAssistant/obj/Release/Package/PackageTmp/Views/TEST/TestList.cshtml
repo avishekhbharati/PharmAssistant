@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "TestList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TestList</h2>
+
+<form id="saveSales" action="/SaveSales" method="post"></form>
+<form id="saveSalesItem" action="/SaveSalesItem" method="post"></form>
+
+<input type="text" name="SalesName" from="saveSales" />
+<input type="text" name="SalesItemName" from="saveSalesItem" />
+
+<input type="submit" name="save_sales" value="SaveSales" form="saveSales" />
+<input type="submit" name="save_salesItem" value="saveSalesItem" form="saveSalesItem" />
+<script>
+   
+</script>

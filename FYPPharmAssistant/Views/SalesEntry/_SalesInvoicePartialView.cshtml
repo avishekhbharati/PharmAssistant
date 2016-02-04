@@ -1,0 +1,136 @@
+﻿@model FYPPharmAssistant.Models.Sales
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3">Bill No:&nbsp;<b>PA/@Model.ID</b></div>
+                    <div class="col-md-6" style="text-align:center">
+                        <h4><b>NIRMALA PHARMA CO.</b></h4>
+                        <h5>Kathmandu 04, Nepal</h5>
+                        <h6>01-4400000</h6>
+                    </div>
+                    <div class="col-md-3" style="font-size:12px">@Model.Date</div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <table class="table table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>
+                                S.No
+                            </th>
+                            <th>
+                                Item
+                            </th>
+                            <th>
+                                Qty
+                            </th>
+                            <th>
+                                Rate
+                            </th>
+                            <th>
+
+                                Amount
+                            </th>
+                        </tr>
+                    </thead>
+                    @{int count = 1;}
+                    @foreach (var item in Model.SalesItems)
+                    {
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                @item.Stock.Item.Name
+                            </td>
+                            <td>
+                                @item.Qty
+                            </td>
+                            <td>
+                                @item.Rate
+                            </td>
+                            <td>
+                                @item.Amount
+                            </td>
+                            @{count++;}
+                        </tr>
+                    }
+                    <tfoot>
+
+                        <tr style="border-top:2px solid green">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Total</td>
+                            <td><b>@Model.Amount</b></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Tax</td>
+                            <td><b>@Model.Tax</b></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Discount</td>
+                            <td><b>@Model.Discount</b></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Grand Total</td>
+                            <td><b>@Model.GrandTotal</b></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6" style="background-color:lightgrey; text-align:center">
+                If product is damaged. Please return within 3 days of sold date.<br />
+                Thank You !
+
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+<div class="row">
+    <button id="print">PRINT</button>
+    <a href="~/SalesEntry/Index"> New Sales</a>
+</div>
+
+<script>
+    $('#print').on('click', function () {
+        window.print();
+    });
+</script>
+
+   
+
+    
+
+
+
+
+
+
+

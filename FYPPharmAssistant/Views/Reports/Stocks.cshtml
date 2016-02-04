@@ -1,0 +1,73 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.InventoryModel.Stock>
+
+@{
+    ViewBag.Title = "Stocks Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box box-primary box-body">
+
+
+    <div class="row">
+        <form id="form1">
+            <div class="col-sm-2">
+                <label>Select</label><br />
+                <select name="option" class="form-control">
+                    <option value="">--Select one--</option>
+                    <option value="BelowMin">Below minimum level</option>
+                    <option value="UnSold">Unsold </option>
+                    <option value="Expired">Expired </option>
+                    <option value="90">Expiry in 3 mnths </option>
+                    <option value="60">Expiry in 2 mnths </option>
+                    <option value="30">Expiry in 1 mnths </option>
+                    <option value="15"> Expiry in 15 days</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <label>Batch </label><input type="text" name="batch" placeholder="enter batch number" class="form-control" />
+            </div>
+            <div class="col-sm-2">
+                <label>Name </label> <input type="text" name="name" placeholder="enter name" class="form-control" />
+            </div>
+            <div class="col-sm-2">
+                <label>Expires After</label> <input type="text" class="datepicker2 form-control" name="fromDate" />
+            </div>
+            <div class="col-sm-2">
+                <label>Expires Before</label> <input type="text" class="datepicker2 form-control" name="toDate" />
+            </div>
+            <div class="col-sm-2">
+                <label></label><br />
+                <input type="button" id="submit" value="submit" class="btn btn-primary" />
+                <input type="button" class="btn btn-default" id="showAll" value="Show All" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div class="box box-default box-body">
+    <div id="renderTable" class="box-body">
+        @Html.Partial("_StocksPartialView")
+    </div>
+
+</div>
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('#submit').on('click', function () {
+                $('#renderTable').load("TestStocks", $('#form1').serialize());
+            });
+
+        });
+
+        $('.datepicker2').datepicker({
+            format: 'yyyy/mm/dd'
+        });
+        $('#showAll').on('click', function () {
+            location.reload(true);
+        });
+
+    </script>

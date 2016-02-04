@@ -1,0 +1,29 @@
+﻿<link href="~/Content/grid-0.5.2.min.css" rel="stylesheet" />
+<script src="~/Scripts/grid-0.5.2.min.js"></script>
+
+<table id="grid"></table>
+
+<script>
+    $(document).ready(function () {
+        var data, editor;
+        data = [
+            { "ID": 1, "Name": "Hristo Stoichkov", "PlaceOfBirth": "Plovdiv, Bulgaria" },
+            { "ID": 2, "Name": "Ronaldo Luís Nazário de Lima", "PlaceOfBirth": "Rio de Janeiro, Brazil" },
+            { "ID": 3, "Name": "David Platt", "PlaceOfBirth": "Chadderton, Lancashire, England" }
+        ];
+        editor = function ($container, currentValue) {
+            $container.append("<input type=\"text\" value=\"" + currentValue + "\"/>");
+        };
+        $("#grid").grid({
+            dataSource: data,
+            uiLibrary: "bootstrap",
+            columns: [
+                { field: "ID", width: 30 },
+                { field: "Name", editor: editor,sortable:true },
+                { field: "PlaceOfBirth", title: "Place Of Birth", editor: true },
+            ],
+            pager: { enable: true, limit: 2, sizes: [2, 5, 10, 20] }
+        });
+    });
+
+</script>

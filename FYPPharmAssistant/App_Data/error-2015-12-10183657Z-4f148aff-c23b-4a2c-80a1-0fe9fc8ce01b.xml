@@ -1,0 +1,180 @@
+﻿<error errorId="4f148aff-c23b-4a2c-80a1-0fe9fc8ce01b" host="AVISHEKH" type="System.Web.HttpParseException" message="&quot;&lt;text&gt;&quot; and &quot;&lt;/text&gt;&quot; tags cannot contain attributes.&#xD;&#xA;" source="System.Web.WebPages.Razor" detail="System.Web.HttpParseException (0x80004005): &quot;&lt;text&gt;&quot; and &quot;&lt;/text&gt;&quot; tags cannot contain attributes.&#xD;&#xA;&#xD;&#xA;   at System.Web.WebPages.Razor.RazorBuildProvider.EnsureGeneratedCode()&#xD;&#xA;   at System.Web.WebPages.Razor.RazorBuildProvider.get_CodeCompilerType()&#xD;&#xA;   at System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)&#xD;&#xA;   at System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()&#xD;&#xA;   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()&#xD;&#xA;   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)&#xD;&#xA;   at System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath)&#xD;&#xA;   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.GetCompiledType(String virtualPath)&#xD;&#xA;   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   at Castle.Proxies.Invocations.IView_Render.InvokeMethodOnTarget()&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensibility.CastleInvocationToAlternateMethodContextAdapter.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensibility.ExecutionTimer.Time(Action action)&#xD;&#xA;   at Glimpse.Core.Extensions.AlternateMethodContextExtensions.TryProceedWithTimer(IAlternateMethodContext context, TimerResult&amp; timerResult)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateMethod.NewImplementation(IAlternateMethodContext context)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateTypeToCastleInterceptorAdapter.Intercept(IInvocation invocation)&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Castle.Proxies.IViewProxy.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at Castle.Proxies.AsyncControllerActionInvokerProxy.InvokeActionResult_callback(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at Castle.Proxies.Invocations.ControllerActionInvoker_InvokeActionResult.InvokeMethodOnTarget()&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensibility.CastleInvocationToAlternateMethodContextAdapter.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensibility.ExecutionTimer.Time(Action action)&#xD;&#xA;   at Glimpse.Core.Extensions.AlternateMethodContextExtensions.TryProceedWithTimer(IAlternateMethodContext context, TimerResult&amp; timerResult)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateMethod.NewImplementation(IAlternateMethodContext context)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateTypeToCastleInterceptorAdapter.Intercept(IInvocation invocation)&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Castle.Proxies.AsyncControllerActionInvokerProxy.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)" user="avishekh.bharati@live.com" time="2015-12-10T18:36:57.7985226Z" statusCode="500" webHostHtmlMessage="&lt;!DOCTYPE html&gt;&#xD;&#xA;&lt;html&gt;&#xD;&#xA;    &lt;head&gt;&#xD;&#xA;        &lt;title&gt;Parser Error&lt;/title&gt;&#xD;&#xA;        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;&#xD;&#xA;        &lt;style&gt;&#xD;&#xA;         body {font-family:&quot;Verdana&quot;;font-weight:normal;font-size: .7em;color:black;} &#xD;&#xA;         p {font-family:&quot;Verdana&quot;;font-weight:normal;color:black;margin-top: -5px}&#xD;&#xA;         b {font-family:&quot;Verdana&quot;;font-weight:bold;color:black;margin-top: -5px}&#xD;&#xA;         H1 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:18pt;color:red }&#xD;&#xA;         H2 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:14pt;color:maroon }&#xD;&#xA;         pre {font-family:&quot;Consolas&quot;,&quot;Lucida Console&quot;,Monospace;font-size:11pt;margin:0;padding:0.5em;line-height:14pt}&#xD;&#xA;         .marker {font-weight: bold; color: black;text-decoration: none;}&#xD;&#xA;         .version {color: gray;}&#xD;&#xA;         .error {margin-bottom: 10px;}&#xD;&#xA;         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }&#xD;&#xA;         @media screen and (max-width: 639px) {&#xD;&#xA;          pre { width: 440px; overflow: auto; white-space: pre-wrap; word-wrap: break-word; }&#xD;&#xA;         }&#xD;&#xA;         @media screen and (max-width: 479px) {&#xD;&#xA;          pre { width: 280px; }&#xD;&#xA;         }&#xD;&#xA;        &lt;/style&gt;&#xD;&#xA;    &lt;/head&gt;&#xD;&#xA;&#xD;&#xA;    &lt;body bgcolor=&quot;white&quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;span&gt;&lt;H1&gt;Server Error in '/' Application.&lt;hr width=100% size=1 color=silver&gt;&lt;/H1&gt;&#xD;&#xA;&#xD;&#xA;            &lt;h2&gt; &lt;i&gt;Parser Error&lt;/i&gt; &lt;/h2&gt;&lt;/span&gt;&#xD;&#xA;&#xD;&#xA;            &lt;font face=&quot;Arial, Helvetica, Geneva, SunSans-Regular, sans-serif &quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Description: &lt;/b&gt;An error occurred during the parsing of a resource required to service this request.   Please review the following specific parse error details and modify your source file appropriately.&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Parser Error Message: &lt;/b&gt;&amp;quot;&amp;lt;text&amp;gt;&amp;quot; and &amp;quot;&amp;lt;/text&amp;gt;&amp;quot; tags cannot contain attributes.&lt;br&gt;&lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;Source Error:&lt;/b&gt; &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;Line 43:                   else&#xD;&#xA;Line 44:                   {&#xD;&#xA;&lt;font color=red&gt;Line 45:                       &amp;lt;text style=&amp;quot;color:red&amp;quot;&amp;gt; InActive &amp;lt;/text&amp;gt;&#xD;&#xA;&lt;/font&gt;Line 46:                   }                     &#xD;&#xA;Line 47:                       &lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Source File: &lt;/b&gt; /Views/UsersAdmin/Index.cshtml&lt;b&gt; &amp;nbsp;&amp;nbsp; Line: &lt;/b&gt; 45&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;    &lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&#xD;&#xA;">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; .AspNet.TwoFactorRememberBrowser=7tjMKMiDngEii9a33etBoxdUqzazA_7vzL9YXCFq6SdcQFVppeh9a6DYjTaC0qQ-UDMrXLWXLi3dkGGjVpzcyjsAI5ir96Nh-tHDHIU0KXxtPLbzsWkWIM--6jqWCjJrUsf6WNOjsbe4-L17ulEuP5jzWUxFSPgcZDkkO4jlOdNx4uBXUJt-q5Wy1GhJskRW6Pj8mWowj7uLZxOYpdAxptIvq_riLCyMnxr2XGY_0TARBdqE6PH-fqPtgsX3RhAaPzGaSHeKOc38TsvvZ5EEZ10-l4VzSmLNQo39sgVYnfeY8qAizmFdbbR252IywvS_MIAJ-p-PTj-HB-ndciDYEPFGwqD3-sCwhFC2X21uiS0; glimpsePolicy=On; __RequestVerificationToken=FZrK4Z77lwJQSWJI3hFjuLl6lAbR1lBQkvrxJ0wHjnWBiMvAuTLkeEPa2JmcojmJpwOnkxwgnwcIol24jYDJ_p47uElD6ZAxZE3aZyYgBdU1; glimpseId=Chrome 42.0; .AspNet.ApplicationCookie=GVjlPo-00WZY-6KCoIZaXAWT282zA8I1_9_T_Yz9K8D1Ba3WnUIjjkzFSiBS6HGLzxbdFegSlRfvt1jmyHrErr11rfkNa2XnOiR7RmFoxu6Nbo_4ndAyQ7dvtDgllr5kPI5siUyl_FnHpHWGfcPQnJqOcZCG0BY01JXOfFH7-5PimDd5gLj3iNzVUASnxlaV47avX_WBD28hEjUWUS5bzqWqJ2y1By_QdsyhEamGmj6nlp8AQAE_gPldG0ChdgUSvKqQcQWQLgE5ec7-FdPcJxW-aYjOp30efuMzrwvTipwcApD82Ww-n45ONTvyJ_i_-eLkjpz0w8KCDZb00kw9ZhozLljjt5gzho3zSfwyclz1JsRUlqEm1-54k-IVth70bMjAD0VZWntSQ69FbYzgb1ME9FdRzbUhi59KpjS4zNcTaY2kMN9ngPjkr5XMQC1qd-1tIH2wbaURwMJnxs0-fDaHo9hFIJ4vgEePocHzB4_WMyRDf_90hyFwbV8nuQgt3x-i99ugQrcCRxYwZvpJHA&#xD;&#xA;HTTP_HOST:localhost:5789&#xD;&#xA;HTTP_REFERER:http://localhost:5789/DrugGenericName/Index&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; .AspNet.TwoFactorRememberBrowser=7tjMKMiDngEii9a33etBoxdUqzazA_7vzL9YXCFq6SdcQFVppeh9a6DYjTaC0qQ-UDMrXLWXLi3dkGGjVpzcyjsAI5ir96Nh-tHDHIU0KXxtPLbzsWkWIM--6jqWCjJrUsf6WNOjsbe4-L17ulEuP5jzWUxFSPgcZDkkO4jlOdNx4uBXUJt-q5Wy1GhJskRW6Pj8mWowj7uLZxOYpdAxptIvq_riLCyMnxr2XGY_0TARBdqE6PH-fqPtgsX3RhAaPzGaSHeKOc38TsvvZ5EEZ10-l4VzSmLNQo39sgVYnfeY8qAizmFdbbR252IywvS_MIAJ-p-PTj-HB-ndciDYEPFGwqD3-sCwhFC2X21uiS0; glimpsePolicy=On; __RequestVerificationToken=FZrK4Z77lwJQSWJI3hFjuLl6lAbR1lBQkvrxJ0wHjnWBiMvAuTLkeEPa2JmcojmJpwOnkxwgnwcIol24jYDJ_p47uElD6ZAxZE3aZyYgBdU1; glimpseId=Chrome 42.0; .AspNet.ApplicationCookie=GVjlPo-00WZY-6KCoIZaXAWT282zA8I1_9_T_Yz9K8D1Ba3WnUIjjkzFSiBS6HGLzxbdFegSlRfvt1jmyHrErr11rfkNa2XnOiR7RmFoxu6Nbo_4ndAyQ7dvtDgllr5kPI5siUyl_FnHpHWGfcPQnJqOcZCG0BY01JXOfFH7-5PimDd5gLj3iNzVUASnxlaV47avX_WBD28hEjUWUS5bzqWqJ2y1By_QdsyhEamGmj6nlp8AQAE_gPldG0ChdgUSvKqQcQWQLgE5ec7-FdPcJxW-aYjOp30efuMzrwvTipwcApD82Ww-n45ONTvyJ_i_-eLkjpz0w8KCDZb00kw9ZhozLljjt5gzho3zSfwyclz1JsRUlqEm1-54k-IVth70bMjAD0VZWntSQ69FbYzgb1ME9FdRzbUhi59KpjS4zNcTaY2kMN9ngPjkr5XMQC1qd-1tIH2wbaURwMJnxs0-fDaHo9hFIJ4vgEePocHzB4_WMyRDf_90hyFwbV8nuQgt3x-i99ugQrcCRxYwZvpJHA&#xD;&#xA;Host: localhost:5789&#xD;&#xA;Referer: http://localhost:5789/DrugGenericName/Index&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/642749131/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="642749131" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/642749131" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/UsersAdmin/Index" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\UsersAdmin\Index" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="62077" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/UsersAdmin/Index" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="5789" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/UsersAdmin/Index" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; .AspNet.TwoFactorRememberBrowser=7tjMKMiDngEii9a33etBoxdUqzazA_7vzL9YXCFq6SdcQFVppeh9a6DYjTaC0qQ-UDMrXLWXLi3dkGGjVpzcyjsAI5ir96Nh-tHDHIU0KXxtPLbzsWkWIM--6jqWCjJrUsf6WNOjsbe4-L17ulEuP5jzWUxFSPgcZDkkO4jlOdNx4uBXUJt-q5Wy1GhJskRW6Pj8mWowj7uLZxOYpdAxptIvq_riLCyMnxr2XGY_0TARBdqE6PH-fqPtgsX3RhAaPzGaSHeKOc38TsvvZ5EEZ10-l4VzSmLNQo39sgVYnfeY8qAizmFdbbR252IywvS_MIAJ-p-PTj-HB-ndciDYEPFGwqD3-sCwhFC2X21uiS0; glimpsePolicy=On; __RequestVerificationToken=FZrK4Z77lwJQSWJI3hFjuLl6lAbR1lBQkvrxJ0wHjnWBiMvAuTLkeEPa2JmcojmJpwOnkxwgnwcIol24jYDJ_p47uElD6ZAxZE3aZyYgBdU1; glimpseId=Chrome 42.0; .AspNet.ApplicationCookie=GVjlPo-00WZY-6KCoIZaXAWT282zA8I1_9_T_Yz9K8D1Ba3WnUIjjkzFSiBS6HGLzxbdFegSlRfvt1jmyHrErr11rfkNa2XnOiR7RmFoxu6Nbo_4ndAyQ7dvtDgllr5kPI5siUyl_FnHpHWGfcPQnJqOcZCG0BY01JXOfFH7-5PimDd5gLj3iNzVUASnxlaV47avX_WBD28hEjUWUS5bzqWqJ2y1By_QdsyhEamGmj6nlp8AQAE_gPldG0ChdgUSvKqQcQWQLgE5ec7-FdPcJxW-aYjOp30efuMzrwvTipwcApD82Ww-n45ONTvyJ_i_-eLkjpz0w8KCDZb00kw9ZhozLljjt5gzho3zSfwyclz1JsRUlqEm1-54k-IVth70bMjAD0VZWntSQ69FbYzgb1ME9FdRzbUhi59KpjS4zNcTaY2kMN9ngPjkr5XMQC1qd-1tIH2wbaURwMJnxs0-fDaHo9hFIJ4vgEePocHzB4_WMyRDf_90hyFwbV8nuQgt3x-i99ugQrcCRxYwZvpJHA" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:5789" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:5789/DrugGenericName/Index" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="glimpseOptions">
+      <value string="%7B%22glimpsePolicy%22%3Anull%7D" />
+    </item>
+    <item name=".AspNet.TwoFactorRememberBrowser">
+      <value string="7tjMKMiDngEii9a33etBoxdUqzazA_7vzL9YXCFq6SdcQFVppeh9a6DYjTaC0qQ-UDMrXLWXLi3dkGGjVpzcyjsAI5ir96Nh-tHDHIU0KXxtPLbzsWkWIM--6jqWCjJrUsf6WNOjsbe4-L17ulEuP5jzWUxFSPgcZDkkO4jlOdNx4uBXUJt-q5Wy1GhJskRW6Pj8mWowj7uLZxOYpdAxptIvq_riLCyMnxr2XGY_0TARBdqE6PH-fqPtgsX3RhAaPzGaSHeKOc38TsvvZ5EEZ10-l4VzSmLNQo39sgVYnfeY8qAizmFdbbR252IywvS_MIAJ-p-PTj-HB-ndciDYEPFGwqD3-sCwhFC2X21uiS0" />
+    </item>
+    <item name="glimpsePolicy">
+      <value string="On" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="FZrK4Z77lwJQSWJI3hFjuLl6lAbR1lBQkvrxJ0wHjnWBiMvAuTLkeEPa2JmcojmJpwOnkxwgnwcIol24jYDJ_p47uElD6ZAxZE3aZyYgBdU1" />
+    </item>
+    <item name="glimpseId">
+      <value string="Chrome 42.0" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="GVjlPo-00WZY-6KCoIZaXAWT282zA8I1_9_T_Yz9K8D1Ba3WnUIjjkzFSiBS6HGLzxbdFegSlRfvt1jmyHrErr11rfkNa2XnOiR7RmFoxu6Nbo_4ndAyQ7dvtDgllr5kPI5siUyl_FnHpHWGfcPQnJqOcZCG0BY01JXOfFH7-5PimDd5gLj3iNzVUASnxlaV47avX_WBD28hEjUWUS5bzqWqJ2y1By_QdsyhEamGmj6nlp8AQAE_gPldG0ChdgUSvKqQcQWQLgE5ec7-FdPcJxW-aYjOp30efuMzrwvTipwcApD82Ww-n45ONTvyJ_i_-eLkjpz0w8KCDZb00kw9ZhozLljjt5gzho3zSfwyclz1JsRUlqEm1-54k-IVth70bMjAD0VZWntSQ69FbYzgb1ME9FdRzbUhi59KpjS4zNcTaY2kMN9ngPjkr5XMQC1qd-1tIH2wbaURwMJnxs0-fDaHo9hFIJ4vgEePocHzB4_WMyRDf_90hyFwbV8nuQgt3x-i99ugQrcCRxYwZvpJHA" />
+    </item>
+  </cookies>
+</error>

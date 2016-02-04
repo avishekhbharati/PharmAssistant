@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.InventoryModel.Manufacturer>
+
+@{
+    ViewBag.Title = "MyReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="padding:10px; border:1px solid black">
+    <div><a href="@Url.Action("Report",new {id= "PDF"})"> Get Report PDF</a></div>
+    <div><a href="@Url.Action("Report",new {id= "Excel"})"> Get Report Excel</a></div>
+    <div><a href="@Url.Action("Report",new {id= "Word"})"> Get Report Word</a></div>
+    <div><a href="@Url.Action("Report",new {id= "Image"})"> Get Report Image</a></div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ManufacturerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+      
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManufacturerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>        
+    </tr>
+}
+
+</table>
+<div><a href="@Url.Action("ExportReport")"> Get Report in PDF</a></div>

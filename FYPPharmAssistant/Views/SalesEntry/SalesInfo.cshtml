@@ -1,0 +1,121 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.Sales>
+
+@{
+    ViewBag.Title = "SalesInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SalesInfo</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="tblSalesInfo">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GrandTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>
+
+            <th>See Details</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model) {
+        <tr rel="@Html.DisplayFor(modelItem => item.ID)">
+            <td class="getMyValue">
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrandTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+
+            <td>
+                <button type="button" class="btn btn-primary btn-xs btnShowDetails">
+                    Details
+                </button>
+
+                <!--
+                     <button type="button" class="btn btn-primary btn-xs btnShowDetails" data-toggle="modal" data-target="#myModal">
+                    Details
+                </button>
+
+                -->
+             
+            </td>
+        </tr>
+}
+</table>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+  /*  $('#tblSalesInfo').dataTable({
+        "paging": true,
+        "ordering": true,
+        "info": true        
+    });*/
+
+
+    $('.btnShowDetails').on('click', function () {
+         var id = $(this).parent().parent().attr("rel");
+      // var row = $(this).closest("tr");
+        // var id = row.find(".getMyValue").text();
+       alert(id);
+       console.log(id);
+        $.post('GetSalesItems', { id: id }, function (data) {
+            alert(data);
+        }, 'JSON')
+    });
+
+</script>

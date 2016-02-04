@@ -1,0 +1,43 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.InventoryModel.DrugGenericName>
+
+@{
+    ViewBag.Title = "List of Generic Names";
+}
+
+<div class="box box-body box-primary">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table" id="dtaTable">
+        <thead>
+            <tr class="dataTableHead">
+                <th>
+                    @Html.DisplayNameFor(model => model.GenericName)
+                </th>
+
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenericName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dtaTable').DataTable();
+    });
+</script>

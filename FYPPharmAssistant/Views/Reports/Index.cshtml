@@ -1,0 +1,109 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.InventoryModel.Stock>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="padding:10px; border:1px solid black">
+    <div><a href="@Url.Action("Report",new {id= "PDF"})"> Get Report PDF</a></div>
+    <div><a href="@Url.Action("Report",new {id= "Excel"})"> Get Report Excel</a></div>
+    <div><a href="@Url.Action("Report",new {id= "Word"})"> Get Report Word</a></div>
+    <div><a href="@Url.Action("Report",new {id= "Image"})"> Get Report Image</a></div>
+</div>
+
+<div id="dvData">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Item.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BatchNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InitialQty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SellingPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManufacturedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpiryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemExpired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stop_Notification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseID)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BatchNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InitialQty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CostPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SellingPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManufacturedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpiryDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemExpired)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stop_Notification)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseID)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <input type="button" id="btnExport" value=" Export Table data into Excel " />
+</div>
+
+<script>
+    $("#btnExport").click(function (e) {
+        window.open('data:application/vnd.ms-excel,' + $('#dvData').html());
+        e.preventDefault();
+    });
+</script>

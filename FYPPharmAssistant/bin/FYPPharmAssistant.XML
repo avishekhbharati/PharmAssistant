@@ -1,0 +1,501 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FYPPharmAssistant</name>
+    </assembly>
+    <members>
+        <member name="M:IdentitySample.Controllers.AccountController.Login(IdentitySample.Models.LoginViewModel,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <param name="returnUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.StockLevel">
+            <summary>
+            Counts low stock level stocks 
+            </summary>
+            <returns>json data for total low stock</returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.CheckExpiry">
+            <summary>
+            Counts the total stocks that has been ecpired
+            </summary>
+            <returns>json result for total expiry data</returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.Notifications">
+            <summary>
+            Shows notification page
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.LowStock">
+            <summary>
+            Displays Partial view for Low Stocks 
+            </summary>
+            <returns>Partial View</returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.StockExpiry">
+            <summary>
+            Displays Partial view for Stock expiry
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.DeleteSelectedExpiry(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Deletes selected expired product
+            </summary>
+            <param name="stocksID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.GenerateExpiryReturns(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Generates the expiry return list
+            </summary>
+            <param name="stocksID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.RestockExpiry(FYPPharmAssistant.Models.InventoryModel.Stock)">
+            <summary>
+            Restocks expired items with new attributes. Wont have this time. In future
+            </summary>
+            <param name="_Stock"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.GeneratePurchaseOrder">
+            <summary>
+            Generates purchase order. Yet to be done.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.ForMorris">
+            <summary>
+            Returns Json data for yearly sales.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.ForMorris2">
+            <summary>
+            
+            </summary>
+            <returns>Json data for Monthly sales for this month</returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.MyChart">
+            <summary>
+            Displays Partial View for Yearly Sales
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.MyChartForSalesOfMonth">
+            <summary>
+            Displays Prtial View for Monthly sales
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.TodaySales">
+            <summary>
+            Calculates teh TotalSales Today .
+            </summary>
+            <returns>returns total sales made today.</returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.YesterdaySales">
+            <summary>
+            Calculates the Total Sales on Yesterday.
+            </summary>
+            <returns>returns total yesterday's sales</returns>
+        </member>
+        <member name="M:IdentitySample.Controllers.HomeController.Dispose(System.Boolean)">
+            <summary>
+            Disposes any unclosed or opened db connection.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.ReportsController.MonthlySalesByDate">
+            <summary>
+            Display monthly Sales for each day in a month
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.ReportsController.YearlySalesByMonth(System.String)">
+            <summary>
+            Yearly Sales
+            </summary>
+            <param name="year"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.ReportsController.Purchase">
+            <summary>
+            Purchase Report
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AdminLteMvc.Controllers.AdminLteController">
+            <summary>
+            This is an example controller using the AdminLTE NuGet package's CSHTML templates, CSS, and JavaScript
+            You can delete these, or use them as handy references when building your own applications
+            </summary>
+        </member>
+        <member name="M:AdminLteMvc.Controllers.AdminLteController.Index">
+            <summary>
+            The home page of the AdminLTE demo dashboard, recreated in this new system
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AdminLteMvc.Controllers.AdminLteController.Colors">
+            <summary>
+            The color page of the AdminLTE demo, demonstrating the AdminLte.Color enum and supporting methods
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.DrugGenericNameController.DuplicateCount(FYPPharmAssistant.Models.InventoryModel.DrugGenericName)">
+            <summary>
+            Checks for duplication.
+            </summary>
+            <param name="drugGenericName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.PurchaseEntryController.Index">
+            <summary>
+            Main page for entering new purchase records.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.PurchaseEntryController.PopulateSupplier">
+            <summary>
+            Populate Supplier DropDown List
+            </summary>
+            <returns>Json data of supplier's list</returns>
+            <remarks>The value is cached for 3 minutes so that it doesn't have to query to database again.</remarks>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.PurchaseEntryController.PopulateItem">
+            <summary>
+            Populate Items DropDownList
+            </summary>
+            <returns>Json data of Item's list</returns>
+            <remarks>The value is cached for 3 minutes so that it doesn't have to query to database again.</remarks>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.PurchaseEntryController.SavePurchase(FYPPharmAssistant.ViewModel.PurchaseEntryVM)">
+            <summary>
+            Post action for Saving data to database
+            </summary>
+            <param name="p">View model holding the entered data.</param>
+            <returns>Returns value indicating if the data has been saved or failed to save.</returns>
+            <remarks> Gets data as ViewModel rather than FormCollection.</remarks>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.PurchaseInvoiceEntryController.InsertIntoPurchase(FYPPharmAssistant.ViewModel.PurchaseInvoiceEntryViewModel)">
+            <summary>
+            Posts data from the Purchase form to the Purchase table in database
+            </summary>
+            <param name="vm"></param>
+            <returns> Json response for success or failure</returns>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.PurchaseInvoiceEntryController.InsertPurchaseItemFormColl(System.Web.Mvc.FormCollection)">
+            <summary>
+            Insert in purchaseItem using FormCollection.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.TestPurchaseInvoice2Controller.InsertPurchaseItemFormColl(System.Web.Mvc.FormCollection)">
+            <summary>
+            Insert in purchaseItem using FormCollection.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.TestPurchaseInvoice2Controller.NotGoodConstructor(FYPPharmAssistant.Models.PurchaseModel.PurchaseItem)">
+            <summary>
+            
+            </summary>
+            <param name="vm"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.TestPurchaseInvoice2Controller.Dispose(System.Boolean)">
+            <summary>
+            Disposing or closing db connection.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:FYPPharmAssistant.Controllers.Sales.SalesReturnController.ReturnItems(System.Web.Mvc.FormCollection)">
+            <summary>
+            Save all the returned items 
+            </summary>
+            <param name="coll"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.DrugGenericNameDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.ItemDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.ManufacturerDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.NotificationDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.PurchaseDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.PurchaseItemDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.SalesDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.SalesItemDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.StockDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.SupplierDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.DrugGenericNameRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.ItemRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.ManufacturerRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.NotificationRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.PurchaseRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.PurchaseItemRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.SalesRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.SalesItemRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.StockRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.SupplierRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.DrugGenericNameRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.ItemRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.ManufacturerRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.NotificationRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.PurchaseRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.PurchaseItemRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.SalesRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.SalesItemRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.StockRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet.SupplierRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.DrugGenericNameTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.ItemTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.ManufacturerTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.NotificationTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.PurchaseTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.PurchaseItemTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.SalesTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.SalesItemTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.StockTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.SupplierTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.TableAdapterManager">
+             <summary>
+            TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+            </summary>
+        </member>
+        <member name="M:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Update rows in top-down order.
+            </summary>
+        </member>
+        <member name="M:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Insert rows in top-down order.
+            </summary>
+        </member>
+        <member name="M:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Delete rows in bottom-up order.
+            </summary>
+        </member>
+        <member name="M:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+            </summary>
+        </member>
+        <member name="M:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.TableAdapterManager.UpdateAll(FYPPharmAssistant.NewDb_FYPPharmAssistantDataSet)">
+             <summary>
+            Update all changes to the dataset.
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+             <summary>
+            Update Order Option
+            </summary>
+        </member>
+        <member name="T:FYPPharmAssistant.NewDb_FYPPharmAssistantDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+             <summary>
+            Used to sort self-referenced table's rows
+            </summary>
+        </member>
+        <member name="M:FYPPharmAssistant.Repository.PurchaseEntryRepository.AddPurchaseAndPurchseItems(FYPPharmAssistant.Models.PurchaseModel.Purchase)">
+            <summary>
+            Add Items to PurchaseItems
+            </summary>
+            <param name="pi"></param>
+        </member>
+        <member name="M:FYPPharmAssistant.Repository.PurchaseEntryRepository.InsertOrUpdateInventory(FYPPharmAssistant.Models.PurchaseModel.PurchaseItem)">
+            <summary>
+            Insert or update stock based on purchase Items
+            </summary>
+            <param name="vm"></param>
+        </member>
+        <member name="M:FYPPharmAssistant.Repository.PurchaseEntryRepository.InsertIntoPurchase(FYPPharmAssistant.Models.PurchaseModel.Purchase)">
+            <summary>
+            Checks if invoice number already exists in database. 
+            If no saves the entry
+            </summary>
+            <param name="_purchase"></param>
+            <returns>1 as success, 0 as failure</returns>
+        </member>
+        <member name="M:FYPPharmAssistant.Repository.PurchaseInvoiceEntryRepository.InsertIntoPurchase(FYPPharmAssistant.Models.PurchaseModel.Purchase)">
+            <summary>
+            Checks if invoice number already exists in database. 
+            If no saves the entry
+            </summary>
+            <param name="_purchase"></param>
+            <returns>1 as success, 0 as failure</returns>
+        </member>
+    </members>
+</doc>

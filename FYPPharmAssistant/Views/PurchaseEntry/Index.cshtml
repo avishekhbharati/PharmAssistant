@@ -1,0 +1,554 @@
+﻿@model FYPPharmAssistant.ViewModel.PurchaseEntryVM
+@{
+    ViewBag.Title = "New Purchase Entry";
+}
+@*<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>*@
+
+<!-- iCheck -->
+
+
+<link href="~/Scripts/AdminLTE/plugins/iCheck/square/red.css" rel="stylesheet" />
+<link href="~/Scripts/AdminLTE/plugins/iCheck/minimal/minimal.css" rel="stylesheet" />
+<script src="~/Scripts/AdminLTE/plugins/iCheck/icheck.min.js"></script>
+
+
+<!--*********** modal for suppliers ********** -->
+
+<div id="modal_supplier" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+           <form id="FormAddSupplier">
+                @Html.AntiForgeryToken()
+                name : <input type="text" name="Name" /><br />
+                address:<input type="text" name="Address" /><br />
+                Contact: <input type="text" name="Contact" /><br />
+                Description: <input type="text" name="Description" /><br />
+                <button id="addSupplier">Add</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#renderSupplierForm')
+    .html("Loading...")
+    .load('@Url.Action("_SupplierCreatePV", "Supplier")');
+
+    $('#addSupplier').on('click', function () {
+        $.post('../../../Supplier/Create', $('#FormAddSupplier').serialize(), function (data) {
+            $('#modal_supplier').modal('toggle');
+            if (data == 'duplicate') {
+
+                alert("Duplicate data!");
+            }
+            else {
+                populateSupplier();
+                alert("Success");
+            }
+
+        }, "Json");
+        return false;
+    });
+</script>
+
+<!--*********** modal for suppliers **********-->
+
+
+<div class=" box  box-primary box-body">
+
+    <div class="row ">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-10">
+                    Supplier<br />
+                    <select id="SelectSupplier" class="form-control "></select>
+                    <span class="error"> Required field !</span>
+                </div>
+               <div class="col-md-2 pull-left">
+                    <br />
+                    <button class="glyphicon glyphicon-plus" data-toggle="modal" data-target=".bs-example-modal-sm" style="padding:5px;"></button>
+                </div> 
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            PurchaseID<br />
+            <input type="text" id="PurchaseID" class="form-control" />
+            <span class="error"> Required field !</span>
+        </div>
+        <div class="col-md-4">
+            Date<br />
+            <input type="text" id="InvocingDate" class="form-control datepicker checkDateNoGraterThanToday" />
+            <span class="error"> Required field !</span>
+        </div>
+    </div>
+    <hr />
+    @****************************@
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-sm-4">Item</div>
+                <div class="col-sm-8"><select id="selectItem" class="form-control"></select><span class="error"> Required field !</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">Batch</div>
+                <div class="col-sm-8"><input type="text" id="Batch" class="form-control" /><span class="error"> Required field !</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">Qty</div>
+                <div class="col-sm-8"><input type="number" id="Qty" class="form-control NumbersOnly CheckFirstCharIsZero" /><span class="error"> Required field !</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">Cost Price</div>
+                <div class="col-sm-8"><input type="text" id="CP" class="form-control NumbersAndDecimal" /><span class="error"> Required field !</span></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">Selling Price</div>
+                <div class="col-sm-8"><input type="text" id="SP" class="form-control NumbersAndDecimal" /><span class="error"> Required field !</span></div>
+            </div>
+           
+            <div class="row">
+                <div class="col-sm-4">Expiry</div>
+                <div class="col-sm-8"><input type="text" id="Expiry" class="form-control datepicker checkDateNoLessThanToday" /><span class="error"> Required field !</span></div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4"></div>0
+                <div class="col-sm-8"><button type="button" id="btnAdd" class="btn btn-primary">Add to list</button></div>
+            </div>
+        </div>
+
+        <div class="col-sm-8">
+            <div style=" background-color:#34495e; color:white; padding:10px">Purchase Items</div>
+            @********table here***********@
+            <div id="orderItems" class="tablecontainer" style="height:260px; overflow-y:scroll; border:1px solid #BFAEAE">
+
+            </div>
+            <div>
+                <br />
+                <button style="padding: 5px 30px 5px 30px" type="button" class="btn btn-primary pull-right" id="btnNext" data-toggle="modal" data-target="#myModal">
+                    Next <span class="glyphicon glyphicon-triangle-right"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Button trigger modal -->
+<!-- Modal for payment details -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-app>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div style="background-color:#c0392b; color:white;" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Payment Status</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <tr>
+                        <td>Amount</td>
+                        <td><input type="number" readonly ng-model="a" id="Amount" class="form-control" /><span class="error"> required</span></td>
+                    </tr>
+                    <tr>
+                        <td>Discount</td>
+                        <td><input type="number" ng-model="d" id="Discount" class="form-control NumbersAndDecimal" /> <span class="error"> Invalid</span></td>
+                    </tr>
+                    <tr>
+                        <td>Tax</td>
+                        <td><input type="number" ng-model="t" id="Tax" class="form-control NumbersAndDecimal" /><span class="error"> Invalid</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>GrandTotal</td>
+                        @*<td><input type="text" value="{{(a-d)+t}}" class="form-control" id="GrandTotal" readonly /><span class="error"> Invalid</span></td>*@
+                        <td><input type="text" ng-bind="(a-d)+t" class="form-control" id="GrandTotal" readonly /><span class="error"> Invalid</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Remarks(Notes)</td>
+                        <td><textarea style="width:100%" id="Description" class="textOnly"></textarea></td>
+                    </tr>
+                    <tr>
+
+                        <td>Payment</td>
+
+                        <td>
+                            <label style="margin-left:5px;"><input type="radio" value="true" id="Payment" name="payment" class="x" />&nbsp; Paid</label>
+                            <label style="margin-left:5px;"><input type="radio" value="false" name="payment" class="x" checked />&nbsp; Credit</label>
+                        </td>
+
+                        @*<td><label style="margin-left:5px;"><input type="checkbox" id="Payment" />Full Payment</label></td>*@
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer" style="margin-top:-30px">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <input type="submit" class=" btn btn-primary" id="btnSubmit" value="Submit" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--********** JavaScripts **********-->
+<script>
+
+    function populateSupplier() {
+        $.get('/PurchaseEntry/PopulateSupplier', {}, function (data) {
+            $('#SelectSupplier').empty();
+            $('#SelectSupplier').append($("<option value='0'>--Select Supplier--</option>"));
+            $.each(data, function (key, value) {
+                $('#SelectSupplier').append($("<option></option>").val(value.ID).html(value.Name));
+            });
+        }, 'json');
+
+    }
+
+    //Compare Selling price and cost price ...
+
+    $('#SP').on('blur', function () {
+        var cp = Number($('#CP').val());
+        var sp = Number($('#SP').val());
+
+        if (sp <= cp) {
+            alert('Selling Price cannot be lesser or equal to Cost Price');
+            $('#SP').val('');
+        }
+    });
+
+
+    //check date
+
+
+    $(document).on('ready', function () {
+
+        //for calculating amount automatically
+        $('#btnNext').on('click', function () {
+            var subTotal = 0;
+            var total = 0;
+            $('#Amount').val('');
+            $('#Discount').val('');
+            $('#Tax').val('');
+            $('#GrandTotal').val('');
+
+            $('#mytable tr').each(function () {
+                var qty = $.trim($(this).find(".tdQty").html());
+                var cp = $.trim($(this).find(".tdCp").html());
+                total = Number(qty) * Number(cp);
+                subTotal += total;
+            });
+
+            $('#Amount').val(subTotal);
+            $('#GrandTotal').val(subTotal);
+        });
+
+        //for auto calculate grandtotal with discount
+        $('#Discount, #Tax').keyup(function () {
+            var amount = Number($('#Amount').val());
+            var discount = Number($('#Discount').val());
+            var tax = Number($('#Tax').val());
+
+            if (amount == null && discount == null) {
+                $('#GrandTotal').val(amount);
+            }
+
+            var grandTotal = (amount - discount + tax).toFixed(2);
+            $('#GrandTotal').val(grandTotal);
+
+        });
+
+        //for icheckbox
+        $('.x').iCheck({
+            checkboxClass: 'icheckbox_minimal',
+            radioClass: 'iradio_minimal',
+            increaseArea: '20%' // optional
+        });
+
+
+        //populating supplier dropdown
+        populateSupplier();
+
+        
+        //populating Items dropdown
+        $.get('/PurchaseEntry/PopulateItem', {}, function (data) {
+            $('#selectItem').empty();
+            $('#selectItem').append($("<option value='0'>--Select Items--</option>"))
+            $.each(data, function (key, value) {
+                $('#selectItem').append($('<option></option>').val(value.ID).html(value.Name));
+            });
+        }, 'json');
+
+        //datepicker
+        $(function () {
+            $(".datepicker").datepicker({
+                format: 'yyyy-mm-dd'
+            });
+        });
+    });
+
+    var purchaseItems = [];
+    $('#btnAdd').on('click', function () {
+
+        //jQuery Validations
+        var isValidation = true;
+        if ($('#SelectSupplier').val() == "0") {
+            isValidation = false;
+            $('#SelectSupplier').siblings('span.error').css('visibility', 'visible');
+        }
+        else {
+            $('#SelectSupplier').siblings('span.error').css('visibility', 'hidden');
+        }
+
+        if ($('#PurchaseID').val().trim() == '') {
+            isValidation = false;
+            $('#PurchaseID').siblings('span.error').css('visibility', 'visible');
+        }
+        else {
+            $('#PurchaseID').siblings('span.error').css('visibility', 'hidden');
+        }
+
+        if ($('#InvocingDate').val() == '') {
+            isValidation = false;
+            $('#InvocingDate').siblings('span.error').css('visibility', 'visible');
+        }
+        else {
+            $('#InvocingDate').siblings('span.error').css('visibility', 'hidden');
+        }
+
+        if ($('#selectItem').val() == "0") {
+            isValidation = false;
+            $('#selectItem').siblings('span.error').css('visibility', 'visible');
+        }
+        else {
+            $('#selectItem').siblings('span.error').css('visibility', 'hidden');
+        }
+
+        if ($('#Qty').val() == '') {
+            isValidation = false;
+            $('#Qty').siblings('span.error').css('visibility', 'visible');
+        }
+        else {
+            $('#Qty').siblings('span.error').css('visibility', 'hidden');
+        }
+
+        if ($('#Batch').val() == "") {
+            isValidation = false;
+            $('#Batch').siblings('span.error').css('visibility', 'visible');
+        }
+        else {
+            $('#Batch').siblings('span.error').css('visibility', 'hidden');
+        }
+
+        if ($('#CP').val() == '' || isNaN($('#CP').val().trim())) {
+            isValidation = false;
+            $('#CP').siblings('span.error').css('visibility', 'visible');
+        }
+        else {
+            $('#CP').siblings('span.error').css('visibility', 'hidden');
+        }
+
+        if ($('#SP').val() == '' || isNaN($('#SP').val().trim())) {
+            isValidation = false;
+            $('#SP').siblings('span.error').css('visibility', 'visible');
+        }
+        else {
+            $('#SP').siblings('span.error').css('visibility', 'hidden');
+        }
+
+        if ($('#Expiry').val() == '') {
+            isValidation = false;
+            $('#Expiry').siblings('span.error').css('visibility', 'visible');
+        }
+        else {
+            $('#Expiry').siblings('span.error').css('visibility', 'hidden');
+        }
+
+        if (isValidation) {
+            purchaseItems.push({
+                ItemID: $('#selectItem').val(),
+                ItemName: $('#selectItem option:selected').text(),
+                Batch: $('#Batch').val(),
+                Qty: $('#Qty').val(),
+                CostPrice: $('#CP').val(),
+                SellingPrice: $('#SP').val(),
+                Expiry: $('#Expiry').val(),
+                PurchaseID: $('#PurchaseID').val() + ' / ' + $('#SelectSupplier').val(),
+                BonusIncluded: 0
+            });
+
+            $('#selectItem').val('0').focus();
+            $('#Batch, #Qty, #CP, #SP, #Expiry').val('');
+        }
+        GeneratedItemsTable();
+    });
+
+    $('#btnSubmit').on('click', function () {
+        var isAllValid = true;
+
+        if (purchaseItems.length == 0) {
+            isAllValid = false;
+            alert('Please Add items to purchase!');
+        }
+
+        if ($('#SelectSupplier').val() == "0") {
+            isAllValid = false;
+            $('#SelectSupplier').siblings('span.error').css('visibility', 'visible');
+        }
+        else {
+            $('#SelectSupplier').siblings('span.error').css('visibility', 'hidden');
+        }
+
+        if ($('#PurchaseID').val().trim() == '') {
+            isAllValid = false;
+            $('#PurchaseID').siblings('span.error').css('visibility', 'visible');
+        }
+        else {
+            $('#PurchaseID').siblings('span.error').css('visibility', 'hidden');
+        }
+
+        if ($('#InvocingDate').val() == '') {
+            isAllValid = false;
+            $('#InvocingDate').siblings('span.error').css('visibility', 'visible');
+        }
+        else {
+            $('#InvocingDate').siblings('span.error').css('visibility', 'hidden');
+        }
+        if ($('#Amount').val() == '' || isNaN($('#Amount').val())) {
+            isAllValid = false;
+            $('#Amount').siblings('span.error').css('visibility', 'visible');
+        }
+        else {
+            $('#Amount').siblings('span.error').css('visibility', 'hidden');
+        }
+
+        if (isNaN($('#Discount').val())) {
+            $('#Discount').siblings('span.error').css('visibility', 'visible');
+        }
+        if (isNaN($('#Tax').val())) {
+            $('#Tax').siblings('span.error').css('visibility', 'visible');
+        }
+
+        if (isAllValid) {
+            var data = {
+                ID: $.trim($('#PurchaseID').val() + '--' + $('#SelectSupplier').val()),
+                Date: $('#InvocingDate').val().trim(),
+                SupplierID: $('#SelectSupplier').val(),
+                Amount: $('#Amount').val(),
+                Discount: $('#Discount').val(),
+                Tax: $('#Tax').val(),
+                GrandTotal: $('#GrandTotal').val(),
+                IsPaid: $('#Payment').is(":checked") ? 1 : 0,
+                Description: $('#Description').val(),
+                PurchaseItems: purchaseItems
+            }
+            $(this).val('Please wait...');
+
+
+            //post data to server
+            $.ajax({
+                url: 'SavePurchase',
+                type: "POST",
+                data: JSON.stringify(data),
+                dataType: "JSON",
+                contentType: "application/json",
+                success: function (d) {
+                    //check is successfully save to database
+                    if (d.status == true) {
+                        //will send status from server side
+                        alert('Successfully done.');
+                        location.reload(true);
+                        //clear form
+                        purchaseItems = [];
+                        $('#PurchaseID').val('');
+                        $('#InvocingDate').val('');
+                        $('#SelectSupplier').val('0');
+
+                    }
+                    else {
+                        alert('Failed');
+                    }
+                    $('#submit').val('Save');
+                },
+                error: function () {
+                    alert('Error. Please try again.');
+                    $('#btnSubmit').val('Save');
+                }
+            });
+        }
+    });
+
+    function GeneratedItemsTable() {
+        if (purchaseItems.length > 0) {
+            var $table = $('<table id="mytable" class="table table-striped table-hover"/>');
+            $table.append('<thead><tr style="background-color:rgb(201, 211, 218);"><th>Item</th><th>Batch</th><th>Qty</th><th>CP</th><th>SP</th><th>Expiry</th><th>Delete</th></tr></thead>');
+            var $tbody = $('<tbody/>');
+
+            // var $table = $('.tableList');
+            // var $tbody = $('<tbody/>');
+
+            $.each(purchaseItems, function (i, val) {
+                var $row = $('<tr/>');
+                //$row.append($('<td/>').html(val.ItemID));
+                $row.append($('<td/>').html(val.ItemName));
+                $row.append($('<td/>').html(val.Batch));
+                $row.append($('<td class="tdQty"/>').html(val.Qty));
+                $row.append($('<td class="tdCp"/>').html(val.CostPrice));
+                $row.append($('<td/>').html(val.SellingPrice));
+                $row.append($('<td/>').html(val.Expiry));
+                $row.append($('<td/>').html('<a href=# onclick="removeItem(this)" ><span class="glyphicon glyphicon-trash"></span></a>'));
+                $tbody.append($row);
+            });
+            $table.append($tbody);
+            $('#orderItems').html($table);
+        }
+        else {
+            alert("List is empty !");
+        }
+    }
+
+    //removes record on clicking remove icon and associated array
+    function removeItem(obj) {
+        var $index = $(obj).parent().parent()[0].sectionRowIndex;
+        alert($index);
+        purchaseItems.splice($index, 1);
+        $(obj).parent().parent().remove();
+        GeneratedItemsTable();
+    }
+</script>
+
+<style>
+    /*Adding some css for looks good*/
+    span.error {
+        display: block;
+        visibility: hidden;
+        color: red;
+        font-size: 90%;
+    }
+    /*
+    .tablecontainer table {
+        width: 100%;
+        border-collapse: collapse;
+        border-top: 1px solid #BFAEAE;
+        border-right: 1px solid #BFAEAE;
+    }
+
+    .tablecontainer th {
+        border-bottom: 2px solid #BFAEAE !important;
+        background-color: #3d566e;
+        color: #ecf0f1;
+    }
+
+    .tablecontainer th, .tablecontainer td {
+        text-align: left;
+        border-left: 1px solid #BFAEAE;
+        padding: 5px;
+        border-bottom: 1px solid #BFAEAE;
+    }*/
+</style>
+
+

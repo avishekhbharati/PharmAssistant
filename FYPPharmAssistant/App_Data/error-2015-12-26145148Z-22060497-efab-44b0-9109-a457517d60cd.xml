@@ -1,0 +1,188 @@
+﻿<error errorId="22060497-efab-44b0-9109-a457517d60cd" host="AVISHEKH" type="System.Data.SqlClient.SqlException" message="The DELETE statement conflicted with the REFERENCE constraint &quot;FK_dbo.PurchaseItem_dbo.Purchase_PurchaseID&quot;. The conflict occurred in database &quot;NewDb_FYPPharmAssistant&quot;, table &quot;dbo.PurchaseItem&quot;, column 'PurchaseID'.&#xD;&#xA;The statement has been terminated." source=".Net SqlClient Data Provider" detail="System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---&gt; System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---&gt; System.Data.SqlClient.SqlException: The DELETE statement conflicted with the REFERENCE constraint &quot;FK_dbo.PurchaseItem_dbo.Purchase_PurchaseID&quot;. The conflict occurred in database &quot;NewDb_FYPPharmAssistant&quot;, table &quot;dbo.PurchaseItem&quot;, column 'PurchaseID'.&#xD;&#xA;The statement has been terminated.&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task&amp; task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task&amp; task, Boolean asyncWrite)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)&#xD;&#xA;   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.NonQuery(DbCommand command, DbCommandInterceptionContext interceptionContext)&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.SaveChanges()&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.Internal.InternalContext.SaveChanges()&#xD;&#xA;   at FYPPharmAssistant.Controllers.SupplierController.DeleteConfirmed(Int32 id) in e:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\Controllers\Purchase\SupplierController.cs:line 173&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="avishekh.bharati@live.com" time="2015-12-26T14:51:48.1749061Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:178&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; glimpsePolicy=; __RequestVerificationToken=0HkA4M1wxIJTHN9zvgVBp2EEI7wTtUNBdCURwAYUvvEzCpTZXnWEf61I6opBkz8FeMfzFShDflzC88SSqA8zKOYiiS2pj4V4-TvZBin9rMg1; .AspNet.ApplicationCookie=i72dkNjVZpJqAtP1DA1KnfUkA5GcLZnaWZ5Ort9aq_0jXLDsAMgTuQxOriV72b4lxvvLO_B11wi8FqreSr0ltr-qp130rsVP7cmGVyok0-Mh6u9nmHTHlp1nvbgh9NPT_F2KhdNuUp8240zcRvHPobqEWYzNwRYKFXwnm2MCF8dBTrvNvFhZ7xft-pFtMujREua8OG13a9Iap2hhg6sfDX85QOIB7Pff3PKYV6oJ8CTW29kIz7SZDzImN7z5PyM_EFsQBUe6v05n7p0JjQnneSsEecMjQ-yNjDbyBopMACdc-Ioan9qdsPnWXgT_zQnJIlN88gbeKTD5L208U51BSwA6dn_IC3s8sPu1yaJ0FHxzBaRmmdGfNMPsEhDjTO6TA8A4AdEVJL3egmze-28KjjpcaJAz5TTnTim0kDxJoT8om7JwxiigbVfIsc5yOt1_jHhXN6HQ-xD1fRwF_odQiILSLbyN-4IngGfcLEjXc6GsZUk37fGKChIlcbIDHc6wrExHjUGLwfHwC3vSrUl-RkegNtlABRMQfez9LvummPs&#xD;&#xA;HTTP_HOST:localhost:5789&#xD;&#xA;HTTP_REFERER:http://localhost:5789/Supplier/Delete/23&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:http://localhost:5789&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 178&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; glimpsePolicy=; __RequestVerificationToken=0HkA4M1wxIJTHN9zvgVBp2EEI7wTtUNBdCURwAYUvvEzCpTZXnWEf61I6opBkz8FeMfzFShDflzC88SSqA8zKOYiiS2pj4V4-TvZBin9rMg1; .AspNet.ApplicationCookie=i72dkNjVZpJqAtP1DA1KnfUkA5GcLZnaWZ5Ort9aq_0jXLDsAMgTuQxOriV72b4lxvvLO_B11wi8FqreSr0ltr-qp130rsVP7cmGVyok0-Mh6u9nmHTHlp1nvbgh9NPT_F2KhdNuUp8240zcRvHPobqEWYzNwRYKFXwnm2MCF8dBTrvNvFhZ7xft-pFtMujREua8OG13a9Iap2hhg6sfDX85QOIB7Pff3PKYV6oJ8CTW29kIz7SZDzImN7z5PyM_EFsQBUe6v05n7p0JjQnneSsEecMjQ-yNjDbyBopMACdc-Ioan9qdsPnWXgT_zQnJIlN88gbeKTD5L208U51BSwA6dn_IC3s8sPu1yaJ0FHxzBaRmmdGfNMPsEhDjTO6TA8A4AdEVJL3egmze-28KjjpcaJAz5TTnTim0kDxJoT8om7JwxiigbVfIsc5yOt1_jHhXN6HQ-xD1fRwF_odQiILSLbyN-4IngGfcLEjXc6GsZUk37fGKChIlcbIDHc6wrExHjUGLwfHwC3vSrUl-RkegNtlABRMQfez9LvummPs&#xD;&#xA;Host: localhost:5789&#xD;&#xA;Referer: http://localhost:5789/Supplier/Delete/23&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36&#xD;&#xA;Origin: http://localhost:5789&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/642749131/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="178" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="642749131" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/642749131" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Supplier/Delete/23" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\Supplier\Delete\23" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="46182" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Supplier/Delete/23" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="5789" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/Supplier/Delete/23" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="178" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; glimpsePolicy=; __RequestVerificationToken=0HkA4M1wxIJTHN9zvgVBp2EEI7wTtUNBdCURwAYUvvEzCpTZXnWEf61I6opBkz8FeMfzFShDflzC88SSqA8zKOYiiS2pj4V4-TvZBin9rMg1; .AspNet.ApplicationCookie=i72dkNjVZpJqAtP1DA1KnfUkA5GcLZnaWZ5Ort9aq_0jXLDsAMgTuQxOriV72b4lxvvLO_B11wi8FqreSr0ltr-qp130rsVP7cmGVyok0-Mh6u9nmHTHlp1nvbgh9NPT_F2KhdNuUp8240zcRvHPobqEWYzNwRYKFXwnm2MCF8dBTrvNvFhZ7xft-pFtMujREua8OG13a9Iap2hhg6sfDX85QOIB7Pff3PKYV6oJ8CTW29kIz7SZDzImN7z5PyM_EFsQBUe6v05n7p0JjQnneSsEecMjQ-yNjDbyBopMACdc-Ioan9qdsPnWXgT_zQnJIlN88gbeKTD5L208U51BSwA6dn_IC3s8sPu1yaJ0FHxzBaRmmdGfNMPsEhDjTO6TA8A4AdEVJL3egmze-28KjjpcaJAz5TTnTim0kDxJoT8om7JwxiigbVfIsc5yOt1_jHhXN6HQ-xD1fRwF_odQiILSLbyN-4IngGfcLEjXc6GsZUk37fGKChIlcbIDHc6wrExHjUGLwfHwC3vSrUl-RkegNtlABRMQfez9LvummPs" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:5789" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:5789/Supplier/Delete/23" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:5789" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="JZAHE9nQEudWO7j2v5dqA_3twiy6qtNiDltY9aGjfE1uZ5QgQ5_xXuCetLBLA2vkHlIhQssOAdNzFSDlbiNJXkMAQpycEt6HEsTfL-QI0aiDEBEgtQUDZpOXyfciRJ8t_JQhU4qpVSP3fbO1bnJNwQ2" />
+    </item>
+  </form>
+  <cookies>
+    <item name="glimpseOptions">
+      <value string="%7B%22glimpsePolicy%22%3Anull%7D" />
+    </item>
+    <item name="glimpsePolicy">
+      <value string="" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="0HkA4M1wxIJTHN9zvgVBp2EEI7wTtUNBdCURwAYUvvEzCpTZXnWEf61I6opBkz8FeMfzFShDflzC88SSqA8zKOYiiS2pj4V4-TvZBin9rMg1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="i72dkNjVZpJqAtP1DA1KnfUkA5GcLZnaWZ5Ort9aq_0jXLDsAMgTuQxOriV72b4lxvvLO_B11wi8FqreSr0ltr-qp130rsVP7cmGVyok0-Mh6u9nmHTHlp1nvbgh9NPT_F2KhdNuUp8240zcRvHPobqEWYzNwRYKFXwnm2MCF8dBTrvNvFhZ7xft-pFtMujREua8OG13a9Iap2hhg6sfDX85QOIB7Pff3PKYV6oJ8CTW29kIz7SZDzImN7z5PyM_EFsQBUe6v05n7p0JjQnneSsEecMjQ-yNjDbyBopMACdc-Ioan9qdsPnWXgT_zQnJIlN88gbeKTD5L208U51BSwA6dn_IC3s8sPu1yaJ0FHxzBaRmmdGfNMPsEhDjTO6TA8A4AdEVJL3egmze-28KjjpcaJAz5TTnTim0kDxJoT8om7JwxiigbVfIsc5yOt1_jHhXN6HQ-xD1fRwF_odQiILSLbyN-4IngGfcLEjXc6GsZUk37fGKChIlcbIDHc6wrExHjUGLwfHwC3vSrUl-RkegNtlABRMQfez9LvummPs" />
+    </item>
+  </cookies>
+</error>

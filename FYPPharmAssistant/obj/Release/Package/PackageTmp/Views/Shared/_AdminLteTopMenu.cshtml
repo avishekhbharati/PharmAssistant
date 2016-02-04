@@ -1,0 +1,113 @@
+﻿@* 
+ This partial controls the top menu of the AdminLTE Template, being called automatically by _AdminLteLayout
+    TODO: All of the content in here is stand-in that must be replaced by the real behavior of your app
+*@
+
+@using FYPPharmAssistant.DAL
+@using FYPPharmAssistant.Controllers
+@using FYPPharmAssistant.ViewModel
+
+@{
+    ViewBag.Layout = null;
+}
+
+
+<header class="main-header">
+    <!-- Logo -->
+    <a href="index2.html" class="logo"><b>Pharm</b>Assistant</a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-collapse collapse">
+
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    
+                    <!-- Notifications Menu -->
+                    <li class="dropdown notifications-menu">
+                        <!-- Menu toggle button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bell-o"></i>
+
+                        @*
+                            @if (Request.IsAuthenticated)
+                            {
+                                using (MyContext db = new MyContext())
+                                {
+                                    int count = (from n in db.Notifications
+                                             select n.ToExpire).SingleOrDefault();
+                                    <span class="label label-warning">@count</span>
+                                }
+                               
+
+                            } *@
+
+                            
+                            
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">Notifications</li>
+                            <li>
+                                <!-- Inner Menu: contains the notifications -->
+                                <ul class="menu">
+                                    <li>
+                                        <!-- start notification -->
+                                        <a href="#">
+                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                        </a>
+                                    </li><!-- end notification -->                                    
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="#">View all</a></li>
+                        </ul>
+                    </li>
+                    
+                   
+                </ul>
+                @Html.Partial("_LoginPartial")
+
+
+            </div><!-- /.navbar-custom-menu -->
+   
+        
+            
+        </div><!-- /.container-fluid -->           
+       
+    </nav>
+</header>
+
+<script>
+    var count = 0, count2 = 0, total = 0;
+    $(document).ready(function () {
+        
+        $.get('../../../Home/CheckExpiry', null, function (data) {
+            //$('.label-warning').html(data);
+            $('.menu').append('<li><a href="../../../../Home/Notifications"><i class="fa fa-warning text-yellow"></i> ' + data + ' items to expire/expired.</a></li>');
+
+            if (data != null)
+            {
+                $('.dropdown-toggle').append('<span class="label label-warning notifications">!</span>');
+            }
+
+            count = data;
+        }, 'json');
+
+        $.get('../../../Home/StockLevel', null, function (data) {
+            //$('.label-danger').html(data);
+            count2 = data;
+            $('.menu').append('<li><a href="../../../../Home/Notifications"><i class="fa fa-warning text-yellow"></i> ' + data + ' items are low in qty.</a></li>');
+
+                if (data != null) {
+                    $('.dropdown-toggle').append('<span class="label label-warning notifications">!</span>');
+                }
+        }, 'json');
+    });
+
+   // <li><a href="#"><i class="fa fa-users text-aqua"></i> 5 new members joined today</a></li>
+</script>
+

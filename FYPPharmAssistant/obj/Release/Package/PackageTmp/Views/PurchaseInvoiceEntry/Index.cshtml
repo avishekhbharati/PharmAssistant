@@ -1,0 +1,271 @@
+﻿@model FYPPharmAssistant.ViewModel.PurchaseInvoiceEntryViewModel
+@using FYPPharmAssistant.ViewModel;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 style="color:green">@ViewBag.SuccessMsg</h2>
+<div id="divForm1">
+   
+    @using (Html.BeginForm("InsertIntoPurchase", "PurchaseInvoiceEntry", FormMethod.Post,  new { @Id = "form1"} ))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-3">
+                    <div>
+                        <label>Supplier</label>
+                        @Html.DropDownListFor(m => m.SelectedSupplierValue, Model.ChooseSupplier, htmlAttributes: new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model.SelectedSupplierValue, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <label>PurchaseID:</label>
+                        @Html.EditorFor(model => model.PurchaseID, new { htmlAttributes = new { @class = "form-control input-xs" } }) 
+                        @Html.ValidationMessageFor(model=>model.PurchaseID,"", new { @class = "text-danger" , @required="required" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <label>Date</label>
+                        @Html.EditorFor(model => model.InvocingDate, new { htmlAttributes = new { @class = "form-control", @type="Date" } })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <label>Amount</label>
+                        @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control autoCalc"} })
+                        @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Discount</label>
+                    @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control autoCalc"} })
+                    @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    <label>Tax</label>
+                    @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "form-control autoCalc" } })
+                    @Html.ValidationMessageFor(model => model.Tax, "", new { @class = "text-danger" })
+                 </div>
+                <div class="col-md-3">
+                    <label>Grand Total</label>
+                    @Html.EditorFor(model => model.GrandTotal, new { htmlAttributes = new { @class = "form-control autoCalc"}})
+                    @Html.ValidationMessageFor(model => model.GrandTotal, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    <label>Payment</label><br />
+                    @Html.CheckBoxFor(model => model.IsPaid) <text>IsPaid</text>
+                </div>
+                <div class="col-md-12">
+                    <label>Remarks</label><br />
+                    @Html.TextAreaFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control", rows = "3", placeholder = "Write something" } })
+                </div>
+            </div>   
+                             
+           
+            <input type="button" id="btnSaveAndAdd" value="Save and Add" class="btn btn-primary"/> 
+        }
+    </div>
+
+
+    <hr />
+<!---------*************** END of FORM 1****************-->
+
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">
+    Add More Items
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Enter Purchased Items</h4>
+            </div>
+            <div class="modal-body">
+               
+            <!--************************  FORM 2 *****************************-->
+                <div id="divForm2">
+                    @using (Html.BeginForm(new { @id = "form2" }))
+                    {
+                     <!--  set Genereated Invoice ID -->
+                        <div class="form-group-sm">
+                            <label>PurchaseID:</label>
+                            <input type="text" id="setInvoiceIdHere" name="RetrivedPurchaseID"  style="border:hidden" />
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Item Name</label>
+                                @Html.DropDownListFor(m => m.SelectedItemvalue, Model.ChooseItem, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ChooseItem, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                <label>Batch</label>
+                                @Html.EditorFor(model => model.BatchNo, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BatchNo, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                <label>Qty</label>
+                                @Html.EditorFor(model => model.Qty, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Qty, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Cost Price</label>
+                                @Html.EditorFor(model => model.CostPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CostPrice, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                <label>Selling Price</label>
+                                @Html.EditorFor(model => model.SellingPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SellingPrice, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                <label>Expiry</label>
+                                @Html.EditorFor(model => model.Expiry, new { htmlAttributes = new { @class = "form-control", @type="date"} })
+                                @Html.ValidationMessageFor(model => model.Expiry, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br />
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-primary" value="Add to list" id="AddToList" style="float:right" />
+                        </div>
+                        <hr />                              
+                    }
+                </div>                
+            <!---***************************  END of From2 *****************************-->
+            </div>            
+        </div>
+    </div>
+</div>
+
+   
+<!--*****************************************************************
+    **********************Show list here*****************************-->
+<!--
+    get all the data from form along with the invoice id 
+    save in list
+    and then bulk update       
+-->
+    <form id="submit-form">
+        <div id="divForm" style="background-color:white;overflow:scroll; height:200px;">
+            <table id="tableList" class="table table-responsive">
+                <tr style="position:sticky; background-color: #49507c; color:white">
+                    <th></th>
+                    <th>Item</th>
+                    <th>Batch</th>
+                    <th>Qty</th>
+                    <th>CP</th>
+                    <th>SP</th>
+                    <th>Expiry</th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+        <input type="submit" id="btnSaveAll" class="btn btn-primary" style="float:right;"  value="Save All"/>
+    </form>
+    <br />
+<br />
+
+
+<!--***********************************
+               JavaScripts
+    ***********************************-->
+
+<script>   
+//check query validation plugin for form validation
+    $('#form2').validate();
+
+    /******************************************/
+    /*             For Form 1                 */
+    /******************************************/
+    $(function () {
+        $("#btnSaveAndAdd").on('click', function () {
+            $.post("InsertIntoPurchase", $('#form1').serialize(), function (data) {
+                if (data === "Invoice Number Already exists!") {
+                    swal("Warning!", "Purchase invoice Number already Exists!.", "error")
+                }
+                else
+                {
+                    //sets ID to the placeholder
+                    //ans then open bootstrap modal 
+                    document.getElementById('setInvoiceIdHere').value = data;
+                    $('#myModal').modal("show");
+
+
+                    //disable form1
+                    var nodes = document.getElementById("divForm1").getElementsByTagName('*');
+                    for (var i = 0; i < nodes.length; i++)
+                    {
+                        nodes[i].disabled = true;
+                    }
+                    //enable form2
+                    var nodes = document.getElementById("divForm2").getElementsByTagName('*');
+                    for (var i = 0; i < nodes.length; i++)
+                    {
+                        nodes[i].disabled = false;
+                    }
+                }
+            }, 'json');
+            console.log($("#form1").serialize());
+            return false;
+        });
+    });
+
+
+    /***********************************************
+                        Form 2    
+    ************************************************/
+        $('#AddToList').on('click', function () {
+            var $table = $('#tableList');
+            $table.append('<tr><td><input type="hidden" name="PurchaseInvoice" value="' + $('#setInvoiceIdHere').val() + '"/>' +
+                '</td><td><input type="hidden" name="SelectedItemvalue" value="' + $('#SelectedItemvalue').val() + '">' + $('#SelectedItemvalue option:selected').text() + 
+                '</td><td><input type="hidden" name="BatchNo" value="' + $('#BatchNo').val() + '">' + $('#BatchNo').val() +
+                '</td><td><input type="hidden" name="Qty" value="' + $('#Qty').val() + '">' + $('#Qty').val() +
+                '</td><td><input type="hidden" name="CostPrice"  value="' + $('#CostPrice').val() + '">' + $('#CostPrice').val() +
+                '</td><td><input type="hidden" name="SellingPrice"  value="' + $('#SellingPrice').val() + '">' + $('#SellingPrice').val() +
+                '</td><td><input type="hidden" name="Expiry" value="' + $('#Expiry').val() + '">' + $('#Expiry').val() +
+                '</td><td><a href="javascript:void(0)" class="glyphicon glyphicon-remove-circle" onclick="removeItem(this)"></a></td></tr>');
+            return false;
+        });
+    
+    //for remove button 
+        function removeItem(obj) {
+            $obj = $(obj).parent().parent().remove();
+        };
+        
+    //This will disable all the contents of form2
+        $(document).on('ready', function () {
+          /*var nodes = document.getElementById("divForm2").getElementsByTagName('*');
+            for (var i = 0; i < nodes.length; i++) {
+                nodes[i].disabled = true;
+            }*/
+        });
+
+    //form2 on bulk save 
+        $('#btnSaveAll').on('click', function () {
+            //console.log($("#submit-form").serialize());            
+            $.post('InsertPurchaseItemFormColl', $('#submit-form').serialize(), function (data) {
+                swal("Good job!", "Everything Sucessfully saved!", "success")
+               // alert(data);
+            });
+            return false;
+        });      
+
+        //Working with form2 
+        $('#btnListPurchaseItems').on('click', function () {
+            console.log((JSON.stringify($('#form2').serialize())));
+            event.preventDefault();
+        });          
+    </script>
+
+

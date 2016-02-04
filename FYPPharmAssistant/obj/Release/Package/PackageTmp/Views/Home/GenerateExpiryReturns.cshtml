@@ -1,0 +1,62 @@
+﻿@model IEnumerable<FYPPharmAssistant.ViewModel.ExpiryReturnsViewModel>
+@{
+    string DateToday = (DateTime.Now).Year + "-" + (DateTime.Now).Month + "-" + (DateTime.Now).Day;
+    ViewBag.Title = "ExpiryReturns : " + DateToday;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table id="datatable" class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Stock ID</th>
+            <th>Item Name</th>
+            <th>Batch</th>
+            <th> Purchased On</th>
+            <th> Qty Expired</th>
+            <th>Supplier</th>
+
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.StockID</td>
+            <td>@item.ItemName</td>
+            <td>@item.Batch</td>
+            <td>@item.PurchasedDate</td>
+            <td>@item.QtyExpired</td>
+            <td>@item.SupplierName</td>
+        </tr>
+    }
+
+</table>
+
+<script>
+    $(document).ready(function () {
+        var table = $('#datatable').dataTable();
+        var tableTools = new $.fn.dataTable.TableTools(table, {
+            'aButtons': [
+                {
+                    'sExtends': 'xls',
+                    'sButtonText': 'Save to Excel',
+                    'sFileName': 'ExpiryReturns_@DateToday .xls'
+                },
+                {
+                    'sExtends': 'print',
+                    'bShowAll': true,
+                },
+                {
+                    'sExtends': 'pdf',
+                    'bFooter': false,
+                    'bShowAll': false
+                },
+                'copy'
+                
+            ],
+            'sSwfPath': 'http://cdn.datatables.net/tabletools/2.2.4/swf/copy_csv_xls_pdf.swf'
+        });
+        $(tableTools.fnContainer()).insertBefore('#datatable_wrapper');
+    });
+</script>
+
+

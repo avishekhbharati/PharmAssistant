@@ -1,0 +1,143 @@
+﻿@using FYPPharmAssistant.Models.InventoryModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script>
+@*<script src="~/Scripts/Highcharts-4.0.1/js/themes/gray.js"></script>*@
+
+<script src="~/Scripts/Highcharts-4.0.1/js/themes/grid.js"></script>
+
+
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <a href="~/UsersAdmin/Create" class="small-box bg-yellow">
+            <div class="inner">            
+                    <h3>Add</h3>
+
+                    <h4>New User</h4>
+            </div>
+           <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            @*<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>*@
+        </a>
+    </div>
+
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <a href="~/PurchaseEntry/Index" class="small-box bg-green">
+            <div class="inner">
+                <h3>New</h3>
+
+                <h4>Purchase</h4>
+            </div>
+            <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+            </div>
+        </a>
+    </div>
+
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <a href="~/SalesEntry/Index" class="small-box bg-aqua">
+            <div class="inner">
+                <h3>New</h3>
+
+                <h4>Sales</h4>
+            </div>
+            <div class="icon">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <a href="~/Stock/index" class="small-box bg-red">
+            <div class="inner">
+                <h3>View</h3>
+                <h4>Stocks</h4>
+            </div>
+            <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+
+<div class="box box-primary">
+    <div class="row box-body">
+        <div class="col-md-6" >
+            <h3>Today's Sales: @ViewBag.todaySales  </h3>
+        </div>
+        <div class="col-md-6" >
+            <h3>Yesterday's Sales: @ViewBag.yesterdaySales</h3>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">   
+    <div class="col-sm-12" id="newContainer2"></div>    
+</div>
+  <br />
+ 
+<div class="row">
+    <div class="col-sm-12"  id="newContainer"></div>    
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        var charts;       
+
+        var _data = [];
+        var date = new Date();
+       $.get('../../../Home/ForMorris', null, function (dataX) {
+               charts = new Highcharts.Chart({
+                   chart: { renderTo: 'newContainer', defaultSeriesType: 'line' },
+                   plotOptions: { line: { dataLabels: { enabled: true }, enableMouseTracking: false } },                   
+                   title: { text: 'Graph of Yearly sales ' + date.getFullYear()},
+                   xAxis: { categories: ['Jan', ' Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], title: { text: 'Months' } },
+                   yAxis: { title: { text: 'Total Sales/Month' } },
+                   series: [{ data: dataX, name: 'Total sales' }]
+               });
+       });
+
+       var _days = [];
+       var _amt = [];
+       $.get('../../../Home/ForMorris2', null, function (data) {
+           
+           $.each(data, function (key, value) {
+               //console.log(value[0] + ':' + value[1]);
+               _days.push(value[0]);
+               _amt.push(value[1]);
+                            
+           });
+           
+          charts = new Highcharts.Chart({
+               chart: { renderTo: 'newContainer2', defaultSeriesType: 'column' },
+               plotOptions: { line: { dataLabels: { enabled: true }, enableMouseTracking: false } },
+               title: { text: 'Sales for this Month' },
+               tooltip: {valueSuffix: ' Rs'},
+               xAxis: { categories: _days, title: { text: 'Months' } },
+               yAxis: { title: { text: 'Total Sales/Month' } },
+               series: [{ data: _amt , name: 'Total sales' }]
+           });
+       });    
+
+
+    });
+
+        
+
+
+</script>
+

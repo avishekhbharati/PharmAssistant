@@ -1,0 +1,35 @@
+﻿@model IEnumerable<FYPPharmAssistant.ViewModel.ExpiryReturnsViewModel>
+@{
+    ViewBag.Title = "ExpiryReturns";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Stock ID</th>
+                <th>Item Name</th>
+                <th>Batch</th>
+                <th> Purchased On</th>
+                <th> Qty Expired</th>
+                <th>Supplier</th>
+                <th>Cost Price(Rate)</th>
+            </tr>
+        </thead>
+        @foreach(var item in Model)
+    {
+            <tr>
+                <td>@item.StockID</td>
+                <td>@item.ItemName</td>
+                <td>@item.Batch</td>
+                <td>@item.PurchasedDate</td>
+                <td>@item.QtyExpired</td>
+                <td>@item.SupplierName</td>
+                <td>@item.CostPrice</td>
+            </tr>
+    }
+
+    </table>
+
+
+

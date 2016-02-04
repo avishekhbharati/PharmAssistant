@@ -1,0 +1,80 @@
+﻿@model FYPPharmAssistant.Models.InventoryModel.Stock
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="box box-body box-primary">
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Item.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Item.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BatchNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BatchNo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Qty)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Qty)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CostPrice)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CostPrice)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SellingPrice)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SellingPrice)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ManufacturedDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ManufacturedDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExpiryDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExpiryDate)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+    }
+    </div>
+
+</div>

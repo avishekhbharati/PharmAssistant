@@ -1,0 +1,2599 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ChameleonForms</name>
+    </assembly>
+    <members>
+        <member name="T:ChameleonForms.Attributes.ExistsInAttribute">
+            <summary>
+            Indicates that the attributed property value should exist within the list property referenced by the attribute.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Attributes.ExistsInAttribute.ExistsKey">
+            <summary>
+            Additional Values metadata key for whether this attribute has been applied to the property.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Attributes.ExistsInAttribute.PropertyKey">
+            <summary>
+            Additional Values metadata key for the name of the list property.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Attributes.ExistsInAttribute.ValueKey">
+            <summary>
+            Additional Values metadata key for the name of the value property for the list items.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Attributes.ExistsInAttribute.NameKey">
+            <summary>
+            Additional Values metadata key for the name of the name/label property for the list items.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Attributes.ExistsInAttribute.EnableValidation">
+            <summary>
+            Application-wide configuration for whether or not to enable ExistsIn validation.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Attributes.ExistsInAttribute.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Instantiates an <see cref="T:ChameleonForms.Attributes.ExistsInAttribute"/>.
+            </summary>
+            <param name="listProperty">The name of the property containing the list this property should reference.</param>
+            <param name="valueProperty">The name of the property of the list items to use for the value</param>
+            <param name="nameProperty">The name of the property of the list items to use for the name/label</param>
+        </member>
+        <member name="M:ChameleonForms.Attributes.ExistsInAttribute.#ctor(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Instantiates an <see cref="T:ChameleonForms.Attributes.ExistsInAttribute"/>.
+            </summary>
+            <param name="listProperty">The name of the property containing the list this property should reference.</param>
+            <param name="valueProperty">The name of the property of the list items to use for the value</param>
+            <param name="nameProperty">The name of the property of the list items to use for the name/label</param>
+            <param name="enableValidation">Optional override for ExistsIn server-side validation configuration (if not specified, static configuration setting ExistsInAttribute.EnableValidation is used)</param>
+        </member>
+        <member name="M:ChameleonForms.Attributes.ExistsInAttribute.OnMetadataCreated(System.Web.Mvc.ModelMetadata)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Attributes.ExistsInAttribute.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Attributes.ExistsInAttribute.ValidateListConfiguration(System.Object,System.String,System.String,System.String,System.String)">
+            <summary>
+            Given a model, ensures the ExistsIn attribute has a valid configuration for generating and validating a list.
+            </summary>
+            <param name="model">The model being validated</param>
+            <param name="listProperty">The name of the property containing the list this property should reference.</param>
+            <param name="valueProperty">The name of the property of the list items to use for the value</param>
+            <param name="nameProperty">The name of the property of the list items to use for the name/label</param>
+            <param name="memberName">The name of the property that the ExistsIn attribute is applied do</param>
+        </member>
+        <member name="T:ChameleonForms.Component.Config.IFieldConfiguration">
+            <summary>
+            Holds configuration data for a form field.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.GetBagData``1(System.String)">
+            <summary>
+            Returns data from the Bag stored in the given property or default(TData) if there is none present.
+            </summary>
+            <typeparam name="TData">The type of the expected data to return</typeparam>
+            <param name="propertyName">The name of the property to retrieve the data for</param>
+            <returns>The data from the Bag or default(TData) if there was no data against that property in the bag</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Id(System.String)">
+            <summary>
+            Override the default id for the field.
+            </summary>
+            <param name="id">The text to use for the id</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.AddClass(System.String)">
+            <summary>
+            Adds a CSS class (or a number of CSS classes) to the attributes.
+            </summary>
+            <param name="class">The CSS class(es) to add</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Attr(System.String,System.Object)">
+            <summary>
+            Adds or updates a HTML attribute with a given value.
+            </summary>
+            <param name="key">The name of the HTML attribute to add/update</param>
+            <param name="value">The value of the HTML attribute to add/update</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Attr(System.Func{System.Object,System.Object})">
+            <summary>
+            Adds or updates a HTML attribute with using a lambda method to express the attribute.
+            </summary>
+            <example>
+            h.Attr(style =&gt; "width: 100%;")
+            </example>
+            <param name="attribute">A lambda expression representing the attribute to set and its value</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Attrs(System.Func{System.Object,System.Object}[])">
+            <summary>
+            Adds or updates a set of HTML attributes using lambda methods to express the attributes.
+            </summary>
+            <param name="attributes">A list of lambas where the lambda variable name is the name of the attribute and the value is the value</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Attrs(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Adds or updates a set of HTML attributes using a dictionary to express the attributes.
+            </summary>
+            <param name="attributes">A dictionary of attributes</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Attrs(System.Object)">
+            <summary>
+            Adds or updates a set of HTML attributes using anonymous objects to express the attributes.
+            </summary>
+            <param name="attributes">An anonymous object of attributes</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Rows(System.Int32)">
+            <summary>
+            Sets the number of rows for a textarea to use.
+            </summary>
+            <param name="numRows">The number of rows for the textarea</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Cols(System.Int32)">
+            <summary>
+            Sets the number of cols for a textarea to use.
+            </summary>
+            <param name="numCols">The number of cols for the textarea</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Disabled(System.Boolean)">
+            <summary>
+            Sets the field to be disabled (value not submitted, can not click).
+            </summary>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Readonly(System.Boolean)">
+            <summary>
+            Sets the field to be readonly (value can not be modified).
+            </summary>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Placeholder(System.String)">
+            <summary>
+            Sets a hint to the user of what can be entered in the field.
+            </summary>
+            <param name="placeholderText">The text to use for the placeholder</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.InlineLabel(System.String)">
+            <summary>
+            Sets an inline label for a checkbox.
+            </summary>
+            <param name="labelText">The text to use for the label</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.InlineLabel(System.Web.IHtmlString)">
+            <summary>
+            Sets an inline label for a checkbox.
+            </summary>
+            <param name="labelHtml">The html to use for the label</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Label(System.String)">
+            <summary>
+            Override the default label for the field.
+            </summary>
+            <param name="labelText">The text to use for the label</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Label(System.Web.IHtmlString)">
+            <summary>
+            Override the default label for the field.
+            </summary>
+            <param name="labelHtml">The text to use for the label</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.AsRadioList">
+            <summary>
+            Renders the field as a list of radio options for selecting single values or checkbox items for selecting multiple values.
+            Use for a list or boolean value.
+            </summary>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+            <seealso cref="M:ChameleonForms.Component.Config.IFieldConfiguration.AsCheckboxList"/>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.AsCheckboxList">
+            <summary>
+            Renders the field as a list of radio options for selecting single values or checkbox items for selecting multiple values.
+            Use for a list or boolean value.
+            </summary>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+            <seealso cref="M:ChameleonForms.Component.Config.IFieldConfiguration.AsRadioList"/>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.AsDropDown">
+            <summary>
+            Renders the field as a drop-down control.
+            Use for a list or boolean value.
+            </summary>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.WithTrueAs(System.String)">
+            <summary>
+            Change the label that represents true.
+            </summary>
+            <param name="trueString">The label to use as true</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.WithNoneAs(System.String)">
+            <summary>
+            Change the label that represents none.
+            </summary>
+            <param name="noneString">The label to use as none</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.WithFalseAs(System.String)">
+            <summary>
+            Change the label that represents false.
+            </summary>
+            <param name="falseString">The label to use as false</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.SetField(System.Func{System.Web.IHtmlString})">
+            <summary>
+            Sets a lambda expression to get the field that the field configuration is wrapping so that
+                a call to ToHtmlString() will output the given field.
+            </summary>
+            <param name="field">A lambda returning the HTML to output</param>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.SetField(System.Web.IHtmlString)">
+            <summary>
+            Sets the field that the field configuration is wrapping so that
+                a call to ToHtmlString() will output the given field.
+            </summary>
+            <param name="field">The field being configured</param>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.WithHint(System.String)">
+            <summary>
+            Supply a string hint to display along with the field.
+            </summary>
+            <param name="hint">The hint string</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.WithHint(System.Web.IHtmlString)">
+            <summary>
+            Supply a HTML hint to display along with the field.
+            </summary>
+            <param name="hint">The hint markup</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Prepend(System.Web.IHtmlString)">
+            <summary>
+            Prepends the given HTML to the form field.
+            </summary>
+            <param name="html">The HTML to prepend</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Prepend(System.String)">
+            <summary>
+            Prepends the given string to the form field.
+            </summary>
+            <param name="str">The string to prepend</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Append(System.Web.IHtmlString)">
+            <summary>
+            Appends the given HTML to the form field.
+            </summary>
+            <param name="html">The HTML to append</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Append(System.String)">
+            <summary>
+            Appends the given string to the form field.
+            </summary>
+            <param name="str">The string to prepend</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.OverrideFieldHtml(System.Web.IHtmlString)">
+            <summary>
+            Override the HTML of the form field.
+            
+            This gives you ultimate flexibility with your field HTML when it's
+            not quite what you want, but you still want the form template
+            (e.g. label, surrounding html and validation message).
+            </summary>
+            <param name="html">The HTML for the field</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.WithFormatString(System.String)">
+            <summary>
+            Uses the given format string when outputting the field value.
+            </summary>
+            <param name="formatString">The format string to use</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.HideEmptyItem">
+            <summary>
+            Hide the empty item that would normally display for the field.
+            </summary>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.WithoutLabel">
+            <summary>
+            Don't use a &lt;label&gt;, but still include the label text for the field.
+            </summary>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.AddLabelClass(System.String)">
+            <summary>
+            Specify one or more CSS classes to use for the field label.
+            </summary>
+            <param name="class">Any CSS class(es) to use for the field label</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.AddFieldContainerClass(System.String)">
+            <summary>
+            Specify one or more CSS classes to use for the field container element.
+            </summary>
+            <param name="class">Any CSS class(es) to use for the field container element</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.AddValidationClass(System.String)">
+            <summary>
+            Specify one or more CSS classes to use for the field validation message.
+            </summary>
+            <param name="class">Any CSS class(es) to use for the field validation message</param>
+            <returns>The <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.ToReadonly">
+            <summary>
+            Returns readonly field configuration from the current field configuration.
+            </summary>
+            <returns>A readonly field configuration</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IFieldConfiguration.Exclude(System.Enum[])">
+            <summary>
+            Excludes one or more Enum values from the generated field.
+            </summary>
+            <param name="enumValues">The value of Enum(s) to exclude from the generated field.</param>
+            <returns></returns>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.Bag">
+            <summary>
+            A dynamic bag to allow for custom extensions using the field configuration.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.Attributes">
+            <summary>
+            Attributes to add to the form element's HTML.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.InlineLabelText">
+            <summary>
+            Gets any text that has been set for an inline label.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.LabelText">
+            <summary>
+            Gets any text that has been set for the label.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.DisplayType">
+            <summary>
+            Returns the display type for the field.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.TrueString">
+            <summary>
+            The label that represents true.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.FalseString">
+            <summary>
+            The label that represents false.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.NoneString">
+            <summary>
+            The label that represents none.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.Hint">
+            <summary>
+            Get the hint to display with the field.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.PrependedHtml">
+            <summary>
+            A list of HTML to be prepended to the form field in ltr order.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.AppendedHtml">
+            <summary>
+            A list of HTML to be appended to the form field in ltr order.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.FieldHtml">
+            <summary>
+            The HTML to be used as the field html.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.FormatString">
+            <summary>
+            The format string to use for the field.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.EmptyItemHidden">
+            <summary>
+            Whether or not the empty item is hidden.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.HasLabel">
+            <summary>
+            Whether or not to use a &lt;label&gt;.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.LabelClasses">
+            <summary>
+            Any CSS class(es) to use for the field label.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.FieldContainerClasses">
+            <summary>
+            Any CSS class(es) to use for the field container element.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.ValidationClasses">
+            <summary>
+            Any CSS class(es) to use for the field validation message.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IFieldConfiguration.ExcludedEnums">
+            <summary>
+            Enum value(s) to exclude from the generated field.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.Component.Config.FieldConfiguration">
+            <summary>
+            Holds configuration data for a form field.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.#ctor">
+            <summary>
+            Constructs a field configuration.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.GetBagData``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Id(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.AddClass(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Attr(System.String,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Attr(System.Func{System.Object,System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Attrs(System.Func{System.Object,System.Object}[])">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Attrs(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Attrs(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Rows(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Cols(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Disabled(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Readonly(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Placeholder(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.InlineLabel(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.InlineLabel(System.Web.IHtmlString)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Label(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Label(System.Web.IHtmlString)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.AsRadioList">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.AsCheckboxList">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.AsDropDown">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.WithTrueAs(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.WithFalseAs(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.WithNoneAs(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.SetField(System.Web.IHtmlString)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.WithHint(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.WithHint(System.Web.IHtmlString)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Prepend(System.Web.IHtmlString)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Prepend(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Append(System.Web.IHtmlString)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Append(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.WithFormatString(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.HideEmptyItem">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.WithoutLabel">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.AddLabelClass(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.AddFieldContainerClass(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.AddValidationClass(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.OverrideFieldHtml(System.Web.IHtmlString)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.SetField(System.Func{System.Web.IHtmlString})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.ToHtmlString">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.ToReadonly">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfiguration.Exclude(System.Enum[])">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.Bag">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.Attributes">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.InlineLabelText">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.LabelText">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.DisplayType">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.TrueString">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.FalseString">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.NoneString">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.Hint">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.PrependedHtml">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.AppendedHtml">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.FormatString">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.EmptyItemHidden">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.HasLabel">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.LabelClasses">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.FieldContainerClasses">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.ValidationClasses">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.FieldHtml">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.FieldConfiguration.ExcludedEnums">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.Component.Config.FieldConfigurationExtensions">
+            <summary>
+            Provides additional configuration options to FieldConfiguration
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfigurationExtensions.TabIndex(ChameleonForms.Component.Config.IFieldConfiguration,System.Int32)">
+            <summary>
+            Sets the tab index of a given field
+            </summary>
+            <param name="config">Field configuration to update</param>
+            <param name="index">Tab index to be set</param>
+            <returns>The instance of IFieldConfiguration passed in to continue chaining things</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.FieldConfigurationExtensions.AutoFocus(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <summary>
+            Applys the autofocus attribute to a given field
+            </summary>
+            <param name="config">Field configuration to modify</param>
+            <returns>The instance of IFieldConfiguration passed in to continue chaining things</returns>
+        </member>
+        <member name="T:ChameleonForms.Component.Config.IReadonlyFieldConfiguration">
+            <summary>
+            Immutable field configuration for use when generating a field's HTML.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.GetBagData``1(System.String)">
+            <summary>
+            Returns data from the Bag stored in the given property or default(TData) if there is none present.
+            </summary>
+            <typeparam name="TData">The type of the expected data to return</typeparam>
+            <param name="propertyName">The name of the property to retrieve the data for</param>
+            <returns>The data from the Bag or default(TData) if there was no data against that property in the bag</returns>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.Bag">
+            <summary>
+            A dynamic bag to allow for custom extensions using the field configuration.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.HtmlAttributes">
+            <summary>
+            Attributes to add to the form element's HTML.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.InlineLabelText">
+            <summary>
+            Gets any text that has been set for an inline label.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.LabelText">
+            <summary>
+            Gets any text that has been set for the label.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.DisplayType">
+            <summary>
+            Returns the display type for the field.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.TrueString">
+            <summary>
+            The label that represents true.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.FalseString">
+            <summary>
+            The label that represents false.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.NoneString">
+            <summary>
+            The label that represents none.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.Hint">
+            <summary>
+            Get the hint to display with the field.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.PrependedHtml">
+            <summary>
+            A list of HTML to be prepended to the form field in ltr order.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.AppendedHtml">
+            <summary>
+            A list of HTML to be appended to the form field in ltr order.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.FieldHtml">
+            <summary>
+            The HTML to be used as the field html.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.FormatString">
+            <summary>
+            The format string to use for the field.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.EmptyItemHidden">
+            <summary>
+            Whether or not the empty item is hidden.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.HasLabel">
+            <summary>
+            Whether or not to use a &lt;label&gt;.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.LabelClasses">
+            <summary>
+            Any CSS class(es) to use for the field label.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.FieldContainerClasses">
+            <summary>
+            Any CSS class(es) to use for the field container element.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.ValidationClasses">
+            <summary>
+            Any CSS class(es) to use for the field validation message.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.Component.Config.IReadonlyFieldConfiguration.ExcludedEnums">
+            <summary>
+            Enum value(s) to exclude from the generated field.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.Component.Config.ReadonlyFieldConfiguration">
+            <summary>
+            Wraps an <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> to provide a readonly wrapper over the properties.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.#ctor(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <summary>
+            Creates a <see cref="T:ChameleonForms.Component.Config.ReadonlyFieldConfiguration"/> that wraps the provided <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/>.
+            </summary>
+            <param name="fieldConfiguration">The field configuration to wrap</param>
+        </member>
+        <member name="M:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.GetBagData``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.Bag">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.HtmlAttributes">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.InlineLabelText">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.LabelText">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.DisplayType">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.TrueString">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.FalseString">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.NoneString">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.Hint">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.PrependedHtml">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.AppendedHtml">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.FieldHtml">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.FormatString">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.EmptyItemHidden">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.HasLabel">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.LabelClasses">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.FieldContainerClasses">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.ValidationClasses">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.Config.ReadonlyFieldConfiguration.ExcludedEnums">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.Component.FieldParent">
+            <summary>
+            The parent of the field being generated.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Component.FieldParent.Form">
+            <summary>
+            The parent is the root Form.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Component.FieldParent.Section">
+            <summary>
+            The parent is a section (or a field within a section).
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.Component.Navigation`2">
+            <summary>
+            Wraps the output of the navigation area of a form.
+            For example the area with submit buttons.
+            </summary>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+        </member>
+        <member name="T:ChameleonForms.Component.FormComponent`2">
+            <summary>
+            Chameleon Forms base component class; provides an ability to easily write HTML to the page in a self-closing or nested manner.
+            Ensure you call Initialise() at the end of the constructor when extending this class.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.Component.IFormComponent`2">
+            <summary>
+            Chameleon Forms component - holds a reference to a form.
+            </summary>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+        </member>
+        <member name="P:ChameleonForms.Component.IFormComponent`2.Form">
+            <summary>
+            The form that the component is attached to.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Component.FormComponent`2.IsSelfClosing">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.FormComponent`2.#ctor(ChameleonForms.IForm{`0,`1},System.Boolean)">
+            <summary>
+            Create a form component.
+            </summary>
+            <param name="form">The form</param>
+            <param name="isSelfClosing">Whether or not the component is self closing or has an explicit end tag</param>
+        </member>
+        <member name="M:ChameleonForms.Component.FormComponent`2.Initialise">
+            <summary>
+            Initialises the form component; should be called at the end of the constructor of any derived classes.
+            Writes HTML directly to the page is the component isn't self-closing
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Component.FormComponent`2.Begin">
+            <summary>
+            Returns the HTML representation of the beginning of the form component.
+            </summary>
+            <returns>The beginning HTML for the form component</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.FormComponent`2.End">
+            <summary>
+            Returns the HTML representation of the end of the form component.
+            </summary>
+            <returns>The ending HTML for the form component</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.FormComponent`2.ToHtmlString">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.FormComponent`2.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Component.FormComponent`2.Form">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Navigation`2.#ctor(ChameleonForms.IForm{`0,`1})">
+            <summary>
+            Creates a form navigation area.
+            </summary>
+            <param name="form">The form the message is being created in</param>
+        </member>
+        <member name="M:ChameleonForms.Component.Navigation`2.Begin">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Navigation`2.End">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Navigation`2.Submit(System.String)">
+            <summary>
+            Creates the HTML for a submit &lt;button&gt;.
+            </summary>
+            <param name="text">The text to display in the button</param>
+            <returns>Html attributes class to chain modifications to the button's attributes; call .ToHtmlString() to generate the button HTML</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Navigation`2.Submit(System.Web.IHtmlString)">
+            <summary>
+            Creates the HTML for a submit &lt;button&gt;.
+            </summary>
+            <param name="content">The content to display in the button</param>
+            <returns>Html attributes class to chain modifications to the button's attributes; call .ToHtmlString() to generate the button HTML</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Navigation`2.Submit(System.String,System.String,System.Web.IHtmlString)">
+            <summary>
+            Creates the HTML for a submit button that submits a value in the form post when clicked.
+            </summary>
+            <param name="name">The name of the element</param>
+            <param name="value">The value to submit with the form</param>
+            <param name="content">The text the user sees (leave as null if you want the user to see the value instead)</param>
+            <returns>Html attributes class to chain modifications to the button's attributes; call .ToHtmlString() to generate the button HTML</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Navigation`2.Button(System.String)">
+            <summary>
+            Creates the HTML for a &lt;button&gt;.
+            </summary>
+            <param name="text">The text to display in the button</param>
+            <returns>Html attributes class to chain modifications to the button's attributes; call .ToHtmlString() to generate the button HTML</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Navigation`2.Button(System.Web.IHtmlString)">
+            <summary>
+            Creates the HTML for a &lt;button&gt;.
+            </summary>
+            <param name="content">The content to display in the button</param>
+            <returns>Html attributes class to chain modifications to the button's attributes; call .ToHtmlString() to generate the button HTML</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Navigation`2.Reset(System.String)">
+            <summary>
+            Creates the HTML for a reset &lt;button&gt;.
+            </summary>
+            <param name="text">The text to display for the button</param>
+            <returns>Html attributes class to chain modifications to the button's attributes; call .ToHtmlString() to generate the button HTML</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Navigation`2.Reset(System.Web.IHtmlString)">
+            <summary>
+            Creates the HTML for a reset &lt;button&gt;.
+            </summary>
+            <param name="content">The content to display for the button</param>
+            <returns>Html attributes class to chain modifications to the button's attributes; call .ToHtmlString() to generate the button HTML</returns>
+        </member>
+        <member name="T:ChameleonForms.Component.NavigationExtensions">
+            <summary>
+            Extension methods for the creation of navigation sections.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Component.NavigationExtensions.BeginNavigation``2(ChameleonForms.IForm{``0,``1})">
+            <summary>
+            Creates a navigation section.
+            </summary>
+            <example>
+            @using (var n = f.BeginNavigation()) {
+                @n.Submit("Previous", "previous")
+                @n.Submit("Save", "save")
+                @n.Submit("Next", "next")
+            }
+            </example>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+            <param name="form">The form the navigation is being created in</param>
+            <returns>The form navigation</returns>
+        </member>
+        <member name="T:ChameleonForms.Component.ButtonHtmlAttributes">
+            <summary>
+            HtmlAttributes class that is returned from button methods that allows for extension methods targetted at buttons.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.LazyHtmlAttributes">
+            <summary>
+            HtmlAttributes class that evaluates a given HTML generator when .ToHtmlString() is called.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.HtmlAttributes">
+            <summary>
+            Represents a set of HTML attributes.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.#ctor(System.Func{System.Object,System.Object}[])">
+            <summary>
+            Constructs a <see cref="T:ChameleonForms.HtmlAttributes"/> object using lambda methods to express the attributes.
+            </summary>
+            <example>
+            var h = new HtmlAttributes(style =&gt; "width: 100%;", cellpadding =&gt; 0, @class =&gt; "class1 class2", src =&gt; "http://url/", data_somedata =&gt; "\"rubbi&amp;h\"");
+            </example>
+            <param name="attributes">A list of lambas where the lambda variable name is the name of the attribute and the value is the value</param>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Constructs a <see cref="T:ChameleonForms.HtmlAttributes"/> object using a dictionary to express the attributes.
+            </summary>
+            <example>
+            var h = new HtmlAttributes(new Dictionary&lt;string, object&gt; {{"style", "width: 100%;"}, {"cellpadding", 0}, {"class", "class1 class2"}, {"src", "http://url/"}, {"data-somedata", "\"rubbi&amp;h\""}});
+            </example>
+            <param name="attributes">A dictionary of attributes</param>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.#ctor(System.Object)">
+            <summary>
+            Constructs a <see cref="T:ChameleonForms.HtmlAttributes"/> object using an anonymous object to express the attributes.
+            </summary>
+            <example>
+            var h = new HtmlAttributes(new { style = "width: 100%;", cellpadding = 0, @class = "class1 class2", src = "http://url/", data_somedata = "\"rubbi&amp;h\"" });
+            </example>
+            <param name="attributes">An anonymous object of attributes</param>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.AddClass(System.String)">
+            <summary>
+            Adds a CSS class (or a number of CSS classes) to the attributes.
+            </summary>
+            <param name="class">The CSS class(es) to add</param>
+            <returns>The <see cref="T:ChameleonForms.HtmlAttributes"/> attribute to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.Id(System.String)">
+            <summary>
+            Set the id attribute.
+            </summary>
+            <param name="id">The text to use for the id</param>
+            <returns>The <see cref="T:ChameleonForms.HtmlAttributes"/> attribute to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.Disabled(System.Boolean)">
+            <summary>
+            Sets the disabled attribute.
+            </summary>
+            <returns>The <see cref="T:ChameleonForms.HtmlAttributes"/> attribute to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.Readonly(System.Boolean)">
+            <summary>
+            Sets the readonly attribute.
+            </summary>
+            <returns>The <see cref="T:ChameleonForms.HtmlAttributes"/> attribute to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.Attr(System.String,System.Object)">
+            <summary>
+            Adds or updates a HTML attribute with a given value.
+            </summary>
+            <param name="key">The name of the HTML attribute to add/update</param>
+            <param name="value">The value of the HTML attribute to add/update</param>
+            <returns>The <see cref="T:ChameleonForms.HtmlAttributes"/> attribute to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.Attr(System.Func{System.Object,System.Object})">
+            <summary>
+            Adds or updates a HTML attribute with using a lambda method to express the attribute.
+            </summary>
+            <example>
+            h.Attr(style =&gt; "width: 100%;")
+            </example>
+            <param name="attribute">A lambda expression representing the attribute to set and its value</param>
+            <returns>The <see cref="T:ChameleonForms.HtmlAttributes"/> attribute to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.Attrs(System.Func{System.Object,System.Object}[])">
+            <summary>
+            Adds or updates a set of HTML attributes using lambda methods to express the attributes.
+            </summary>
+            <param name="attributes">A list of lambas where the lambda variable name is the name of the attribute and the value is the value</param>
+            <returns>The <see cref="T:ChameleonForms.HtmlAttributes"/> attribute to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.Attrs(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Adds or updates a set of HTML attributes using a dictionary to express the attributes.
+            </summary>
+            <param name="attributes">A dictionary of attributes</param>
+            <returns>The <see cref="T:ChameleonForms.HtmlAttributes"/> attribute to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.Attrs(System.Object)">
+            <summary>
+            Adds or updates a set of HTML attributes using anonymous objects to express the attributes.
+            </summary>
+            <param name="attributes">An anonymous object of attributes</param>
+            <returns>The <see cref="T:ChameleonForms.HtmlAttributes"/> attribute to allow for method chaining</returns>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.op_Implicit(System.Collections.Generic.Dictionary{System.String,System.Object})~ChameleonForms.HtmlAttributes">
+            <summary>
+            Implicitly convert from a dictionary to a new <see cref="T:ChameleonForms.HtmlAttributes"/> object.
+            </summary>
+            <param name="attributes">The dictionary of HTML attributes</param>
+            <returns>The new <see cref="T:ChameleonForms.HtmlAttributes"/> object</returns>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.ToHtmlString">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributes.ToDictionary">
+            <summary>
+            Returns the HTML attributes as a dictionary.
+            </summary>
+            <returns>A dictionary of HTML attributes compatible with the standard ASP.NET MVC method signatures</returns>
+        </member>
+        <member name="P:ChameleonForms.HtmlAttributes.Attributes">
+            <summary>
+            Dictionary of the attributes currently stored in the object.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.LazyHtmlAttributes.#ctor(System.Func{ChameleonForms.HtmlAttributes,System.Web.IHtmlString})">
+            <summary>
+            Construct a LazyHtmlAttributes class.
+            </summary>
+            <param name="htmlGenerator">The generator to use to generate the HTML when .ToHtmlString() is called</param>
+        </member>
+        <member name="M:ChameleonForms.LazyHtmlAttributes.ToHtmlString">
+            <summary>
+            Invokes the given HTML generator to return HTML.
+            </summary>
+            <returns>The generated HTML</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.ButtonHtmlAttributes.#ctor(System.Func{ChameleonForms.HtmlAttributes,System.Web.IHtmlString})">
+            <summary>
+            Construct a ButtonHtmlAttributes class.
+            </summary>
+            <param name="htmlGenerator">The generator to use to generate the HTML when .ToHtmlString() is called</param>
+        </member>
+        <member name="T:ChameleonForms.Component.Field">
+            <summary>
+            Helper for field configuration.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Component.Field.Configure">
+            <summary>
+            Returns a field configuration object.
+            </summary>
+            <returns>A field configuration</returns>
+        </member>
+        <member name="T:ChameleonForms.Component.Field`2">
+            <summary>
+            Wraps the output of a single form field.
+            </summary>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+        </member>
+        <member name="M:ChameleonForms.Component.Field`2.#ctor(ChameleonForms.IForm{`0,`1},System.Boolean,ChameleonForms.FieldGenerators.IFieldGenerator,ChameleonForms.Component.Config.IFieldConfiguration)">
+            <summary>
+            Creates a form field.
+            </summary>
+            <param name="form">The form the field is being created in</param>
+            <param name="isParent">Whether or not the field has other fields nested within it</param>
+            <param name="fieldGenerator">A field HTML generator class</param>
+            <param name="config">The configuration values for the field</param>
+        </member>
+        <member name="M:ChameleonForms.Component.Field`2.Begin">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Field`2.End">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.Component.FieldExtensions">
+            <summary>
+            Extension methods for the creation of form fields, labels and validation messages.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Component.FieldExtensions.FieldFor``3(ChameleonForms.Component.Section{``0,``1},System.Linq.Expressions.Expression{System.Func{``0,``2}})">
+            <summary>
+            Creates a single form field as a child of a form section.
+            </summary>
+            <example>
+            @s.FieldFor(m => m.FirstName)
+            </example>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+            <typeparam name="T">The type of the field being generated</typeparam>
+            <param name="section">The section the field is being created in</param>
+            <param name="property">A lamdba expression to identify the field to render the field for</param>
+            <returns>A field configuration object that allows you to configure the field</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.FieldExtensions.BeginFieldFor``3(ChameleonForms.Component.Section{``0,``1},System.Linq.Expressions.Expression{System.Func{``0,``2}},ChameleonForms.Component.Config.IFieldConfiguration)">
+            <summary>
+            Creates a single form field as a child of a form section that can have other form fields nested within it.
+            </summary>
+            <example>
+            @using (var f = s.BeginFieldFor(m => m.Company)) {
+                @f.FieldFor(m => m.PositionTitle)
+            }
+            </example>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+            <typeparam name="T">The type of the field being generated</typeparam>
+            <param name="section">The section the field is being created in</param>
+            <param name="property">A lamdba expression to identify the field to render the field for</param>
+            <param name="config">Any configuration information for the field</param>
+            <returns>The form field</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.FieldExtensions.FieldFor``3(ChameleonForms.Component.Field{``0,``1},System.Linq.Expressions.Expression{System.Func{``0,``2}})">
+            <summary>
+            Creates a single form field as a child of another form field.
+            </summary>
+            <example>
+            @using (var f = s.BeginFieldFor(m => m.Company)) {
+                @f.FieldFor(m => m.PositionTitle)
+            }
+            </example>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+            <typeparam name="T">The type of the field being generated</typeparam>
+            <param name="field">The parent field the field is being created in</param>
+            <param name="property">A lamdba expression to identify the field to render the field for</param>
+            <returns>A field configuration object that allows you to configure the field</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.FieldExtensions.FieldElementFor``3(ChameleonForms.IForm{``0,``1},System.Linq.Expressions.Expression{System.Func{``0,``2}})">
+            <summary>
+            Creates a standalone form field to be output in a form.
+            </summary>
+            <example>
+            @using (var f = Html.BeginChameleonForm()) {
+                @f.FieldFor(m => m.PositionTitle)
+            }
+            </example>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+            <typeparam name="T">The type of the field being generated</typeparam>
+            <param name="form">The form the field is being created in</param>
+            <param name="property">A lamdba expression to identify the field to render the field for</param>
+            <returns>A field configuration object that allows you to configure the field</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.FieldExtensions.LabelFor``3(ChameleonForms.IForm{``0,``1},System.Linq.Expressions.Expression{System.Func{``0,``2}})">
+            <summary>
+            Creates a standalone label to be output in a form for a field.
+            </summary>
+            <example>
+            @using (var f = Html.BeginChameleonForm()) {
+                @f.LabelFor(m => m.PositionTitle)
+            }
+            </example>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+            <typeparam name="T">The type of the field being generated</typeparam>
+            <param name="form">The form the label is being created in</param>
+            <param name="property">A lamdba expression to identify the field to render the label for</param>
+            <returns>The HTML for the label</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.FieldExtensions.ValidationMessageFor``3(ChameleonForms.IForm{``0,``1},System.Linq.Expressions.Expression{System.Func{``0,``2}})">
+            <summary>
+            Creates a standalone validation message to be output in a form for a field.
+            </summary>
+            <example>
+            @using (var f = Html.BeginChameleonForm()) {
+                @f.ValidationMessageFor(m => m.PositionTitle)
+            }
+            </example>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+            <typeparam name="T">The type of the field being generated</typeparam>
+            <param name="form">The form the label is being created in</param>
+            <param name="property">A lamdba expression to identify the field to render the validation message for</param>
+            <returns>The HTML for the validation message</returns>
+        </member>
+        <member name="T:ChameleonForms.Component.Message`2">
+            <summary>
+            Wraps the output of a message to display to a user.
+            </summary>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+        </member>
+        <member name="M:ChameleonForms.Component.Message`2.#ctor(ChameleonForms.IForm{`0,`1},ChameleonForms.Enums.MessageType,System.Web.IHtmlString)">
+            <summary>
+            Creates a message.
+            </summary>
+            <param name="form">The form the message is being created in</param>
+            <param name="messageType">The type of message to display</param>
+            <param name="heading">The heading for the message</param>
+        </member>
+        <member name="M:ChameleonForms.Component.Message`2.Begin">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Message`2.End">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Message`2.Paragraph(System.String)">
+            <summary>
+            Creates the HTML for a paragraph in the message.
+            </summary>
+            <param name="paragraph">The paragraph to output</param>
+            <returns>The HTML for the paragraph</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Message`2.Paragraph(System.Web.IHtmlString)">
+            <summary>
+            Creates the HTML for a paragraph in the message.
+            </summary>
+            <param name="paragraph">The paragraph to output</param>
+            <returns>The HTML for the paragraph</returns>
+        </member>
+        <member name="T:ChameleonForms.Component.MessageExtensions">
+            <summary>
+            Extension methods for the creation of messages.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Component.MessageExtensions.BeginMessage``2(ChameleonForms.IForm{``0,``1},ChameleonForms.Enums.MessageType,System.String)">
+            <summary>
+            Creates a message.
+            </summary>
+            <example>
+            @using (var m = f.BeginMessage(MessageType.Success, "Your submission was successful")) {
+                @m.Paragraph(string.Format("Your item was successfully created with id {0}", Model.Id))
+            }
+            </example>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+            <param name="form">The form the message is being created in</param>
+            <param name="messageType">The type of message to display</param>
+            <param name="heading">The heading for the message</param>
+            <returns>The message</returns>
+        </member>
+        <member name="T:ChameleonForms.Enums.FieldDisplayType">
+            <summary>
+            The display type for a field control.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.FieldDisplayType.Default">
+            <summary>
+            The default display type for the field control.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.FieldDisplayType.List">
+            <summary>
+            Display the field as a list of checkboxes or radio button controls.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.FieldDisplayType.DropDown">
+            <summary>
+            Display the field as a drop-down control.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.FieldDisplayType.SingleLineText">
+            <summary>
+            Display the field as a single line text input control.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.FieldDisplayType.FileUpload">
+            <summary>
+            Display the field as a file upload control.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.FieldDisplayType.MultiLineText">
+            <summary>
+            Display the field as a multi-line text input control.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.FieldDisplayType.Checkbox">
+            <summary>
+            Display the field as a single checkbox control.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.FieldDisplayType.Custom">
+            <summary>
+            Display the field as a custom control.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.Enums.MessageType">
+            <summary>
+            Types of messages that can be displayed to the user
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.MessageType.Action">
+            <summary>
+            User action required.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.MessageType.Success">
+            <summary>
+            Action successful.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.MessageType.Failure">
+            <summary>
+            Action failed.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.MessageType.Information">
+            <summary>
+            Informational message.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.MessageType.Warning">
+            <summary>
+            Warning message.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.Component.Section`2">
+            <summary>
+            Wraps the output of a form section.
+            </summary>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+        </member>
+        <member name="M:ChameleonForms.Component.Section`2.#ctor(ChameleonForms.IForm{`0,`1},System.Web.IHtmlString,System.Boolean,System.Web.IHtmlString,ChameleonForms.HtmlAttributes)">
+            <summary>
+            Creates a form section
+            </summary>
+            <param name="form">The form the message is being created in</param>
+            <param name="heading">The heading for the section</param>
+            <param name="nested">Whether the section is nested within another section</param>
+            <param name="leadingHtml">Any HTML to output at the start of the section</param>
+            <param name="htmlAttributes">Any HTML attributes to apply to the section container</param>
+        </member>
+        <member name="M:ChameleonForms.Component.Section`2.Field(System.Web.IHtmlString,System.Web.IHtmlString,System.Web.IHtmlString,System.Web.Mvc.ModelMetadata,System.Boolean)">
+            <summary>
+            Outputs a field with passed in HTML.
+            </summary>
+            <param name="labelHtml">The HTML for the label part of the field</param>
+            <param name="elementHtml">The HTML for the field element part of the field</param>
+            <param name="validationHtml">The HTML for the validation markup part of the field</param>
+            <param name="metadata">Any field metadata</param>
+            <param name="isValid">Whether or not the field is valid</param>
+            <returns>A field configuration that can be used to output the field as well as configure it fluently</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.Section`2.Begin">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Component.Section`2.End">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.Component.SectionExtensions">
+            <summary>
+            Extension methods to create form sections.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Component.SectionExtensions.BeginSection``2(ChameleonForms.IForm{``0,``1},System.String,System.Web.IHtmlString,ChameleonForms.HtmlAttributes)">
+            <summary>
+            Creates a top-level form section.
+            </summary>
+            <example>
+            @using (var s = f.BeginSection("Section heading")) {
+                @s.FieldFor(m => m.FirstName)
+            }
+            </example>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+            <param name="form">The form the section is being created in</param>
+            <param name="heading">The heading for the section</param>
+            <param name="leadingHtml">Any HTML to output at the start of the section</param>
+            <param name="htmlAttributes">Any HTML attributes to apply to the section container</param>
+            <returns>The form section</returns>
+        </member>
+        <member name="M:ChameleonForms.Component.SectionExtensions.BeginSection``2(ChameleonForms.Component.Section{``0,``1},System.String,System.Web.IHtmlString,ChameleonForms.HtmlAttributes)">
+            <summary>
+            Creates a nested form section.
+            </summary>
+            <example>
+            @using (var s = f.BeginSection("Section heading")) {
+                using (var ss = s.BeginSection("Nested section heading")) {
+                    @ss.FieldFor(m => m.FirstName)
+                }
+            }
+            </example>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template renderer the form is using</typeparam>
+            <param name="section">The section the section is being created under</param>
+            <param name="heading">The heading for the section</param>
+            <param name="leadingHtml">Any HTML to output at the start of the section</param>
+            <param name="htmlAttributes">Any HTML attributes to apply to the section container</param>
+            <returns>The nested form section</returns>
+        </member>
+        <member name="T:ChameleonForms.Enums.EncType">
+            <summary>
+             Representation of the different form encoding types.
+             Use .Humanize() to get the enc type for output.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.EncType.UrlEncoded">
+            <summary>
+             URL encoded
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.EncType.Multipart">
+            <summary>
+             Multipart
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.EncType.Plain">
+            <summary>
+             Plain text
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.Enums.TextInputType">
+            <summary>
+            The different types of &lt;input /&gt; fields.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.TextInputType.Text">
+            <summary>
+            &lt;input type="text" /&gt;
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.TextInputType.Password">
+            <summary>
+            &lt;input type="password" /&gt;
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Enums.TextInputType.File">
+            <summary>
+            &lt;input type="file" /&gt;
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.Extensions">
+            <summary>
+            Extension methods used by ChameleonForms.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Extensions.ToHtml(System.String)">
+            <summary>
+            Converts a string to an encoded <see cref="T:System.Web.IHtmlString"/>.
+            </summary>
+            <param name="content">The content to encode and turn into an IHtmlString</param>
+            <returns>The IHtmlString</returns>
+        </member>
+        <member name="M:ChameleonForms.Extensions.Attrs(System.Web.Mvc.HtmlHelper,System.Func{System.Object,System.Object}[])">
+            <summary>
+            Shortcut to tersely create HtmlAttributes object from the HTML Helper.
+            </summary>
+            <param name="helper">The HTML helper</param>
+            <param name="attrs">Any attributes you want to define in attr_name => attr_value format</param>
+            <returns>A HtmlAttributes object that can be used to chain methods to further specify attributes</returns>
+        </member>
+        <member name="T:ChameleonForms.Templates.TwitterBootstrap3.ButtonSize">
+            <summary>
+            Twitter Bootstrap button sizes: http://getbootstrap.com/css/#buttons-sizes
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Templates.TwitterBootstrap3.ButtonSize.ExtraSmall">
+            <summary>
+            Extra small button size.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Templates.TwitterBootstrap3.ButtonSize.Small">
+            <summary>
+            Small button size.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Templates.TwitterBootstrap3.ButtonSize.Default">
+            <summary>
+            Default button size.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Templates.TwitterBootstrap3.ButtonSize.Large">
+            <summary>
+            Large button size.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.Templates.TwitterBootstrap3.EmphasisStyle">
+            <summary>
+            Twitter Bootstrap alert/emphasis colors: http://getbootstrap.com/css/#type-emphasis
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Templates.TwitterBootstrap3.EmphasisStyle.Default">
+            <summary>
+            Default styling.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Templates.TwitterBootstrap3.EmphasisStyle.Primary">
+            <summary>
+            Primary action styling.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Templates.TwitterBootstrap3.EmphasisStyle.Success">
+            <summary>
+            Success styling.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Templates.TwitterBootstrap3.EmphasisStyle.Info">
+            <summary>
+            Information styling.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Templates.TwitterBootstrap3.EmphasisStyle.Warning">
+            <summary>
+            Warning styling.
+            </summary>
+        </member>
+        <member name="F:ChameleonForms.Templates.TwitterBootstrap3.EmphasisStyle.Danger">
+            <summary>
+            Danger styling.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.Handlers.DateTimeHandler`2">
+            <summary>
+            Generates the HTML for the Field Element of datetime fields.
+            </summary>
+            <typeparam name="TModel">The type of the model the form is being output for</typeparam>
+            <typeparam name="T">The type of the property in the model that the specific field is being output for</typeparam>
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2">
+            <summary>
+            Base class that contains common logic for implementing field generator handlers.
+            </summary>
+            <typeparam name="TModel">The type of the model the form is being output for</typeparam>
+            <typeparam name="T">The type of the property in the model that the specific field is being output for</typeparam>
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.Handlers.IFieldGeneratorHandler`2">
+            <summary>
+            A Field Generator Handler is responsible for generating the HTML for a Field Element of a particular type of field.
+            </summary>
+            <typeparam name="TModel">The type of the model the form is being output for</typeparam>
+            <typeparam name="T">The type of the property in the model that the specific field is being output for</typeparam>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.IFieldGeneratorHandler`2.CanHandle">
+            <summary>
+            Whether or not the current field can be output using this field generator handler.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.IFieldGeneratorHandler`2.GenerateFieldHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <summary>
+            Generate the HTML for the current field's Field Element using this handler.
+            </summary>
+            <param name="fieldConfiguration">The field configuration to use to generate the HTML</param>
+            <returns>The HTML for the Field Element</returns>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.IFieldGeneratorHandler`2.PrepareFieldConfiguration(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <summary>
+            Modify the field configuration for the field using this field generator handler.
+            </summary>
+            <param name="fieldConfiguration">The field configuration to modify</param>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.IFieldGeneratorHandler`2.GetDisplayType(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <summary>
+            The type of control the field will be displayed as.
+            </summary>
+            <param name="fieldConfiguration">The configuration for the field</param>
+            <returns>The display type of the field control</returns>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.#ctor(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <summary>
+            Create a field generator handler.
+            </summary>
+            <param name="fieldGenerator">The field generator to use</param>
+        </member>
+        <member name="F:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.FieldGenerator">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.CanHandle">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.GenerateFieldHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.PrepareFieldConfiguration(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.GetDisplayType(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.HasMultipleValues(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.GetValues(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.IsSelected(System.Object,ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.GetUnderlyingType(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.IsNumeric(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.GetInputHtml(ChameleonForms.Enums.TextInputType,ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1},ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.GetSelectListHtml(System.Collections.Generic.IEnumerable{System.Web.Mvc.SelectListItem},ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1},ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.GetFieldName(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FieldGeneratorHandler`2.AdjustHtmlForModelState(ChameleonForms.HtmlAttributes,ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.DateTimeHandler`2.#ctor(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <summary>
+            Constructor for the DateTime Field Generator Handler.
+            </summary>
+            <param name="fieldGenerator">The field generator for the field</param>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.DateTimeHandler`2.CanHandle">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.DateTimeHandler`2.GenerateFieldHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.DateTimeHandler`2.PrepareFieldConfiguration(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.DateTimeHandler`2.GetDisplayType(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2">
+            <summary>
+            The default field HTML generator.
+            </summary>
+            <typeparam name="TModel">The type of the view model for the form</typeparam>
+            <typeparam name="T">The type of the field being generated</typeparam>
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.IFieldGenerator`2">
+            <summary>
+            Generates the HTML for a single form field.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.IFieldGenerator">
+            <summary>
+            Generates the HTML for a single form field.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.IFieldGenerator.PrepareFieldConfiguration(ChameleonForms.Component.Config.IFieldConfiguration,ChameleonForms.Component.FieldParent)">
+            <summary>
+            Turns the given <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> into a <see cref="T:ChameleonForms.Component.Config.ReadonlyFieldConfiguration"/> ready to use for generating the form field.
+            </summary>
+            <param name="fieldConfiguration">The field configuration to modify</param>
+            <param name="fieldParent">The parent component of the field</param>
+            <returns>The readonly field configuration; ready for generating the form field</returns>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.IFieldGenerator.GetFieldHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <summary>
+            Creates the HTML for the field control.
+            </summary>
+            <returns>The HTML for the field control</returns>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.IFieldGenerator.GetLabelHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <summary>
+            Creates the HTML for the field label.
+            </summary>
+            <returns>The HTML for the field label</returns>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.IFieldGenerator.GetValidationHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <summary>
+            Creates the HTML for the field's validation messages
+            </summary>
+            <returns>The HTML for the field's validation messages</returns>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.IFieldGenerator.GetFieldHtml(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <summary>
+            Creates the HTML for the field control after preparing the given field configuration.
+            </summary>
+            <returns>The HTML for the field control</returns>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.IFieldGenerator.GetLabelHtml(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <summary>
+            Creates the HTML for the field label after preparing the given field configuration.
+            </summary>
+            <returns>The HTML for the field label</returns>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.IFieldGenerator.GetValidationHtml(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <summary>
+            Creates the HTML for the field's validation messages after preparing the given field configuration.
+            </summary>
+            <returns>The HTML for the field's validation messages</returns>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.IFieldGenerator.GetFieldId">
+            <summary>
+            Returns the id of the field being generated.
+            </summary>
+            <returns>The id</returns>
+        </member>
+        <member name="P:ChameleonForms.FieldGenerators.IFieldGenerator.Metadata">
+            <summary>
+            The metadata for the form field.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.FieldGenerators.IFieldGenerator.Template">
+            <summary>
+            The form template that will be used to render the form.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.IFieldGenerator`2.GetValue">
+            <summary>
+            Returns the current value of the field.
+            </summary>
+            <returns>The current field value</returns>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.IFieldGenerator`2.GetModel">
+            <summary>
+            Returns a model with the current values for the form.
+            </summary>
+            <returns>The current model</returns>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.IFieldGenerator`2.GetFieldDisplayName">
+            <summary>
+            Returns the displayable name of the field being generated.
+            </summary>
+            <returns>The id</returns>
+        </member>
+        <member name="P:ChameleonForms.FieldGenerators.IFieldGenerator`2.HtmlHelper">
+            <summary>
+            A HTML helper for the model.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.FieldGenerators.IFieldGenerator`2.FieldProperty">
+            <summary>
+            The expression that identifies the property in the model being output.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.#ctor(System.Web.Mvc.HtmlHelper{`0},System.Linq.Expressions.Expression{System.Func{`0,`1}},ChameleonForms.Templates.IFormTemplate)">
+            <summary>
+            Constructs the field generator.
+            </summary>
+            <param name="htmlHelper">The HTML helper for the current view</param>
+            <param name="fieldProperty">Expression to identify the property to generate the field for</param>
+            <param name="template">The template being used to output the form</param>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.GetLabelHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.GetFieldDisplayName">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.GetValidationHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.GetFieldHtml(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.GetLabelHtml(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.GetValidationHtml(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.PrepareFieldConfiguration(ChameleonForms.Component.Config.IFieldConfiguration,ChameleonForms.Component.FieldParent)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.GetFieldHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.GetValue">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.GetFieldId">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.GetModel">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.Metadata">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.HtmlHelper">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.FieldProperty">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.FieldGenerators.DefaultFieldGenerator`2.Template">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.Handlers.DefaultHandler`2">
+            <summary>
+            Generates the HTML for the Field Element of text input fields - always returns true when asked if it can handle a field.
+            </summary>
+            <typeparam name="TModel">The type of the model the form is being output for</typeparam>
+            <typeparam name="T">The type of the property in the model that the specific field is being output for</typeparam>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.DefaultHandler`2.#ctor(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <summary>
+            Constructor for the Default Field Generator Handler.
+            </summary>
+            <param name="fieldGenerator">The field generator for the field</param>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.DefaultHandler`2.CanHandle">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.DefaultHandler`2.GenerateFieldHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.DefaultHandler`2.GetDisplayType(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.Handlers.EnumListHandler`2">
+            <summary>
+            Generates the HTML for the Field Element of enum fields as either a select list or a list of radio buttons.
+            </summary>
+            <typeparam name="TModel">The type of the model the form is being output for</typeparam>
+            <typeparam name="T">The type of the property in the model that the specific field is being output for</typeparam>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.EnumListHandler`2.#ctor(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <summary>
+            Constructor for the Enum Field Generator Handler.
+            </summary>
+            <param name="fieldGenerator">The field generator for the field</param>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.EnumListHandler`2.CanHandle">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.EnumListHandler`2.GenerateFieldHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.EnumListHandler`2.PrepareFieldConfiguration(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.EnumListHandler`2.GetDisplayType(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.Handlers.FileHandler`2">
+            <summary>
+            Generates the HTML for the Field Element of file upload fields.
+            </summary>
+            <typeparam name="TModel">The type of the model the form is being output for</typeparam>
+            <typeparam name="T">The type of the property in the model that the specific field is being output for</typeparam>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FileHandler`2.#ctor(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <summary>
+            Constructor for the File Field Generator Handler.
+            </summary>
+            <param name="fieldGenerator">The field generator for the field</param>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FileHandler`2.CanHandle">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FileHandler`2.GenerateFieldHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.FileHandler`2.GetDisplayType(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.Handlers.ListHandler`2">
+            <summary>
+            Generates the HTML for the Field Element of list fields as either a select list or a list of radio buttons.
+            </summary>
+            <typeparam name="TModel">The type of the model the form is being output for</typeparam>
+            <typeparam name="T">The type of the property in the model that the specific field is being output for</typeparam>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.ListHandler`2.#ctor(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <summary>
+            Constructor for the List Field Generator Handler.
+            </summary>
+            <param name="fieldGenerator">The field generator for the field</param>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.ListHandler`2.CanHandle">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.ListHandler`2.GenerateFieldHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.ListHandler`2.PrepareFieldConfiguration(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.ListHandler`2.GetDisplayType(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.Handlers.ListPropertyNullException">
+            <summary>
+            Exception for when the list property for an [ExistsIn] is null.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.ListPropertyNullException.#ctor(System.String,System.String)">
+            <summary>
+            Creates a <see cref="T:ChameleonForms.FieldGenerators.Handlers.ListPropertyNullException"/>.
+            </summary>
+            <param name="listPropertyName">The name of the list property that is null</param>
+            <param name="propertyName">The name of the property that had the [ExistsIn] pointing to the list property</param>
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.Handlers.ModelNullException">
+            <summary>
+            Exception that denotes the model in the page is null when it was needed.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.ModelNullException.#ctor(System.String)">
+            <summary>
+            Creates a <see cref="T:ChameleonForms.FieldGenerators.Handlers.ModelNullException"/>.
+            </summary>
+            <param name="propertyName">The name of the property that had the [ExistsIn] pointing to the list property</param>
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.Handlers.PasswordHandler`2">
+            <summary>
+            Generates the HTML for the Field Element of password fields.
+            </summary>
+            <typeparam name="TModel">The type of the model the form is being output for</typeparam>
+            <typeparam name="T">The type of the property in the model that the specific field is being output for</typeparam>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.PasswordHandler`2.#ctor(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <summary>
+            Constructor for the Password Field Generator Handler.
+            </summary>
+            <param name="fieldGenerator">The field generator for the field</param>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.PasswordHandler`2.CanHandle">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.PasswordHandler`2.GenerateFieldHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.PasswordHandler`2.GetDisplayType(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.Handlers.BooleanHandler`2">
+            <summary>
+            Generates the HTML for the Field Element of boolean fields as either a single checkbox, a select list or a list of radio buttons.
+            </summary>
+            <typeparam name="TModel">The type of the model the form is being output for</typeparam>
+            <typeparam name="T">The type of the property in the model that the specific field is being output for</typeparam>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.BooleanHandler`2.#ctor(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <summary>
+            Constructor for the Boolean Field Generator Handler.
+            </summary>
+            <param name="fieldGenerator">The field generator for the field</param>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.BooleanHandler`2.CanHandle">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.BooleanHandler`2.GenerateFieldHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.BooleanHandler`2.PrepareFieldConfiguration(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.BooleanHandler`2.GetDisplayType(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.FieldGenerators.Handlers.TextAreaHandler`2">
+            <summary>
+            Generates the HTML for the Field Element of textarea fields.
+            </summary>
+            <typeparam name="TModel">The type of the model the form is being output for</typeparam>
+            <typeparam name="T">The type of the property in the model that the specific field is being output for</typeparam>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.TextAreaHandler`2.#ctor(ChameleonForms.FieldGenerators.IFieldGenerator{`0,`1})">
+            <summary>
+            Constructor for the TextArea Field Generator Handler.
+            </summary>
+            <param name="fieldGenerator">The field generator for the field</param>
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.TextAreaHandler`2.CanHandle">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.TextAreaHandler`2.GenerateFieldHtml(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.FieldGenerators.Handlers.TextAreaHandler`2.GetDisplayType(ChameleonForms.Component.Config.IReadonlyFieldConfiguration)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.IForm`2">
+            <summary>
+            Interface for a Chameleon Form.
+            </summary>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <typeparam name="TTemplate">The type of HTML template render the form is using</typeparam>
+        </member>
+        <member name="M:ChameleonForms.IForm`2.Write(System.Web.IHtmlString)">
+            <summary>
+            Writes a HTML String directly to the view's output.
+            </summary>
+            <param name="htmlString">The HTML to write to the view's output</param>
+        </member>
+        <member name="M:ChameleonForms.IForm`2.GetFieldGenerator``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            The field generator for the given field.
+            </summary>
+            <param name="property">The property to return the field generator for</param>
+        </member>
+        <member name="P:ChameleonForms.IForm`2.HtmlHelper">
+            <summary>
+            The HTML helper for the current view.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.IForm`2.Template">
+            <summary>
+            The template renderer for the current view.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.Form`2">
+            <summary>
+            Default Chameleon Form implementation.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Form`2.#ctor(System.Web.Mvc.HtmlHelper{`0},`1,System.String,System.Web.Mvc.FormMethod,ChameleonForms.HtmlAttributes,System.Nullable{ChameleonForms.Enums.EncType})">
+            <summary>
+            Construct a Chameleon Form.
+            Note: Contains a call to the virtual method Write.
+            </summary>
+            <param name="helper">The HTML Helper for the current view</param>
+            <param name="template">A template renderer instance to use to render the form</param>
+            <param name="action">The action the form should submit to</param>
+            <param name="method">The HTTP method the form submission should use</param>
+            <param name="htmlAttributes">Any HTML attributes the form should use expressed as an anonymous object</param>
+            <param name="enctype">The encoding type the form submission should use</param>
+        </member>
+        <member name="M:ChameleonForms.Form`2.Write(System.Web.IHtmlString)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Form`2.GetFieldGenerator``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Form`2.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Form`2.HtmlHelper">
+            <inheritdoc />
+        </member>
+        <member name="P:ChameleonForms.Form`2.Template">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.ChameleonFormExtensions">
+            <summary>
+            Default extension methods for <see cref="T:ChameleonForms.Form`2"/>.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.ChameleonFormExtensions.BeginChameleonForm``1(System.Web.Mvc.HtmlHelper{``0},System.String,System.Web.Mvc.FormMethod,ChameleonForms.HtmlAttributes,System.Nullable{ChameleonForms.Enums.EncType})">
+            <summary>
+            Constructs a <see cref="T:ChameleonForms.Form`2"/> object with the default Chameleon form template renderer.
+            </summary>
+            <example>
+            @using (var f = Html.BeginChameleonForm(...)) {
+                ...
+            }
+            </example>
+            <typeparam name="TModel">The view model type for the current view</typeparam>
+            <param name="helper">The HTML Helper for the current view</param>
+            <param name="action">The action the form should submit to</param>
+            <param name="method">The HTTP method the form submission should use</param>
+            <param name="htmlAttributes">Any HTML attributes the form should use</param>
+            <param name="enctype">The encoding type the form submission should use</param>
+            <returns>A <see cref="T:ChameleonForms.Form`2"/> object with an instance of the default form template renderer.</returns>
+        </member>
+        <member name="T:ChameleonForms.FormTemplate">
+            <summary>
+            Holds an instance to the default form template that will be used to render forms.
+            </summary>
+        </member>
+        <member name="P:ChameleonForms.FormTemplate.Default">
+            <summary>
+            The default form template instance to render forms.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.HumanizedLabels">
+            <summary>
+            Data Annotations Model Metadata Provider that defaultly transforms camel-case view model property
+            names to sentence case for their display name.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.HumanizedLabels.Register(Humanizer.LetterCasing)">
+            <summary>
+            Register the HumanizedLabels metadata provider as the current Model Metadata Provider.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.HumanizedLabels.CreateMetadata(System.Collections.Generic.IEnumerable{System.Attribute},System.Type,System.Func{System.Object},System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.ModelBinders.DateTimeModelBinder">
+            <summary>
+            Binds a datetime in a model using the display format string.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.ModelBinders.DateTimeModelBinder.BindModel(System.Web.Mvc.ControllerContext,System.Web.Mvc.ModelBindingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.Templates.TwitterBootstrap3.FieldConfigurationExtensions">
+            <summary>
+            Extension methods on <see cref="T:ChameleonForms.Component.Config.IFieldConfiguration"/> for the Twitter Bootstrap 3 template.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.FieldConfigurationExtensions.AsInputGroup(ChameleonForms.Component.Config.IFieldConfiguration)">
+            <summary>
+            Outputs the field in an input group using prepended and appended HTML.
+            </summary>
+            <example>
+            @n.Field(labelHtml, elementHtml, validationHtml, metadata, new FieldConfiguration().Prepend(beforeHtml).Append(afterHtml).AsInputGroup(), false)
+            </example>
+            <param name="fc">The configuration for a field</param>
+            <returns>The field configuration object to allow for method chaining</returns>
+        </member>
+        <member name="T:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate">
+            <summary>
+            The default Chameleon Forms form template renderer.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.Templates.Default.DefaultFormTemplate">
+            <summary>
+            The default Chameleon Forms form template renderer.
+            </summary>
+        </member>
+        <member name="T:ChameleonForms.Templates.IFormTemplate">
+            <summary>
+            A Chameleon Forms form template renderer.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.PrepareFieldConfiguration``2(ChameleonForms.FieldGenerators.IFieldGenerator{``0,``1},ChameleonForms.FieldGenerators.Handlers.IFieldGeneratorHandler{``0,``1},ChameleonForms.Component.Config.IFieldConfiguration,ChameleonForms.Component.FieldParent)">
+            <summary>
+            Allows the template the modify the field configuration for a particular field.
+            </summary>
+            <typeparam name="TModel">The type of model the form is being displayed for</typeparam>
+            <typeparam name="T">The type of the property the field is being generated against</typeparam>
+            <param name="fieldGenerator">The instance of the field generator that will be used to generate the field</param>
+            <param name="fieldGeneratorHandler">The instance of the field generator handler that will be used to generate the field element</param>
+            <param name="fieldConfiguration">The field configuration that is being used to configure the field</param>
+            <param name="fieldParent">The parent component of the field</param>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.BeginForm(System.String,System.Web.Mvc.FormMethod,ChameleonForms.HtmlAttributes,System.Nullable{ChameleonForms.Enums.EncType})">
+            <summary>
+            Creates the starting HTML for a form.
+            </summary>
+            <param name="action">The form action</param>
+            <param name="method">The form method</param>
+            <param name="htmlAttributes">Any HTML attributes the form should use; specified as an anonymous object</param>
+            <param name="enctype">The encoding type for the form</param>
+            <returns>The starting HTML for a form</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.EndForm">
+            <summary>
+            Creates the ending HTML for a form.
+            </summary>
+            <returns>The ending HTML for a form</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.BeginSection(System.Web.IHtmlString,System.Web.IHtmlString,ChameleonForms.HtmlAttributes)">
+            <summary>
+            Creates the beginning HTML for a section.
+            </summary>
+            <param name="heading">The heading of the section</param>
+            <param name="leadingHtml">Any HTML to output at the start of the section</param>
+            <param name="htmlAttributes">Any HTML attributes the section container should use; specified as an anonymous object</param>
+            <returns>The beginning HTML for a section</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.EndSection">
+            <summary>
+            Creates the ending HTML for a section.
+            </summary>
+            <returns>The ending HTML for a section</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.BeginNestedSection(System.Web.IHtmlString,System.Web.IHtmlString,ChameleonForms.HtmlAttributes)">
+            <summary>
+            Creates the beginning HTML for a section that is nested within another section.
+            </summary>
+            <param name="heading">The heading of the nested section</param>
+            <param name="leadingHtml">Any HTML to output at the start of the nested section</param>
+            <param name="htmlAttributes">Any HTML attributes the nested section container should use; specified as an anaonymous object</param>
+            <returns>The beginning HTML for a nested section</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.EndNestedSection">
+            <summary>
+            Creates the ending HTML for a section that is nested within another section.
+            </summary>
+            <returns>The ending HTML for a nested section</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.Field(System.Web.IHtmlString,System.Web.IHtmlString,System.Web.IHtmlString,System.Web.Mvc.ModelMetadata,ChameleonForms.Component.Config.IReadonlyFieldConfiguration,System.Boolean)">
+            <summary>
+            Creates the HTML for a single form field.
+            </summary>
+            <param name="labelHtml">The HTML that comprises the form label</param>
+            <param name="elementHtml">The HTML that comprieses the field itself</param>
+            <param name="validationHtml">The HTML that comprises the field's validation messages</param>
+            <param name="fieldMetadata">The metadata for the field being created</param>
+            <param name="fieldConfiguration">Configuration for the field</param>
+            <param name="isValid">Whether or not the field is valid</param>
+            <returns>The HTML for the field</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.BeginField(System.Web.IHtmlString,System.Web.IHtmlString,System.Web.IHtmlString,System.Web.Mvc.ModelMetadata,ChameleonForms.Component.Config.IReadonlyFieldConfiguration,System.Boolean)">
+            <summary>
+            Creates the beginning HTML for a single form field that contains other fields nested within it.
+            </summary>
+            <param name="labelHtml">The HTML that comprises the form label</param>
+            <param name="elementHtml">The HTML that comprieses the field itself</param>
+            <param name="validationHtml">The HTML that comprises the field's validation messages</param>
+            <param name="fieldMetadata">The metadata for the field being created</param>
+            <param name="fieldConfiguration">Configuration for the field</param>
+            <param name="isValid">Whether or not the field is valid</param>
+            <returns>The beginning HTML for the parent field</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.EndField">
+            <summary>
+            Creates the ending HTML for a single form field that contains other fields nested within it.
+            </summary>
+            <returns>The ending HTML for the parent field</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.BeginNavigation">
+            <summary>
+            Creates the beginning HTML for a navigation section.
+            </summary>
+            <returns>The beginning HTML for a navigation section</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.EndNavigation">
+            <summary>
+            Creates the ending HTML for a navigation section.
+            </summary>
+            <returns>The ending HTML for a navigation section</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.BeginMessage(ChameleonForms.Enums.MessageType,System.Web.IHtmlString)">
+            <summary>
+            Creates the beginning HTML for a message.
+            </summary>
+            <param name="messageType">The type of message being displayed</param>
+            <param name="heading">The heading for the message</param>
+            <returns>The beginning HTML for the message</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.EndMessage">
+            <summary>
+            Creates the ending HTML for a message.
+            </summary>
+            <returns>The ending HTML for the message</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.MessageParagraph(System.Web.IHtmlString)">
+            <summary>
+            Creates the HTML for a paragraph in a message.
+            </summary>
+            <param name="paragraph">The paragraph HTML</param>
+            <returns>The HTML for the message paragraph</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.Button(System.Web.IHtmlString,System.String,System.String,System.String,ChameleonForms.HtmlAttributes)">
+            <summary>
+            Creates the HTML for a button.
+            </summary>
+            <param name="content">The content for the user to see or null if the value should be used instead</param>
+            <param name="type">The type of button or null if a generic button should be used</param>
+            <param name="id">The name/id of the button or null if one shouldn't be set</param>
+            <param name="value">The value to submit if the button is clicked or null if one shouldn't be set</param>
+            <param name="htmlAttributes">Any HTML attributes to add to the button or null if there are none</param>
+            <returns>The HTML for the button</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.IFormTemplate.RadioOrCheckboxList(System.Collections.Generic.IEnumerable{System.Web.IHtmlString},System.Boolean)">
+            <summary>
+            Creates the HTML for a list of radio buttons or checkboxes.
+            </summary>
+            <param name="list">The list of HTML items (one per radio/checkbox)</param>
+            <param name="isCheckbox">Whether the list is for checkboxes rather than radio buttons</param>
+            <returns>The HTML for the radio list</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.PrepareFieldConfiguration``2(ChameleonForms.FieldGenerators.IFieldGenerator{``0,``1},ChameleonForms.FieldGenerators.Handlers.IFieldGeneratorHandler{``0,``1},ChameleonForms.Component.Config.IFieldConfiguration,ChameleonForms.Component.FieldParent)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.BeginForm(System.String,System.Web.Mvc.FormMethod,ChameleonForms.HtmlAttributes,System.Nullable{ChameleonForms.Enums.EncType})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.EndForm">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.BeginSection(System.Web.IHtmlString,System.Web.IHtmlString,ChameleonForms.HtmlAttributes)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.EndSection">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.BeginNestedSection(System.Web.IHtmlString,System.Web.IHtmlString,ChameleonForms.HtmlAttributes)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.EndNestedSection">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.Field(System.Web.IHtmlString,System.Web.IHtmlString,System.Web.IHtmlString,System.Web.Mvc.ModelMetadata,ChameleonForms.Component.Config.IReadonlyFieldConfiguration,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.BeginField(System.Web.IHtmlString,System.Web.IHtmlString,System.Web.IHtmlString,System.Web.Mvc.ModelMetadata,ChameleonForms.Component.Config.IReadonlyFieldConfiguration,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.RequiredDesignator(System.Web.Mvc.ModelMetadata,ChameleonForms.Component.Config.IReadonlyFieldConfiguration,System.Boolean)">
+            <summary>
+            Creates the HTML for a required designator for a single form field (will only be output if the field is required).
+            </summary>
+            <param name="fieldMetadata">The metadata for the field being created</param>
+            <param name="fieldConfiguration">Configuration for the field</param>
+            <param name="isValid">Whether or not the field is valid</param>
+            <returns>The HTML for the required designator of field with the given information</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.EndField">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.BeginMessage(ChameleonForms.Enums.MessageType,System.Web.IHtmlString)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.EndMessage">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.MessageParagraph(System.Web.IHtmlString)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.BeginNavigation">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.EndNavigation">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.Button(System.Web.IHtmlString,System.String,System.String,System.String,ChameleonForms.HtmlAttributes)">
+            <inheritdoc />
+            <remarks>
+            Uses an &lt;input&gt; by default so the submitted value works in IE7.
+            See http://rommelsantor.com/clog/2012/03/12/fixing-the-ie7-submit-value/
+            </remarks>
+        </member>
+        <member name="M:ChameleonForms.Templates.Default.DefaultFormTemplate.RadioOrCheckboxList(System.Collections.Generic.IEnumerable{System.Web.IHtmlString},System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="F:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.IconAttrKey">
+            <summary>
+            The attribute name to use for adding an icon class to a Html Attributes object.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.PrepareFieldConfiguration``2(ChameleonForms.FieldGenerators.IFieldGenerator{``0,``1},ChameleonForms.FieldGenerators.Handlers.IFieldGeneratorHandler{``0,``1},ChameleonForms.Component.Config.IFieldConfiguration,ChameleonForms.Component.FieldParent)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.BeginForm(System.String,System.Web.Mvc.FormMethod,ChameleonForms.HtmlAttributes,System.Nullable{ChameleonForms.Enums.EncType})">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.EndForm">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.BeginSection(System.Web.IHtmlString,System.Web.IHtmlString,ChameleonForms.HtmlAttributes)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.EndSection">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.BeginNestedSection(System.Web.IHtmlString,System.Web.IHtmlString,ChameleonForms.HtmlAttributes)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.EndNestedSection">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.Field(System.Web.IHtmlString,System.Web.IHtmlString,System.Web.IHtmlString,System.Web.Mvc.ModelMetadata,ChameleonForms.Component.Config.IReadonlyFieldConfiguration,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.BeginField(System.Web.IHtmlString,System.Web.IHtmlString,System.Web.IHtmlString,System.Web.Mvc.ModelMetadata,ChameleonForms.Component.Config.IReadonlyFieldConfiguration,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.RequiredDesignator(System.Web.Mvc.ModelMetadata,ChameleonForms.Component.Config.IReadonlyFieldConfiguration,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.EndField">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.BeginMessage(ChameleonForms.Enums.MessageType,System.Web.IHtmlString)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.EndMessage">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.BeginNavigation">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.EndNavigation">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.Button(System.Web.IHtmlString,System.String,System.String,System.String,ChameleonForms.HtmlAttributes)">
+            <inheritdoc />
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.TwitterBootstrapFormTemplate.RadioOrCheckboxList(System.Collections.Generic.IEnumerable{System.Web.IHtmlString},System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:ChameleonForms.HtmlAttributesExtensions">
+            <summary>
+            Extension methods for the <see cref="T:ChameleonForms.HtmlAttributes"/> class.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributesExtensions.ToHtmlAttributes(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Explicitly convert a dictionary to a <see cref="T:ChameleonForms.HtmlAttributes"/> class.
+            </summary>
+            <param name="htmlAttributes">A dictionary of HTML attributes</param>
+            <returns>A new <see cref="T:ChameleonForms.HtmlAttributes"/> with the attributes</returns>
+        </member>
+        <member name="M:ChameleonForms.HtmlAttributesExtensions.ToHtmlAttributes(System.Object)">
+            <summary>
+            Convert from an anonymous object to a <see cref="T:ChameleonForms.HtmlAttributes"/> class.
+            </summary>
+            <param name="htmlAttributes">An anonymous object of HTML attributes</param>
+            <returns>A new <see cref="T:ChameleonForms.HtmlAttributes"/> with the attributes</returns>
+        </member>
+        <member name="T:ChameleonForms.Templates.HtmlCreator">
+            <summary>
+            Helper class that creates HTML for a view.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Templates.HtmlCreator.BuildFormTag(System.String,System.Web.Mvc.FormMethod,ChameleonForms.HtmlAttributes,System.Nullable{ChameleonForms.Enums.EncType})">
+            <summary>
+            Creates the HTML for a form tag.
+            </summary>
+            <param name="action">The URL the form submits to</param>
+            <param name="method">The HTTP method the form submits with</param>
+            <param name="htmlAttributes">Any HTML attributes that should be applied to the form; specified as an anonymous object</param>
+            <param name="encType">The encoding type the form uses</param>
+            <returns>The HTML for the form</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.HtmlCreator.BuildButton(System.String,System.String,System.String,System.String,ChameleonForms.HtmlAttributes)">
+            <summary>
+            Creates the HTML for a submit &lt;button&gt;.
+            </summary>
+            <param name="text">The text to display for the button</param>
+            <param name="type">The type of submit button; submit (default) or reset</param>
+            <param name="value">The value to submit with the button</param>
+            <param name="id">The id/name to use for the button</param>
+            <param name="htmlAttributes">Any HTML attributes that should be applied to the button</param>
+            <returns>The HTML for the submit button</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.HtmlCreator.BuildButton(System.Web.IHtmlString,System.String,System.String,System.String,ChameleonForms.HtmlAttributes)">
+            <summary>
+            Creates the HTML for a submit &lt;button&gt;.
+            </summary>
+            <param name="content">The content to display for the button</param>
+            <param name="type">The type of submit button; submit (default) or reset</param>
+            <param name="value">The value to submit with the button</param>
+            <param name="id">The id/name to use for the button</param>
+            <param name="htmlAttributes">Any HTML attributes that should be applied to the button</param>
+            <returns>The HTML for the submit button</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.HtmlCreator.BuildSingleCheckbox(System.String,System.Boolean,ChameleonForms.HtmlAttributes,System.String)">
+            <summary>
+            Creates the HTML for a single checkbox.
+            </summary>
+            <param name="name">The name/id for the checkbox</param>
+            <param name="isChecked">Whether or not the checkbox is currently checked</param>
+            <param name="htmlAttributes">Any HTML attributes that should be applied to the checkbox</param>
+            <param name="value">The value to submit when the checkbox is ticked</param>
+            <returns>The HTML for the checkbox</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.HtmlCreator.BuildInput(System.String,System.String,System.String,ChameleonForms.HtmlAttributes)">
+            <summary>
+            Creates the HTML for an input.
+            </summary>
+            <param name="name">The name/id of the input</param>
+            <param name="value">The value of the input</param>
+            <param name="type">The type of the input</param>
+            <param name="htmlAttributes">Any HTML attributes that should be applied to the button</param>
+            <returns>The HTML for the input</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.HtmlCreator.BuildLabel(System.String,System.Web.IHtmlString,ChameleonForms.HtmlAttributes)">
+            <summary>
+            Creates the HTML for a label.
+            </summary>
+            <param name="for">The name/id for the checkbox</param>
+            <param name="labelText">The text inside the label</param>
+            <param name="htmlAttributes">Any HTML attributes that should be applied to the checkbox</param>
+            <returns>The HTML for the checkbox</returns>
+        </member>
+        <member name="T:ChameleonForms.Templates.TwitterBootstrap3.ButtonHtmlAttributesExtensions">
+            <summary>
+            Extension methods on <see cref="T:ChameleonForms.HtmlAttributes"/> for the Twitter Bootstrap 3 template.
+            </summary>
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.ButtonHtmlAttributesExtensions.WithIcon(ChameleonForms.Component.ButtonHtmlAttributes,System.String)">
+            <summary>
+            Adds the given icon to the start of a navigation button.
+            </summary>
+            <example>
+            @n.Submit("Submit").WithIcon("arrow-right")
+            // Output:
+            &lt;button type="submit">&lt;span class="glyphicon glyphicon-arrow-right">&lt;/span> Submit&lt;/button>
+            </example>
+            <param name="attrs">The Html Attributes from a navigation button</param>
+            <param name="icon">The icon to use; see http://getbootstrap.com/components/#glyphicons-glyphs</param>
+            <returns>The Html Attribute object so other methods can be chained off of it</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.ButtonHtmlAttributesExtensions.WithStyle(ChameleonForms.Component.ButtonHtmlAttributes,ChameleonForms.Templates.TwitterBootstrap3.EmphasisStyle)">
+            <summary>
+            Adds the given emphasis to the button.
+            </summary>
+            <example>
+            @n.Submit("Submit").WithStyle(EmphasisStyle.Warning)
+            </example>
+            <param name="attrs">The Html Attributes from a navigation button</param>
+            <param name="style">The style of button</param>
+            <returns>The Html Attribute object so other methods can be chained off of it</returns>
+        </member>
+        <member name="M:ChameleonForms.Templates.TwitterBootstrap3.ButtonHtmlAttributesExtensions.WithSize(ChameleonForms.Component.ButtonHtmlAttributes,ChameleonForms.Templates.TwitterBootstrap3.ButtonSize)">
+            <summary>
+            Changes the button to use the given size.
+            </summary>
+            <example>
+            @n.Submit("Submit").WithSize(ButtonSize.Large)
+            </example>
+            <param name="attrs">The Html Attributes from a navigation button</param>
+            <param name="size">The size of button</param>
+            <returns>The Html Attribute object so other methods can be chained off of it</returns>
+        </member>
+    </members>
+</doc>

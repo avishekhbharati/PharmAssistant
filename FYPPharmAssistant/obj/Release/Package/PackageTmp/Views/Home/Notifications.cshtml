@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "Notifications";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12 table-responsive" id="div1">
+        <h4>Expiry Status</h4>
+        <form method="post" action="" id="form-table">
+            <div id="form1"></div>
+            <input type="submit" id="btn-delete" class="btn btn-danger pull-right" value="Delete Selected" />
+            <button type="submit" id="btn-returns" class="btn btn-primary pull-right">Generate Returns</button>
+        </form>
+
+    </div>   
+</div>
+
+<div class="row table-responsive" id="div2" >
+    <div class="col-sm-12" id="tblLowStockCss">
+        <h4>Low Stocks </h4>
+        <div id="tblLowStock" ></div>
+        <hr />
+        <button id="GenerateOrder" class="btn btn-primary pull-right"> Genereate Purchase Order</button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        //Renders partial view
+        $.get('StockExpiry', null, function (data) {
+            $('#form1').html(data);
+        });
+        //Another partial view
+        $.get('LowStock', null, function (data) {
+            $('#tblLowStock').html(data);
+        });
+
+        // Decorate with dataTable
+        $('.dataTable').DataTable({
+            "scrollY": "300px",
+            "scrollCollapse": true,
+            "paging": false,
+            "filter": false,
+            "info": false
+        });
+
+
+        //on clicking delete button
+        $("#btn-delete").on('click', function () {
+            var count = $("input[name='stocksID']:checked").length;
+            if (count == 0) {
+                alert("No rows selected to delete");
+                return false;
+            }            
+            else if (confirm("Are you sure?"))
+            {
+                $("#form-table").prop("action", "DeleteSelectedExpiry");
+                $("#form-table").submit();
+            }
+            return false;           
+        });
+
+        //for generating returns
+        $("#btn-returns").on('click', function () {
+            var count = $("input[name='stocksID']:checked").length;
+            if (count == 0) {
+                alert("No rows selected to delete");
+                return false;
+            }             
+            $("#form-table").prop("action", "GenerateExpiryReturns");
+            $("#form-table").submit();           
+        });
+
+
+        //Checkboxes controller
+     /*   $("#selectAll").click(function () {
+            $("input[name='stocksID']").attr("checked", this.checked);
+
+            $("input[name='stocksID']").click(function () {
+                if ($("input[name='stocksID']").length == $("input[name='stocksID']:checked").length) {
+                    $("#selectAll").attr("checked", "checked");
+                }
+                else {
+                    $("#selectAll").removeAttr("checked");
+                }
+            });
+        });*/
+    }); 
+</script>
+
+<style>
+    #div1 {
+        background-color:white;
+        height: 470px;
+        margin-bottom:20px;
+    }
+    #tblLowStockCss {
+        background-color:white;
+        height: 470px;               
+    }
+    #form1{
+        height:380px;
+        margin-bottom:5px;
+        border-bottom:1px solid #808080;
+    }
+</style>

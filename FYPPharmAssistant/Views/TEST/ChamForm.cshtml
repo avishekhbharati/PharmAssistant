@@ -1,0 +1,59 @@
+﻿@model FYPPharmAssistant.Models.InventoryModel.Manufacturer
+
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="divInterestDeatils"></div>
+
+@using (Html.BeginForm()) 
+{ 
+    <label>Name</label><br />
+    @Html.EditorFor(m => m.ManufacturerName, new { htmlAttributes = new { @class = "form-control" } })  <br />
+    <label>Description</label><br />
+    @Html.EditorFor(m => m.Description, new { htmlAttributes = new { @class = "form-control" } })
+    <input type="submit" id="addmore" value="add" />
+}
+
+@using (Html.BeginForm("InsertBulk", "Manufacturer"))
+{
+    <table id="table">
+        <tr>
+            <th>
+                name &nbsp; &nbsp; 
+            </th>
+            <th>
+                description
+            </th>
+        </tr>
+    </table>
+    <input type="submit" id="btnsaveall" value="Save all" />
+}
+
+<script>
+    $(document).on('ready', function () {
+        $('#addmore').on('click', function () {
+            var $table = $("#table");            
+            $table.append("<tr> <td><input type='hidden' name='ManufacturerName' value='" + $('#ManufacturerName').val() + "' />" + $('#ManufacturerName').val() +
+                "</td> <td><input type='hidden' name='Description' value='" + $('#Description').val() + "'>" + $('#Description').val() +
+                "</td> <td><a href='javascript:void(0)' onclick='removeItem(this)'>Remove</a></td></tr>");
+
+            return false;
+        });
+
+        $('#add-all').on('click', function () {
+            $.post('@Url.Action("InsertBulk", "Manufacturer")', $('#submit-form').serialize(), function () {
+                alert(data);
+            });
+            return false;
+        });
+    });
+
+    function removeItem(obj) {
+        $obj = $(obj).parent().parent().remove();
+    };
+</script>
+
+

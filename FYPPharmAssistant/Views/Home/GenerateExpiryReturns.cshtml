@@ -1,0 +1,82 @@
+﻿@model IEnumerable<FYPPharmAssistant.ViewModel.ExpiryReturnsViewModel>
+@{
+    string DateToday = (DateTime.Now).Year + "-" + (DateTime.Now).Month + "-" + (DateTime.Now).Day;
+    ViewBag.Title = "Expiry Returns ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box box-body box-primary">
+
+    <table id="datatable" class="table table-responsive">
+
+        <thead>
+            <tr class="dataTableHead">
+                <th>Stock ID</th>
+                <th>Item Name</th>
+                <th>Batch</th>
+                <th> Purchased On</th>
+                <th> Qty Expired</th>
+                <th>Supplier</th>
+            </tr>
+        </thead>
+        @{int count = 0;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.StockID</td>
+                <td>@item.ItemName</td>
+                <td>@item.Batch</td>
+                <td>@item.PurchasedDate</td>
+                <td>@item.QtyExpired</td>
+                <td>@item.SupplierName</td>
+                @{count++;}
+            </tr>
+        }
+        <tr>
+            <td>Total items : @count </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>&nbsp; </td>
+            <td>&nbsp;</td>
+        </tr>
+
+    </table>
+</div>
+    <script>
+        $(document).ready(function () {
+            var table = $('#datatable').dataTable({
+                "paging": false,
+                "ordering": true,
+                "info": true
+
+
+            });
+            var tableTools = new $.fn.dataTable.TableTools(table, {
+                'aButtons': [
+                    {
+                        'sExtends': 'xls',
+                        'sButtonText': 'Save to Excel',
+                        'sFileName': 'ExpiryReturns_@DateToday .xls'
+                    },
+                    {
+                        'sExtends': 'print',
+                        'bShowAll': true,
+                    },
+                    {
+                        "sExtends": "pdf",
+                        "sPdfOrientation": "landscape",
+                        "sTitle": "Hello stranger",
+                        "sPdfMessage": "Stock report generated on : @DateTime.Now"
+                    },
+                    'copy'
+
+
+                ],
+                'sSwfPath': 'http://cdn.datatables.net/tabletools/2.2.4/swf/copy_csv_xls_pdf.swf'
+            });
+            $(tableTools.fnContainer()).insertBefore('#datatable_wrapper');
+        });
+    </script>
+
+

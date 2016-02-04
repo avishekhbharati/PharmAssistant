@@ -1,0 +1,187 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.PurchaseModel.Purchase>
+
+@{
+    ViewBag.Title = "Purchases";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Scripts/AdminLTE/plugins/iCheck/square/red.css" rel="stylesheet" />
+<link href="~/Scripts/AdminLTE/plugins/iCheck/minimal/minimal.css" rel="stylesheet" />
+<script src="~/Scripts/AdminLTE/plugins/iCheck/icheck.min.js"></script>
+
+<div class="box box-primary ">
+    <form method="post" action="Purchase">
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    <label>Select</label><br />
+                    <select class="form-control" name="option">
+                        <option>--Select--</option>
+                        <option value="today">Today</option>
+                        <option value="yesterday">Yesterday</option>
+                        <option value="thisWeek">This Week</option>
+                        <option value="thisMonth">This Month</option>
+                        <option value="lastMonth">Last Month</option>
+                        <option value="thisYear">This Year</option>
+                        <option value="lastYear">Last Year</option>
+                    </select>
+                </td>
+
+                <td>
+                    <label>Supplier</label> <br />
+                    <select id="SelectSupplier" name="supplier" class="form-control"></select>
+                </td>
+
+                <td>`
+                    <label>From</label><br />
+                    <input type="text" class="datepicker form-control" name="fromDate" />
+                </td>
+
+                <td>
+                    <label>To</label><br />
+                    <input type="text" class="datepicker form-control" name="toDate" />
+                </td>
+                <td>
+                    <label>Payment</label>
+                    <br />                    
+                    <select name="IsPaid" class="form-control">
+                        <option value="">--Select--</option>
+                        <option value="paid">Paid</option>
+                        <option value="unpaid">UnPaid</option>
+                    </select>
+                </td>
+                <td></td>
+                <td>
+                    <br />
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+<div class="box box-primary box-body ">
+    <table class="table table-responsive table-striped" id="datatable">
+        <thead>
+            <tr class="dataTableHead">
+                <th>
+                    Purchase ID
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Supplier.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Discount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tax)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GrandTotal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsPaid)
+                </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supplier.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tax)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GrandTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsPaid)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+    <script>
+
+        $(document).ready(function(){
+        
+            $(".datepicker").datepicker({
+            format: 'yyyy-mm-dd'
+            });
+
+            $('.x').iCheck({
+                checkboxClass: 'icheckbox_minimal',
+                radioClass: 'iradio_minimal',
+                increaseArea: '20%' // optional
+            });
+
+            $.get('../../../PurchaseEntry/PopulateSupplier', {}, function (data) {
+                $('#SelectSupplier').empty();
+                $('#SelectSupplier').append($("<option value=''>--Select Supplier--</option>"));
+                $.each(data, function (key, value) {
+                    $('#SelectSupplier').append($("<option></option>").val(value.ID).html(value.Name));
+                });
+            }, 'json');
+
+
+
+            var table = $('#datatable').dataTable({
+                "paging": false,
+                "info": true,
+                "filter": false
+            });
+
+            var tableTools = new $.fn.dataTable.TableTools(table, {
+                'aButtons': [
+                    {
+                        'sExtends': 'xls',
+                        'sButtonText': 'Save to Excel',
+                        'sFileName': 'DailySales.xls'
+                    },
+                    {
+                        'sExtends': 'print',
+                        'bShowAll': true,
+                    },
+                    {
+                        'sExtends': 'pdf',
+                        'bFooter': true,
+                        'bShowAll': true,
+                        'sPdfMessage': 'Your custom message would go here.'
+                    },
+                    'copy'
+                ],
+                'sSwfPath': 'http://cdn.datatables.net/tabletools/2.2.4/swf/copy_csv_xls_pdf.swf'
+            });
+
+            $(tableTools.fnContainer()).insertBefore('#datatable_wrapper');
+
+        
+        });
+        
+
+
+
+
+    </script>

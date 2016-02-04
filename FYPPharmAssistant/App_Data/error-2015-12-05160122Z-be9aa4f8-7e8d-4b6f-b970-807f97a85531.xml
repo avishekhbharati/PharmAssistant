@@ -1,0 +1,203 @@
+﻿<error errorId="be9aa4f8-7e8d-4b6f-b970-807f97a85531" host="AVISHEKH" type="System.NullReferenceException" message="Object reference not set to an instance of an object." source="FYPPharmAssistant" detail="System.NullReferenceException: Object reference not set to an instance of an object.&#xD;&#xA;   at IdentitySample.Controllers.AccountController.&lt;Login&gt;d__2.MoveNext() in e:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\Controllers\Account\AccountController.cs:line 79&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   at System.Web.Mvc.Async.TaskAsyncActionDescriptor.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass37.&lt;BeginInvokeAsynchronousActionMethod&gt;b__36(IAsyncResult asyncResult)&#xD;&#xA;   at Castle.Proxies.AsyncControllerActionInvokerProxy.EndInvokeActionMethod_callback(IAsyncResult asyncResult)&#xD;&#xA;   at Castle.Proxies.Invocations.AsyncControllerActionInvoker_EndInvokeActionMethod.InvokeMethodOnTarget()&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Glimpse.Mvc.AlternateType.AsyncActionInvoker.EndInvokeActionMethod.NewImplementation(IAlternateMethodContext context)&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Castle.Proxies.AsyncControllerActionInvokerProxy.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="avishekh.bharati@live.com" time="2015-12-05T16:01:22.8834480Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:246&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; .AspNet.TwoFactorRememberBrowser=Adp-sgeRsGKpiqqIdH1HTm56NTEtOtKjL2lVyBLgQpXo2JVkp4S_ckhWm8ywlY9WBkZrDNx6emippny0q1saJig1jjNdMuW3JYeBJFLp39RKhmljC7l-5mckVjiB3LhRHoGRcnRuVgvXZK7jVXLt9HINv-_oTdA0LvXZ6aJnkvsFd1yV1J53NsebnH9J5hFi4IAmB-pAJGZScPbJj9zVM2YzcgR8zVWgmXhq4RAGKn4eyTrwbXHVyHGk0HPavHheZ22uOQWErsZ0E93I4mvZvAHJQSEBmXVeQTNTza0aZc5sVIFcaM0NXkUc2-t4w8E6qFZ5mKEuti64pHG9hqm8XEuxqhzqn4HjhQqVm6GpxoM; glimpsePolicy=On; __RequestVerificationToken=i4jK10XJer4XohPNJr5Vteo1WoQafh5n6kXuBUZCiQiVNnJUL6ZX8-OswcejGJeLRXksgFkH7KzTkGkQCnaaRbgToc4he7VIRhrY0gbMdu81; glimpseId=Chrome 42.0; .AspNet.ApplicationCookie=R0PIjmh-bFvWCNaaa9MURm_YMdSHk-rl-68HgM-mIsHzivgg1QXcYSmLuCINy3pP8Uhn9WFa6owN71XzbYFZGfhScIvDciREjaF4oEzVzQ2dFdHpPRcp_nAZG1u_qn_k-mPFPWoc0aENx85jjWSYwnWFRyitJtfAdmFGr0Gz49ecuFaac4tDurY2SU4Qqt_zn7TfVYT9vSr9e2qeN4u3XufOB7iczZuRr2QdzzTYVY-gvC0oEM8Exd-ZqUGAIpNcWCEwT_An7NRxUwoF8qOYIot_oJ9cIWJ2A5WHc_HVk16fRKEkUA-38qwf6SIr6Vmw8gIc_WvOiyTN6qZ-B4pZRbCFqBoAEYORRVgDqeBQLLjYts64KUZ1khGCD4uO3Y1yH5_wnZqIL6prENuAfFQFrHYPw0WTO5OEhRBE1rzCzV0AyCOqX_H5zbA1r2pp0-BxzjRiBYMQKAGrRvbmqQ56MPDbt6zm33sKoUP55rRTvTWy86gPyqgUAfqzEq-Hk4rwL6mXLaYI2QSxIBwCYbzfmA&#xD;&#xA;HTTP_HOST:localhost:5789&#xD;&#xA;HTTP_REFERER:http://localhost:5789/&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:http://localhost:5789&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 246&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; .AspNet.TwoFactorRememberBrowser=Adp-sgeRsGKpiqqIdH1HTm56NTEtOtKjL2lVyBLgQpXo2JVkp4S_ckhWm8ywlY9WBkZrDNx6emippny0q1saJig1jjNdMuW3JYeBJFLp39RKhmljC7l-5mckVjiB3LhRHoGRcnRuVgvXZK7jVXLt9HINv-_oTdA0LvXZ6aJnkvsFd1yV1J53NsebnH9J5hFi4IAmB-pAJGZScPbJj9zVM2YzcgR8zVWgmXhq4RAGKn4eyTrwbXHVyHGk0HPavHheZ22uOQWErsZ0E93I4mvZvAHJQSEBmXVeQTNTza0aZc5sVIFcaM0NXkUc2-t4w8E6qFZ5mKEuti64pHG9hqm8XEuxqhzqn4HjhQqVm6GpxoM; glimpsePolicy=On; __RequestVerificationToken=i4jK10XJer4XohPNJr5Vteo1WoQafh5n6kXuBUZCiQiVNnJUL6ZX8-OswcejGJeLRXksgFkH7KzTkGkQCnaaRbgToc4he7VIRhrY0gbMdu81; glimpseId=Chrome 42.0; .AspNet.ApplicationCookie=R0PIjmh-bFvWCNaaa9MURm_YMdSHk-rl-68HgM-mIsHzivgg1QXcYSmLuCINy3pP8Uhn9WFa6owN71XzbYFZGfhScIvDciREjaF4oEzVzQ2dFdHpPRcp_nAZG1u_qn_k-mPFPWoc0aENx85jjWSYwnWFRyitJtfAdmFGr0Gz49ecuFaac4tDurY2SU4Qqt_zn7TfVYT9vSr9e2qeN4u3XufOB7iczZuRr2QdzzTYVY-gvC0oEM8Exd-ZqUGAIpNcWCEwT_An7NRxUwoF8qOYIot_oJ9cIWJ2A5WHc_HVk16fRKEkUA-38qwf6SIr6Vmw8gIc_WvOiyTN6qZ-B4pZRbCFqBoAEYORRVgDqeBQLLjYts64KUZ1khGCD4uO3Y1yH5_wnZqIL6prENuAfFQFrHYPw0WTO5OEhRBE1rzCzV0AyCOqX_H5zbA1r2pp0-BxzjRiBYMQKAGrRvbmqQ56MPDbt6zm33sKoUP55rRTvTWy86gPyqgUAfqzEq-Hk4rwL6mXLaYI2QSxIBwCYbzfmA&#xD;&#xA;Host: localhost:5789&#xD;&#xA;Referer: http://localhost:5789/&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36&#xD;&#xA;Origin: http://localhost:5789&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/642749131/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="246" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="642749131" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/642749131" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="34817" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="5789" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="246" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; .AspNet.TwoFactorRememberBrowser=Adp-sgeRsGKpiqqIdH1HTm56NTEtOtKjL2lVyBLgQpXo2JVkp4S_ckhWm8ywlY9WBkZrDNx6emippny0q1saJig1jjNdMuW3JYeBJFLp39RKhmljC7l-5mckVjiB3LhRHoGRcnRuVgvXZK7jVXLt9HINv-_oTdA0LvXZ6aJnkvsFd1yV1J53NsebnH9J5hFi4IAmB-pAJGZScPbJj9zVM2YzcgR8zVWgmXhq4RAGKn4eyTrwbXHVyHGk0HPavHheZ22uOQWErsZ0E93I4mvZvAHJQSEBmXVeQTNTza0aZc5sVIFcaM0NXkUc2-t4w8E6qFZ5mKEuti64pHG9hqm8XEuxqhzqn4HjhQqVm6GpxoM; glimpsePolicy=On; __RequestVerificationToken=i4jK10XJer4XohPNJr5Vteo1WoQafh5n6kXuBUZCiQiVNnJUL6ZX8-OswcejGJeLRXksgFkH7KzTkGkQCnaaRbgToc4he7VIRhrY0gbMdu81; glimpseId=Chrome 42.0; .AspNet.ApplicationCookie=R0PIjmh-bFvWCNaaa9MURm_YMdSHk-rl-68HgM-mIsHzivgg1QXcYSmLuCINy3pP8Uhn9WFa6owN71XzbYFZGfhScIvDciREjaF4oEzVzQ2dFdHpPRcp_nAZG1u_qn_k-mPFPWoc0aENx85jjWSYwnWFRyitJtfAdmFGr0Gz49ecuFaac4tDurY2SU4Qqt_zn7TfVYT9vSr9e2qeN4u3XufOB7iczZuRr2QdzzTYVY-gvC0oEM8Exd-ZqUGAIpNcWCEwT_An7NRxUwoF8qOYIot_oJ9cIWJ2A5WHc_HVk16fRKEkUA-38qwf6SIr6Vmw8gIc_WvOiyTN6qZ-B4pZRbCFqBoAEYORRVgDqeBQLLjYts64KUZ1khGCD4uO3Y1yH5_wnZqIL6prENuAfFQFrHYPw0WTO5OEhRBE1rzCzV0AyCOqX_H5zbA1r2pp0-BxzjRiBYMQKAGrRvbmqQ56MPDbt6zm33sKoUP55rRTvTWy86gPyqgUAfqzEq-Hk4rwL6mXLaYI2QSxIBwCYbzfmA" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:5789" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:5789/" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:5789" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="bg6Xb9n5feVwNNEsogv5GOW_H93EBoDN3HMtrsmwywYfxKBzgh1Lz8B2eOWGqhGxDzJ9SL78l27FS7eo1Koff8aUwaEUKfEYwPk2mW7g4pAHMaoxysjfSyd4jHsOdgYC13TswqXmfArwaOzMS_pVHA2" />
+    </item>
+    <item name="Email">
+      <value string="avishekh.bharati@gmail.com" />
+    </item>
+    <item name="Password">
+      <value string="aaaaaa" />
+    </item>
+    <item name="RememberMe">
+      <value string="false" />
+    </item>
+  </form>
+  <cookies>
+    <item name="glimpseOptions">
+      <value string="%7B%22glimpsePolicy%22%3Anull%7D" />
+    </item>
+    <item name=".AspNet.TwoFactorRememberBrowser">
+      <value string="Adp-sgeRsGKpiqqIdH1HTm56NTEtOtKjL2lVyBLgQpXo2JVkp4S_ckhWm8ywlY9WBkZrDNx6emippny0q1saJig1jjNdMuW3JYeBJFLp39RKhmljC7l-5mckVjiB3LhRHoGRcnRuVgvXZK7jVXLt9HINv-_oTdA0LvXZ6aJnkvsFd1yV1J53NsebnH9J5hFi4IAmB-pAJGZScPbJj9zVM2YzcgR8zVWgmXhq4RAGKn4eyTrwbXHVyHGk0HPavHheZ22uOQWErsZ0E93I4mvZvAHJQSEBmXVeQTNTza0aZc5sVIFcaM0NXkUc2-t4w8E6qFZ5mKEuti64pHG9hqm8XEuxqhzqn4HjhQqVm6GpxoM" />
+    </item>
+    <item name="glimpsePolicy">
+      <value string="On" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="i4jK10XJer4XohPNJr5Vteo1WoQafh5n6kXuBUZCiQiVNnJUL6ZX8-OswcejGJeLRXksgFkH7KzTkGkQCnaaRbgToc4he7VIRhrY0gbMdu81" />
+    </item>
+    <item name="glimpseId">
+      <value string="Chrome 42.0" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="R0PIjmh-bFvWCNaaa9MURm_YMdSHk-rl-68HgM-mIsHzivgg1QXcYSmLuCINy3pP8Uhn9WFa6owN71XzbYFZGfhScIvDciREjaF4oEzVzQ2dFdHpPRcp_nAZG1u_qn_k-mPFPWoc0aENx85jjWSYwnWFRyitJtfAdmFGr0Gz49ecuFaac4tDurY2SU4Qqt_zn7TfVYT9vSr9e2qeN4u3XufOB7iczZuRr2QdzzTYVY-gvC0oEM8Exd-ZqUGAIpNcWCEwT_An7NRxUwoF8qOYIot_oJ9cIWJ2A5WHc_HVk16fRKEkUA-38qwf6SIr6Vmw8gIc_WvOiyTN6qZ-B4pZRbCFqBoAEYORRVgDqeBQLLjYts64KUZ1khGCD4uO3Y1yH5_wnZqIL6prENuAfFQFrHYPw0WTO5OEhRBE1rzCzV0AyCOqX_H5zbA1r2pp0-BxzjRiBYMQKAGrRvbmqQ56MPDbt6zm33sKoUP55rRTvTWy86gPyqgUAfqzEq-Hk4rwL6mXLaYI2QSxIBwCYbzfmA" />
+    </item>
+  </cookies>
+</error>

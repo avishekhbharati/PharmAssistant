@@ -1,0 +1,183 @@
+﻿<error errorId="2073bd2b-ab9b-435e-8baa-de361bf56cb3" host="AVISHEKH" type="System.ComponentModel.Win32Exception" message="No process is on the other end of the pipe" detail="System.Data.Entity.Core.EntityException: An exception has been raised that is likely due to a transient failure. If you are connecting to a SQL Azure database consider using SqlAzureExecutionStrategy. ---&gt; System.Data.Entity.Core.EntityException: The underlying provider failed on Open. ---&gt; System.Data.Entity.Core.EntityException: An exception has been raised that is likely due to a transient failure. If you are connecting to a SQL Azure database consider using SqlAzureExecutionStrategy. ---&gt; System.Data.SqlClient.SqlException: A transport-level error has occured during SSPI handshake. (provider: Shared Memory Provider, error: 0 - No process is on the other end of the pipe.) ---&gt; System.ComponentModel.Win32Exception: No process is on the other end of the pipe&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)&#xD;&#xA;   at System.Data.SqlClient.TdsParserStateObject.SNIWritePacket(SNIHandle handle, SNIPacket packet, UInt32&amp; sniError, Boolean canAccumulate, Boolean callerHasConnectionLock)&#xD;&#xA;   at System.Data.SqlClient.TdsParserStateObject.WriteSni(Boolean canAccumulate)&#xD;&#xA;   at System.Data.SqlClient.TdsParserStateObject.WritePacket(Byte flushMode, Boolean canAccumulate)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.ProcessSSPI(Int32 receivedLength)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)&#xD;&#xA;   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)&#xD;&#xA;   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken)&#xD;&#xA;   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal&amp; connection)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal&amp; connection)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal&amp; connection)&#xD;&#xA;   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)&#xD;&#xA;   at System.Data.SqlClient.SqlConnection.Open()&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.&lt;Open&gt;b__36(DbConnection t, DbConnectionInterceptionContext c)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext](TTarget target, Action`2 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)&#xD;&#xA;   at System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.Open(DbConnection connection, DbInterceptionContext interceptionContext)&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.EntityConnection.&lt;Open&gt;b__2()&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.&lt;&gt;c__DisplayClass1.&lt;Execute&gt;b__0()&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute(Action operation)&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.EntityConnection.Open()&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.Core.EntityClient.EntityConnection.Open()&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.EnsureConnection(Boolean shouldMonitorTransactions)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.&lt;&gt;c__DisplayClass7.&lt;GetResults&gt;b__5()&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   --- End of inner exception stack trace ---&#xD;&#xA;   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectQuery`1.&lt;System.Collections.Generic.IEnumerable&lt;T&gt;.GetEnumerator&gt;b__0()&#xD;&#xA;   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()&#xD;&#xA;   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)&#xD;&#xA;   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)&#xD;&#xA;   at FYPPharmAssistant.Controllers.PurchaseEntryController.PopulateItem() in e:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\Controllers\Purchase\PurchaseEntryController.cs:line 71&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at Castle.Proxies.AsyncControllerActionInvokerProxy.EndInvokeActionMethod_callback(IAsyncResult asyncResult)&#xD;&#xA;   at Castle.Proxies.Invocations.AsyncControllerActionInvoker_EndInvokeActionMethod.InvokeMethodOnTarget()&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Glimpse.Core.Extensibility.CastleInvocationToAlternateMethodContextAdapter.Proceed()&#xD;&#xA;   at Glimpse.Mvc.AlternateType.AsyncActionInvoker.EndInvokeActionMethod.NewImplementation(IAlternateMethodContext context)&#xD;&#xA;   at Glimpse.Core.Extensibility.AlternateTypeToCastleInterceptorAdapter.Intercept(IInvocation invocation)&#xD;&#xA;   at Castle.DynamicProxy.AbstractInvocation.Proceed()&#xD;&#xA;   at Castle.Proxies.AsyncControllerActionInvokerProxy.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="avishekh.bharati@live.com" time="2015-12-11T17:45:19.6291749Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:application/json, text/javascript, */*; q=0.01&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, sdch&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:.AspNet.TwoFactorRememberBrowser=7tjMKMiDngEii9a33etBoxdUqzazA_7vzL9YXCFq6SdcQFVppeh9a6DYjTaC0qQ-UDMrXLWXLi3dkGGjVpzcyjsAI5ir96Nh-tHDHIU0KXxtPLbzsWkWIM--6jqWCjJrUsf6WNOjsbe4-L17ulEuP5jzWUxFSPgcZDkkO4jlOdNx4uBXUJt-q5Wy1GhJskRW6Pj8mWowj7uLZxOYpdAxptIvq_riLCyMnxr2XGY_0TARBdqE6PH-fqPtgsX3RhAaPzGaSHeKOc38TsvvZ5EEZ10-l4VzSmLNQo39sgVYnfeY8qAizmFdbbR252IywvS_MIAJ-p-PTj-HB-ndciDYEPFGwqD3-sCwhFC2X21uiS0; glimpsePolicy=On; __RequestVerificationToken=wOylk74OPr8omF-OZok84EkA-A-9u98vLxV6efFLJDqie69g1aNBUtNeFarqQIie5YwuEnseEHSbKq8ASwS_FeOmAMnplO6Kf11TyL-eI701; glimpseId=Chrome 42.0; glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; .AspNet.ApplicationCookie=4gIwp-mO7W-9czP-2s34j9rIvINCAW3__WvfI3mB3pIQhdEu4_RNZUcW4tN7c3eYXq-ymD1RWo-PfjmPd4EnjbwJAjz9Rn8jwWlFLiSpDFl1XpSyL9rzyNDAG2o0XBYdH_6FK3t-7WRcza7o8xPuewIjCWR1CyN8hBGMRhNqD6s803Fih1sn0IF4lJuBIPMEKoU8yZtOsUQPgKOnvP4OV8sEVjw2SoLhK3wrclMYz004SrrKDYokPaMnqZqSvGA2-SxxR_RbtsT9pg8FfL4WuP4RzoLcnrNOwGLgeDtm5aTAK28jRXzzg5ZqFwMb4xAdlt_UZR0qtivxNHxNdKA9K9-U4K6GtFgkl4FHMyXKB3DFR1jRby3hjV8UAWEo8NF3YKFjkF9zH238NZITPRTfBETBBc7ZtGiDR40jE7A6CygLR9sQ1yJwmhtGNmbvx7wCZhbIFDcy6KeLdXZSBaq67-5-vJL5SNlm9ARSfTyqH5Zx0tp6D_2YrpcG3Ckwtalyf0arZ8gLMYeATgkXyT8wJw&#xD;&#xA;HTTP_HOST:localhost:5789&#xD;&#xA;HTTP_REFERER:http://localhost:5789/PurchaseEntry/Index&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36&#xD;&#xA;HTTP_GLIMPSE_PARENT_REQUESTID:a3a6dd2d-6708-4903-b8a1-dca9d63ccbdb&#xD;&#xA;HTTP_X_REQUESTED_WITH:XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: application/json, text/javascript, */*; q=0.01&#xD;&#xA;Accept-Encoding: gzip, deflate, sdch&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: .AspNet.TwoFactorRememberBrowser=7tjMKMiDngEii9a33etBoxdUqzazA_7vzL9YXCFq6SdcQFVppeh9a6DYjTaC0qQ-UDMrXLWXLi3dkGGjVpzcyjsAI5ir96Nh-tHDHIU0KXxtPLbzsWkWIM--6jqWCjJrUsf6WNOjsbe4-L17ulEuP5jzWUxFSPgcZDkkO4jlOdNx4uBXUJt-q5Wy1GhJskRW6Pj8mWowj7uLZxOYpdAxptIvq_riLCyMnxr2XGY_0TARBdqE6PH-fqPtgsX3RhAaPzGaSHeKOc38TsvvZ5EEZ10-l4VzSmLNQo39sgVYnfeY8qAizmFdbbR252IywvS_MIAJ-p-PTj-HB-ndciDYEPFGwqD3-sCwhFC2X21uiS0; glimpsePolicy=On; __RequestVerificationToken=wOylk74OPr8omF-OZok84EkA-A-9u98vLxV6efFLJDqie69g1aNBUtNeFarqQIie5YwuEnseEHSbKq8ASwS_FeOmAMnplO6Kf11TyL-eI701; glimpseId=Chrome 42.0; glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; .AspNet.ApplicationCookie=4gIwp-mO7W-9czP-2s34j9rIvINCAW3__WvfI3mB3pIQhdEu4_RNZUcW4tN7c3eYXq-ymD1RWo-PfjmPd4EnjbwJAjz9Rn8jwWlFLiSpDFl1XpSyL9rzyNDAG2o0XBYdH_6FK3t-7WRcza7o8xPuewIjCWR1CyN8hBGMRhNqD6s803Fih1sn0IF4lJuBIPMEKoU8yZtOsUQPgKOnvP4OV8sEVjw2SoLhK3wrclMYz004SrrKDYokPaMnqZqSvGA2-SxxR_RbtsT9pg8FfL4WuP4RzoLcnrNOwGLgeDtm5aTAK28jRXzzg5ZqFwMb4xAdlt_UZR0qtivxNHxNdKA9K9-U4K6GtFgkl4FHMyXKB3DFR1jRby3hjV8UAWEo8NF3YKFjkF9zH238NZITPRTfBETBBc7ZtGiDR40jE7A6CygLR9sQ1yJwmhtGNmbvx7wCZhbIFDcy6KeLdXZSBaq67-5-vJL5SNlm9ARSfTyqH5Zx0tp6D_2YrpcG3Ckwtalyf0arZ8gLMYeATgkXyT8wJw&#xD;&#xA;Host: localhost:5789&#xD;&#xA;Referer: http://localhost:5789/PurchaseEntry/Index&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36&#xD;&#xA;Glimpse-Parent-RequestID: a3a6dd2d-6708-4903-b8a1-dca9d63ccbdb&#xD;&#xA;X-Requested-With: XMLHttpRequest&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/642749131/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="642749131" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/642749131" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/PurchaseEntry/PopulateItem" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\PurchaseEntry\PopulateItem" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="8371" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/PurchaseEntry/PopulateItem" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="5789" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/PurchaseEntry/PopulateItem" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="application/json, text/javascript, */*; q=0.01" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, sdch" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string=".AspNet.TwoFactorRememberBrowser=7tjMKMiDngEii9a33etBoxdUqzazA_7vzL9YXCFq6SdcQFVppeh9a6DYjTaC0qQ-UDMrXLWXLi3dkGGjVpzcyjsAI5ir96Nh-tHDHIU0KXxtPLbzsWkWIM--6jqWCjJrUsf6WNOjsbe4-L17ulEuP5jzWUxFSPgcZDkkO4jlOdNx4uBXUJt-q5Wy1GhJskRW6Pj8mWowj7uLZxOYpdAxptIvq_riLCyMnxr2XGY_0TARBdqE6PH-fqPtgsX3RhAaPzGaSHeKOc38TsvvZ5EEZ10-l4VzSmLNQo39sgVYnfeY8qAizmFdbbR252IywvS_MIAJ-p-PTj-HB-ndciDYEPFGwqD3-sCwhFC2X21uiS0; glimpsePolicy=On; __RequestVerificationToken=wOylk74OPr8omF-OZok84EkA-A-9u98vLxV6efFLJDqie69g1aNBUtNeFarqQIie5YwuEnseEHSbKq8ASwS_FeOmAMnplO6Kf11TyL-eI701; glimpseId=Chrome 42.0; glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; .AspNet.ApplicationCookie=4gIwp-mO7W-9czP-2s34j9rIvINCAW3__WvfI3mB3pIQhdEu4_RNZUcW4tN7c3eYXq-ymD1RWo-PfjmPd4EnjbwJAjz9Rn8jwWlFLiSpDFl1XpSyL9rzyNDAG2o0XBYdH_6FK3t-7WRcza7o8xPuewIjCWR1CyN8hBGMRhNqD6s803Fih1sn0IF4lJuBIPMEKoU8yZtOsUQPgKOnvP4OV8sEVjw2SoLhK3wrclMYz004SrrKDYokPaMnqZqSvGA2-SxxR_RbtsT9pg8FfL4WuP4RzoLcnrNOwGLgeDtm5aTAK28jRXzzg5ZqFwMb4xAdlt_UZR0qtivxNHxNdKA9K9-U4K6GtFgkl4FHMyXKB3DFR1jRby3hjV8UAWEo8NF3YKFjkF9zH238NZITPRTfBETBBc7ZtGiDR40jE7A6CygLR9sQ1yJwmhtGNmbvx7wCZhbIFDcy6KeLdXZSBaq67-5-vJL5SNlm9ARSfTyqH5Zx0tp6D_2YrpcG3Ckwtalyf0arZ8gLMYeATgkXyT8wJw" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:5789" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:5789/PurchaseEntry/Index" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36" />
+    </item>
+    <item name="HTTP_GLIMPSE_PARENT_REQUESTID">
+      <value string="a3a6dd2d-6708-4903-b8a1-dca9d63ccbdb" />
+    </item>
+    <item name="HTTP_X_REQUESTED_WITH">
+      <value string="XMLHttpRequest" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name=".AspNet.TwoFactorRememberBrowser">
+      <value string="7tjMKMiDngEii9a33etBoxdUqzazA_7vzL9YXCFq6SdcQFVppeh9a6DYjTaC0qQ-UDMrXLWXLi3dkGGjVpzcyjsAI5ir96Nh-tHDHIU0KXxtPLbzsWkWIM--6jqWCjJrUsf6WNOjsbe4-L17ulEuP5jzWUxFSPgcZDkkO4jlOdNx4uBXUJt-q5Wy1GhJskRW6Pj8mWowj7uLZxOYpdAxptIvq_riLCyMnxr2XGY_0TARBdqE6PH-fqPtgsX3RhAaPzGaSHeKOc38TsvvZ5EEZ10-l4VzSmLNQo39sgVYnfeY8qAizmFdbbR252IywvS_MIAJ-p-PTj-HB-ndciDYEPFGwqD3-sCwhFC2X21uiS0" />
+    </item>
+    <item name="glimpsePolicy">
+      <value string="On" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="wOylk74OPr8omF-OZok84EkA-A-9u98vLxV6efFLJDqie69g1aNBUtNeFarqQIie5YwuEnseEHSbKq8ASwS_FeOmAMnplO6Kf11TyL-eI701" />
+    </item>
+    <item name="glimpseId">
+      <value string="Chrome 42.0" />
+    </item>
+    <item name="glimpseOptions">
+      <value string="%7B%22glimpsePolicy%22%3Anull%7D" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="4gIwp-mO7W-9czP-2s34j9rIvINCAW3__WvfI3mB3pIQhdEu4_RNZUcW4tN7c3eYXq-ymD1RWo-PfjmPd4EnjbwJAjz9Rn8jwWlFLiSpDFl1XpSyL9rzyNDAG2o0XBYdH_6FK3t-7WRcza7o8xPuewIjCWR1CyN8hBGMRhNqD6s803Fih1sn0IF4lJuBIPMEKoU8yZtOsUQPgKOnvP4OV8sEVjw2SoLhK3wrclMYz004SrrKDYokPaMnqZqSvGA2-SxxR_RbtsT9pg8FfL4WuP4RzoLcnrNOwGLgeDtm5aTAK28jRXzzg5ZqFwMb4xAdlt_UZR0qtivxNHxNdKA9K9-U4K6GtFgkl4FHMyXKB3DFR1jRby3hjV8UAWEo8NF3YKFjkF9zH238NZITPRTfBETBBc7ZtGiDR40jE7A6CygLR9sQ1yJwmhtGNmbvx7wCZhbIFDcy6KeLdXZSBaq67-5-vJL5SNlm9ARSfTyqH5Zx0tp6D_2YrpcG3Ckwtalyf0arZ8gLMYeATgkXyT8wJw" />
+    </item>
+  </cookies>
+</error>

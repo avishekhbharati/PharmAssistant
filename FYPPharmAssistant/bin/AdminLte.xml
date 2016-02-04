@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AdminLte</name>
+    </assembly>
+    <members>
+        <member name="T:AdminLte.AdminLte">
+            <summary>
+            A class for utility functions and methods in AdminLTE, especially around CSHTMLs
+            Include functinality such as transforming colors into Admin LTE (or Bootstrap) compatible css classes
+            NOTE: This isn't in a namespace to it's automatically available in CSHTML files
+            </summary>
+        </member>
+        <member name="M:AdminLte.AdminLte.BackgroundClassForColor(AdminLte.AdminLte.Color)">
+            <summary>
+            A mapping of GoalColors into CSS classes
+            </summary>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AdminLte.AdminLte.Color">
+            <summary>
+            List of colors available for background and text elements in Admin LTE
+            https://almsaeedstudio.com/themes/AdminLTE/pages/UI/general.html
+            </summary>
+        </member>
+        <member name="T:Crumb">
+            <summary>
+            This class represents an individual piece of the breadcrumb at the top of the main content area of the page
+            Instances of this object must carry a text value and may optionally also carry a link and icon class
+            If the text value or icon are null or empty, then they are ignored
+            Instances of this class should be captured in the Breadcrumb collection class
+            </summary>
+        </member>
+        <member name="T:Breadcrumb">
+            <summary>
+            A full breadcrumb is just a list of crumbs that can then be translated into an AdminLTE breadcrumb using cshtml
+            </summary>
+        </member>
+    </members>
+</doc>

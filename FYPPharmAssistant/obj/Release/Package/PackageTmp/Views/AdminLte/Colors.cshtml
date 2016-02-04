@@ -1,0 +1,47 @@
+﻿@* 
+    This is an example page that displays all colors in the AdminLte.Color enum, using the helper methods
+    TODO: Delete this page! This is for demonstration only and can likely be deleted once you are ready to start building your app
+ *@
+
+@using AdminLte
+@{
+    ViewBag.Title = "Colors";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="fa fa-tag"></i> Background Colors</h3>
+    </div>
+    <div class="box-body">
+        <p class="text-muted">
+            Example colors from the helper class
+        </p>
+        <div class="row">
+            @foreach (AdminLte.Color color in Enum.GetValues(typeof(AdminLte.Color)))
+            {
+                <div class="col-sm-4 col-md-2">
+                    <h4 class="text-center">@color.ToString()</h4>
+                    <div class="color-palette-set">
+                        <div class="@AdminLte.BackgroundClassForColor(color) disabled color-palette"><span>Disabled</span></div>
+                        <div class="@AdminLte.BackgroundClassForColor(color)"><span>@color.ToString()</span></div>
+                        <div class="@AdminLte.BackgroundClassForColor(color)-active"><span>Active</span></div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row">
+            @foreach (AdminLte.Color color in Enum.GetValues(typeof(AdminLte.Color)))
+            {
+                <div class="col-sm-4 col-md-2">
+                    <h4 class="text-center">@color.ToString()</h4>
+                    <div class="color-palette-set">
+                        <div class="@AdminLte.BackgroundClassForColor(color) disabled color-palette"><span>Disabled</span></div>
+                        <div class="@AdminLte.BackgroundClassForColor(color) color-palette"><span>#D81B60</span></div>
+                        <div class="@AdminLte.BackgroundClassForColor(color)-active color-palette"><span>Active</span></div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+﻿@model FYPPharmAssistant.ViewModel.TestViewModel
+@{
+    ViewBag.Title = "PurchaseVMTest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PurchaseVMTest</h2>
+
+@using (Html.BeginForm("Create", "Purchase", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <text>PurchaseID : </text>@Html.EditorFor(m=>m.Purchase.ID)<br/>
+    <text>Supplier : </text>@Html.EditorFor(m => m.Purchase.SupplierID)<br />
+    <text>Date: </text>@Html.EditorFor(m => m.Purchase.Date)<br />
+    <text>Amount : </text>@Html.EditorFor(m=>m.Purchase.Amount)<br />
+    <text>GrandTotal: </text>@Html.EditorFor(m=>m.Purchase.GrandTotal)<br />
+    <input type="submit" value="save"/>
+
+
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+
+}

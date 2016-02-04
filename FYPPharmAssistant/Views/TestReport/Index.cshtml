@@ -1,0 +1,88 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.InventoryModel.Stock>
+
+<div class="row" style="background-color:#ffffff; border:1px solid grey">
+    <form action="index" method="post">
+        <div class="col-md-2">
+            <label>Select:</label><br />
+            <select name="option" class="form-control">
+                <option value="">--Select one--</option>
+                <option value="BelowMin">Below minimum</option>
+                <option value="UnSold">Unsold </option>
+            </select>             
+        </div>
+        <div class="col-md-2">
+            <label>Batch: </label><input type="text" name="batch" placeholder="enter batch number" class="form-control" /> <br />
+        </div>
+        <div class="col-md-2">
+            <label>Name: </label> <input type="text" name="name" placeholder="enter name" class="form-control" /><br />
+        </div>
+        <div class="col-md-2">
+            Expires After : <input type="text" class="datepicker" name="fromDate" class="form-control" /> <br />
+        </div>
+        <div class="col-md-2">
+            Expires Before: <input type="text" class="datepicker" name="toDate" class="form-control" /><br />
+        </div>
+        <div class="col-md-2">
+            <label></label><br />
+            <input type="submit" value="submit" class="btn btn-primary" />
+            <input type="button" class="btn btn-default" id="showAll" value="Show All" />
+        </div>
+    </form>
+</div>
+
+<div id="renderTable">
+    
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            Stock ID
+        </th>
+        <th>
+           item Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BatchNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.ID
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.Item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BatchNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpiryDate)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<script>
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy'
+    });
+    $('#showAll').on('click', function () {
+        location.reload(true);
+    });
+</script>

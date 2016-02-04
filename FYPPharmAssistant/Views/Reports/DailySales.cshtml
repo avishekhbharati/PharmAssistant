@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Daily Sales";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box box-body  box-primary">   
+        <form id="form1">
+                <label>Daily Sales For : </label>
+                <input type="text" name="getDate" class="datepicker" />
+                <input type="button" class="btn btn-primary btn-sm" value="Ok" id="submit" />
+        </form> 
+</div>
+
+<div id="renderTable" class="box box-body box-default">
+    @Html.Partial("_DailySalesPartialView")
+</div>
+
+
+<!--      Scripts / Styles     -->
+<script>
+    $('.datepicker').datepicker();
+
+    $(document).ready(function () {
+        $('#submit').on('click', function () {
+            $('#renderTable').load("DailySalesFor", $('#form1').serialize());
+        });
+    });
+    
+</script>
+
+<style>
+    #renderTable{
+        background-color:white;
+    }
+</style>

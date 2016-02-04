@@ -1,0 +1,188 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+
+<style>
+    .txtPur{
+        background-color:#cc9c9c
+    }
+</style>
+
+
+
+<form method="post" action="InsertIntoPurchaseFormColl" ng-app="" id="form1">
+   
+    supplier:
+    <select id="ddlSupplier" name="SelectedSupplierValue" class="txtPur"></select>
+    PurchaseInvoice:
+    <input type="text" name="PurchaseID" class="txtPur" id="PurchaseID" required />
+    GeneratedPurID: <input type="text" name="setPurchaseID1" id="setPurchaseID1" readonly />
+    Date:
+    <input type="date" name="InvocingDate" class="txtPur" />
+    Amount:
+    <input type="number" name="Amount" ng-model="amt" class="txtPur" /><br />
+    Discount:
+    <input type="number" name="Discount" ng-model="dis" class="txtPur" />
+    Tax:
+    <input type="number" name="Tax" ng-model="tx" class="txtPur" />
+    GrandTotal:
+    <input type="number" readonly name="GrandTotal" value="{{amt-dis+tx}}" class="txtPur" />
+    Payment:
+    <label><input type="checkbox" name="IsPaid" />Paid</label><br />
+    Remarks:<br />
+    <textarea name="Remarks" style="width:800px;" cols="200" rows="3" class="txtPur"></textarea><br />
+
+    <input type="submit" id="btnSaveAndAdd" value="SaveAndAdd" />
+</form>
+
+<form>
+    GeneratedPurchaseID:<input type="text" id="setPurchaseID2" /><br />
+    Item id :<select id="SelectedItemvalue"></select><br />
+    Batch No:<input type="text" id="BatchNo" required /><br />
+    Qty:<input type="number" id="Qty" required /><br />
+    CP:<input type="number" id="CostPrice" required /><br />
+    SP:<input type="number" id="SellingPrice" required /><br />
+    Expiry:<input type="date" id="Expiry" required /><br />
+    <input type="submit" id="AddToList" value="Add to List" /><br />
+</form>
+     
+
+<form id="submit-form">
+    <table id="tableList" class="table table-responsive">
+        <tr style="position:sticky; background-color: #49507c; color:white">
+            <th>InvoiceNo.</th>
+            <th>Item</th>
+            <th>Batch</th>
+            <th>Qty</th>
+            <th>CP</th>
+            <th>SP</th>
+            <th>Expiry</th>
+            <th>remove</th>
+        </tr>
+    </table><br />
+    <input type="submit" id="SaveAll" value="Save All" />
+</form>
+
+
+
+
+
+
+
+<!----------------------------------JAVASCRIPT--------------------------------------------------->
+
+<script type="text/javascript">
+    /******************************************/
+    /*             For Form 1                 */
+    /******************************************/
+        $("#btnSaveAndAdd").on('click', function () {
+            $.post("InsertIntoPurchaseFormColl", $('#form1').serialize(), function (data) {
+                if (data === "Invoice Number Already exists!")
+                {
+                    swal("Warning!", "Purchase invoice Number already Exists!.", "error")
+                }
+                else {
+                    //sets ID to the placeholder
+                    //$("#setInvoiceIdHere").text(data);
+                    document.getElementById('setInvoiceIdHere').value = data;
+
+                    //disable form1
+                    var nodes = document.getElementById("divForm1").getElementsByTagName('*');
+                    for (var i = 0; i < nodes.length; i++) {
+                        nodes[i].disabled = true;
+                    }
+                    //enable form2
+                    var nodes = document.getElementById("divForm2").getElementsByTagName('*');
+                    for (var i = 0; i < nodes.length; i++) {
+                        nodes[i].disabled = false;
+                    }
+                }
+            }, 'json');
+            console.log($("#form1").serialize());
+            return false;
+        });
+
+
+
+
+
+
+
+
+    $('#AddToList').on('click', function () {
+        var $table = $('#tableList');
+        $table.append('<tr><td><input type="hidden" name="PurchaseInvoice" value="' + $('#setPurchaseID2').val() + '"/>' + $('#setPurchaseID2').val() +
+            '</td><td><input type="hidden" name="SelectedItemvalue" value="' + $('#SelectedItemvalue').val() + '">' + $('#SelectedItemvalue option:selected').text() +
+            '</td><td><input type="hidden" name="BatchNo" value="' + $('#BatchNo').val() + '">' + $('#BatchNo').val() +
+            '</td><td><input type="hidden" name="Qty" value="' + $('#Qty').val() + '">' + $('#Qty').val() +
+            '</td><td><input type="hidden" name="CostPrice"  value="' + $('#CostPrice').val() + '">' + $('#CostPrice').val() +
+            '</td><td><input type="hidden" name="SellingPrice"  value="' + $('#SellingPrice').val() + '">' + $('#SellingPrice').val() +
+            '</td><td><input type="hidden" name="Expiry" value="' + $('#Expiry').val() + '">' + $('#Expiry').val() +
+            '</td><td><a href="javascript:void(0)" onclick="removeItem(this)">delete</a></td></tr>');
+        return false;
+    });
+
+
+    //for remove button 
+    function removeItem(obj) {
+        $obj = $(obj).parent().parent().remove();
+    };
+
+    //Done !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    //sets formatted purchase id 
+    $('#btnSaveAndAdd').on('click', function () {
+        var $supplierId = $('#ddlSupplier option:selected').val();
+        document.getElementById('setPurchaseID1').value = $('#PurchaseID').val() + ' (' + $supplierId + ')';
+        document.getElementById('setPurchaseID2').value = $('#PurchaseID').val() + ' (' + $supplierId + ')';
+        return false;
+    });
+
+    //javascript to populate dropdownlist
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url:"@Url.Action("BindDatatoDropdownSupplier", "TestPurchaseInvoice2")",
+            data: {},
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                var optionhtml1 = '<option value="' +
+                 0 + '">' + "--Select Supplier--" + '</option>';
+                $("#ddlSupplier").append(optionhtml1);
+
+                $.each(data, function (key, value) {
+                    $('#ddlSupplier').append($("<option></option>").val(value.ID).html(value.Name));
+                });
+            },
+            error: function (data) {
+                alert("error found");
+            }
+        });
+    });
+
+    $(document).on('ready', function () {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("BindDatatoDropdownItem", "TestPurchaseInvoice2")",
+            data: {},
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                var optionhtml0 = '<option value="' +
+                 0 + '">' + "--Select Item--" + '</option>';
+                $("#SelectedItemvalue").append(optionhtml0);
+
+                $.each(data, function (key, value) {
+                    $('#SelectedItemvalue').append($("<option></option>").val(value.ID).html(value.Name));
+                });
+            },
+            error: function (data) {
+                alert("error found");
+            }
+        });
+    });
+
+</script>

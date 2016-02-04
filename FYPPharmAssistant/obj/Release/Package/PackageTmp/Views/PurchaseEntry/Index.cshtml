@@ -1,0 +1,401 @@
+﻿@model FYPPharmAssistant.ViewModel.PurchaseEntryVM
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading" style="background-color:#3d566e; color:#ecf0f1">
+        <h3 class="panel-title">Purchase</h3>
+    </div>
+    <div class="panel-body">
+        <table>
+            <tr>
+                <td>
+                    Supplier<br />
+                    <select id="SelectSupplier" class="form-control"></select>
+                    <span class="error"> required</span>
+                </td>
+                <td>
+                    PurchaseID<br />
+                    <input type="text" id="PurchaseID" class="form-control" />
+                    <span class="error"> required</span>
+                </td>
+                <td>
+                    Date<br />
+                    <input type="text" id="InvocingDate" class="form-control datepicker" />
+                    <span class="error"> required</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div class="panel panel-default " style="margin-top:-20px">
+    <div class="panel-heading">
+        <h3 class="panel-title">Purchase Items</h3>
+    </div>
+    <div class="panel-body">
+        <table>
+            <tr>
+                <td>Items<br /><select id="selectItem" class="form-control"></select><span class="error"> required</span></td>
+                <td>Batch<br /><input type="text" id="Batch" class="form-control" /><span class="error"> required</span></td>
+                <td>Qty<br /><input type="number" id="Qty" class="form-control" /><span class="error"> required</span></td>
+                <td>CP<br /><input type="text" id="CP" class="form-control" /><span class="error"> required</span></td>
+                <td>SP<br /><input type="text" id="SP" class="form-control" /><span class="error"> required</span></td>
+                <td>Expiry<br /><input type="text" id="Expiry" class="form-control datepicker" /><span class="error"> required</span></td>
+                <td><button id="btnAdd" class="btn btn-primary">Add</button></td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <!-- Lists of items here -->
+                    <div id="orderItems" class="tablecontainer" style="height:250px; overflow-y:scroll; border:1px solid grey">
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div style="float:right; margin-top:5px;">
+            <button type="button" style="padding-left: 20px" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#myModal">Next</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-app>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Payment Status</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <tr>
+                        <td>Amount</td>
+                        <td><input type="number" ng-model="a" id="Amount" class="form-control" /><span class="error"> required</span></td>
+                    </tr>
+                    <tr>
+                        <td>Discount</td>
+                        <td><input type="number" ng-model="d" id="Discount" class="form-control" /> <span class="error"> Invalid</span></td>
+                    </tr>
+                    <tr>
+                        <td>Tax</td>
+                        <td><input type="number" ng-model="t" id="Tax" class="form-control" /><span class="error"> Invalid</span></td>                    
+                    </tr>
+
+                    <tr>
+                        <td>GrandTotal</td>
+                        <td><input type="text" value="{{(a-d)+t}}" class="form-control" id="GrandTotal" readonly /><span class="error"> Invalid</span></td>
+                    
+                    </tr>
+
+                    <tr>
+                        <td>Remarks(Notes)</td>
+                        <td><textarea style="width:100%" id="Description"></textarea></td>
+                    </tr>
+                    <tr>
+
+                        <td>Payment</td>
+                        <td><label style="margin-left:5px;"><input type="checkbox" id="Payment" />Full Payment</label></td>
+                    </tr>
+                </table>
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <input type="submit" class=" btn btn-primary" id="btnSubmit" value="Submit" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--********** JavaScripts **********-->
+<script>    
+    $(document).on('ready', function () {
+        $.get('/PurchaseEntry/PopulateSupplier', {}, function (data) {
+            $('#SelectSupplier').empty();
+            $('#SelectSupplier').append($("<option value='0'>--Select Supplier--</option>"));
+            $.each(data, function (key, value) {
+                $('#SelectSupplier').append($("<option></option>").val(value.ID).html(value.Name));
+            });
+        }, 'json');
+
+        $.get('/PurchaseEntry/PopulateItem', {}, function (data) {
+            $('#selectItem').empty();
+            $('#selectItem').append($("<option value='0'>--Select Items--</option>"))
+            $.each(data, function (key, value) {
+                $('#selectItem').append($('<option></option>').val(value.ID).html(value.Name));
+            });
+        }, 'json');
+
+        $(function () {
+            $(".datepicker").datepicker({
+                format: 'yyyy-mm-dd'
+            });
+        });        
+    });
+
+    var purchaseItems = [];
+    $('#btnAdd').on('click', function () {
+
+            //jQuery Validations
+            var isValidation = true;            
+                if ($('#SelectSupplier').val() == "0") {
+                    isValidation = false;
+                    $('#SelectSupplier').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#SelectSupplier').siblings('span.error').css('visibility', 'hidden');
+                }
+               
+                if ($('#PurchaseID').val().trim() == '') {
+                    isValidation = false;
+                    $('#PurchaseID').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#PurchaseID').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if ($('#InvocingDate').val() == '') {
+                    isValidation = false;
+                    $('#InvocingDate').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#InvocingDate').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if ($('#selectItem').val() == "0") {
+                    isValidation = false;
+                    $('#selectItem').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#selectItem').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if ($('#Qty').val() == '') {
+                    isValidation = false;
+                    $('#Qty').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#Qty').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if ($('#Batch').val() == "") {
+                    isValidation = false;
+                    $('#Batch').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#Batch').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if ($('#CP').val() == '' || isNaN($('#CP').val().trim())) {
+                    isValidation = false;
+                    $('#CP').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#CP').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if ($('#SP').val() == '' || isNaN($('#SP').val().trim())) {
+                    isValidation = false;
+                    $('#SP').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#SP').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if ($('#Expiry').val() == '') {
+                    isValidation = false;
+                    $('#Expiry').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#Expiry').siblings('span.error').css('visibility', 'hidden');
+                }               
+
+                if(isValidation)
+                {
+                    purchaseItems.push({
+                        ItemID: $('#selectItem').val(),
+                        ItemName: $('#selectItem option:selected').text(),
+                        Batch: $('#Batch').val(),
+                        Qty: $('#Qty').val(),
+                        CostPrice: $('#CP').val(),
+                        SellingPrice: $('#SP').val(),
+                        Expiry: $('#Expiry').val(),
+                        PurchaseID: $('#PurchaseID').val() + ' / ' +$('#SelectSupplier').val(),
+                        BonusIncluded: 0
+                    });
+
+                    $('#selectItem').val('0').focus();
+                    $('#Batch, #Qty, #CP, #SP, #Expiry').val('');
+                }
+                GeneratedItemsTable();
+            });
+
+    $('#btnSubmit').on('click', function () {
+            var isAllValid = true;
+
+            if(purchaseItems.length == 0){
+                isAllValid = false;
+                alert('Please Add items to purchase!');
+            }
+
+            if ($('#SelectSupplier').val() == "0") {
+                isAllValid = false;
+                $('#SelectSupplier').siblings('span.error').css('visibility', 'visible');
+            }
+            else {
+                $('#SelectSupplier').siblings('span.error').css('visibility', 'hidden');
+            }
+
+            if ($('#PurchaseID').val().trim() == '') {
+                isAllValid = false;
+                $('#PurchaseID').siblings('span.error').css('visibility', 'visible');
+            }
+            else {
+                $('#PurchaseID').siblings('span.error').css('visibility', 'hidden');
+            }
+
+            if ($('#InvocingDate').val() == '') {
+                isAllValid = false;
+                $('#InvocingDate').siblings('span.error').css('visibility', 'visible');
+            }
+            else {
+                $('#InvocingDate').siblings('span.error').css('visibility', 'hidden');
+            } 
+            if ($('#Amount').val() == '' || isNaN($('#Amount').val())) {
+                isAllValid = false;
+                $('#Amount').siblings('span.error').css('visibility', 'visible');
+            }
+            else {
+                $('#Amount').siblings('span.error').css('visibility', 'hidden');
+            }
+           
+            if (isNaN($('#Discount').val())) {
+                $('#Discount').siblings('span.error').css('visibility', 'visible');
+            }
+            if (isNaN($('#Tax').val())) {
+                $('#Tax').siblings('span.error').css('visibility', 'visible');
+            }           
+
+
+            if (isAllValid) {
+                var data = {
+                    ID: $.trim($('#PurchaseID').val() + '--' +$('#SelectSupplier').val()),                  
+                    Date: $('#InvocingDate').val().trim(),
+                    SupplierID: $('#SelectSupplier').val(),
+                    Amount: $('#Amount').val(),
+                    Discount: $('#Discount').val(),
+                    Tax: $('#Tax').val(),
+                    GrandTotal: $('#GrandTotal').val(),
+                    IsPaid: $('#Payment').is(":checked")?1:0,
+                    Description: $('#Description').val(),
+                    PurchaseItems: purchaseItems
+                }
+                $(this).val('Please wait...');
+
+
+                //post data to server 
+                $.ajax({
+                    url: 'SavePurchase',
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    dataType: "JSON",
+                    contentType: "application/json",
+                    success: function (d) {
+                        //check is successfully save to database 
+                        if (d.status == true) {
+                            //will send status from server side
+                            alert('Successfully done.');
+                            //clear form
+                            purchaseItems = [];
+                            $('#PurchaseID').val('');
+                            $('#InvocingDate').val('');
+                            $('#SelectSupplier').val('0');
+                            
+                        }
+                        else {
+                            alert('Failed');
+                        }
+                        $('#submit').val('Save');
+                    },
+                    error: function () {
+                        alert('Error. Please try again.');
+                        $('#btnSubmit').val('Save');
+                    }
+                });
+            }
+        });
+     
+        function GeneratedItemsTable() {
+            if (purchaseItems.length > 0) {
+                var $table = $('<table/>');
+                $table.append('<thead><tr><th>Item</th><th>Batch</th><th>Qty</th><th>CP</th><th>SP</th><th>Expiry</th><th>Delete</th></tr></thead>');
+                var $tbody = $('<tbody/>');
+                $.each(purchaseItems, function (i, val) {
+                    var $row = $('<tr/>');
+                   // $row.append($('<td/>').html(val.ItemID));
+                    $row.append($('<td/>').html(val.ItemName));
+                    $row.append($('<td/>').html(val.Batch));
+                    $row.append($('<td/>').html(val.Qty));
+                    $row.append($('<td/>').html(val.CostPrice));
+                    $row.append($('<td/>').html(val.SellingPrice));
+                    $row.append($('<td/>').html(val.Expiry));
+                    $row.append($('<td/>').html('<a href=# onclick="removeItem(this)" >remove</a>'));
+                    $tbody.append($row);
+                });
+                $table.append($tbody);
+                $('#orderItems').html($table);
+            }
+        }
+
+
+        //removes record on clicking remove icon and associated array
+        function removeItem(obj) {
+            var $index = $(obj).parent().parent()[0].sectionRowIndex;
+            alert($index);
+            purchaseItems.splice($index,1);
+            $(obj).parent().parent().remove();
+            GeneratedItemsTable();
+        }
+   
+</script>
+
+
+
+
+<style>
+    /*Adding some css for looks good*/
+    span.error {
+        display: block;
+        visibility: hidden;
+        color: red;
+        font-size: 90%;
+    }
+
+        .tablecontainer table {
+        width: 100%;
+        border-collapse: collapse;
+        border-top: 1px solid #BFAEAE;
+        border-right: 1px solid #BFAEAE;
+    }
+    .tablecontainer th {
+        border-bottom: 2px solid #BFAEAE !important;
+        background-color:#3d566e;
+         color:#ecf0f1
+    }
+    .tablecontainer th, .tablecontainer td {
+        text-align: left;
+        border-left: 1px solid #BFAEAE;
+        padding: 5px;
+        border-bottom: 1px solid #BFAEAE;
+    }
+    
+</style>
+
+

@@ -1,0 +1,206 @@
+﻿<error errorId="92511004-ecb6-457e-ac3d-31288afeae24" host="AVISHEKH" type="System.NullReferenceException" message="Object reference not set to an instance of an object." source="App_Web_uzmb0whk" detail="System.NullReferenceException: Object reference not set to an instance of an object.&#xD;&#xA;   at ASP._Page_Views_UsersAdmin_Edit_cshtml.Execute() in e:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\Views\UsersAdmin\Edit.cshtml:line 52&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.StartPage.ExecutePageHierarchy()&#xD;&#xA;   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)&#xD;&#xA;   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.OnAsyncHandlerCompletion(IAsyncResult ar)" user="avishekh.bharati@live.com" time="2015-12-25T14:31:11.3381980Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:324&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; glimpsePolicy=; __RequestVerificationToken=euCSIQSVhBHaWg7bnny15DBtkBv6S9cK4ge6BzXPvMI4BVyoHVXke_x7xofrYmGwEnVrZCf7BEIDVq2Bn-kPldFZcjzuC2bjZAF7o8teTiM1; .AspNet.ApplicationCookie=gA6H6Ej1tQ5aYXCTzs7TD0Snkx95ZRXkg2em5pr-nLIZDhMlu7a8BHddWke7OwocPQBYXIU1dKGpfcHXHHz1hnnwrFlRRnwFXRlH90F0M51Oebce4s4oJ51sOEvOtsxeo_sZrpmPXNYUhL1xMDdrF6TwRrqtKiOoqidgJk-QoYXOyLDP5uabZ1KAhDnxSp3rQr9M7gQcTdaKyc62vrU4Ts8qzj5i7oUz7ORoFPIeAB9eRKk-PqP7d81w2L8TQhCzSU-ObfvQqU621DGCb2S94MEz13N2pzQcRIzgCGPO7KnPPmQZhjI2NpoRqTImzQm6gwYxCmXBMWIIx3HpWexBGPfxqKViIJS0DVgvluXj3Sc4tSCD97DnOVwbobVJxvYXXtCR-BJulo5YyBf1jH-d5vkStKQPtZRGrQySvh8RRKTTgNY8MShMbn-lQxBa5lJDlsozRyPO__YeFZNbF86Oqr9xe9kD3ElJohMmmJIm_fZvVp5Fgv0RXyb3wN5Lcqw1FkeJbBQUiN9n6zCDlIuHppK5M86Bv8x2tKe5O9KjMsk&#xD;&#xA;HTTP_HOST:localhost:5789&#xD;&#xA;HTTP_REFERER:http://localhost:5789/UsersAdmin/Edit/79a9e321-fff6-492f-b354-c4697f391178&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:http://localhost:5789&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 324&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; glimpsePolicy=; __RequestVerificationToken=euCSIQSVhBHaWg7bnny15DBtkBv6S9cK4ge6BzXPvMI4BVyoHVXke_x7xofrYmGwEnVrZCf7BEIDVq2Bn-kPldFZcjzuC2bjZAF7o8teTiM1; .AspNet.ApplicationCookie=gA6H6Ej1tQ5aYXCTzs7TD0Snkx95ZRXkg2em5pr-nLIZDhMlu7a8BHddWke7OwocPQBYXIU1dKGpfcHXHHz1hnnwrFlRRnwFXRlH90F0M51Oebce4s4oJ51sOEvOtsxeo_sZrpmPXNYUhL1xMDdrF6TwRrqtKiOoqidgJk-QoYXOyLDP5uabZ1KAhDnxSp3rQr9M7gQcTdaKyc62vrU4Ts8qzj5i7oUz7ORoFPIeAB9eRKk-PqP7d81w2L8TQhCzSU-ObfvQqU621DGCb2S94MEz13N2pzQcRIzgCGPO7KnPPmQZhjI2NpoRqTImzQm6gwYxCmXBMWIIx3HpWexBGPfxqKViIJS0DVgvluXj3Sc4tSCD97DnOVwbobVJxvYXXtCR-BJulo5YyBf1jH-d5vkStKQPtZRGrQySvh8RRKTTgNY8MShMbn-lQxBa5lJDlsozRyPO__YeFZNbF86Oqr9xe9kD3ElJohMmmJIm_fZvVp5Fgv0RXyb3wN5Lcqw1FkeJbBQUiN9n6zCDlIuHppK5M86Bv8x2tKe5O9KjMsk&#xD;&#xA;Host: localhost:5789&#xD;&#xA;Referer: http://localhost:5789/UsersAdmin/Edit/79a9e321-fff6-492f-b354-c4697f391178&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36&#xD;&#xA;Origin: http://localhost:5789&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/642749131/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="324" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="642749131" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/642749131" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/UsersAdmin/Edit/79a9e321-fff6-492f-b354-c4697f391178" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\UsersAdmin\Edit\79a9e321-fff6-492f-b354-c4697f391178" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="5339" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/UsersAdmin/Edit/79a9e321-fff6-492f-b354-c4697f391178" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="5789" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/UsersAdmin/Edit/79a9e321-fff6-492f-b354-c4697f391178" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="324" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; glimpsePolicy=; __RequestVerificationToken=euCSIQSVhBHaWg7bnny15DBtkBv6S9cK4ge6BzXPvMI4BVyoHVXke_x7xofrYmGwEnVrZCf7BEIDVq2Bn-kPldFZcjzuC2bjZAF7o8teTiM1; .AspNet.ApplicationCookie=gA6H6Ej1tQ5aYXCTzs7TD0Snkx95ZRXkg2em5pr-nLIZDhMlu7a8BHddWke7OwocPQBYXIU1dKGpfcHXHHz1hnnwrFlRRnwFXRlH90F0M51Oebce4s4oJ51sOEvOtsxeo_sZrpmPXNYUhL1xMDdrF6TwRrqtKiOoqidgJk-QoYXOyLDP5uabZ1KAhDnxSp3rQr9M7gQcTdaKyc62vrU4Ts8qzj5i7oUz7ORoFPIeAB9eRKk-PqP7d81w2L8TQhCzSU-ObfvQqU621DGCb2S94MEz13N2pzQcRIzgCGPO7KnPPmQZhjI2NpoRqTImzQm6gwYxCmXBMWIIx3HpWexBGPfxqKViIJS0DVgvluXj3Sc4tSCD97DnOVwbobVJxvYXXtCR-BJulo5YyBf1jH-d5vkStKQPtZRGrQySvh8RRKTTgNY8MShMbn-lQxBa5lJDlsozRyPO__YeFZNbF86Oqr9xe9kD3ElJohMmmJIm_fZvVp5Fgv0RXyb3wN5Lcqw1FkeJbBQUiN9n6zCDlIuHppK5M86Bv8x2tKe5O9KjMsk" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:5789" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:5789/UsersAdmin/Edit/79a9e321-fff6-492f-b354-c4697f391178" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:5789" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="4yE4tr4B6I1lldVWHnqwarGxUELG7Epb49ddYjQsT1ORe-K8QjOfbJA6wNO__YM4RDx1O8Cl5vEJa3NSp62tkKEeZYHTOsUxoWCTCU11xsVpY6rT4fDrrQlXYZw5IlrHM3EFzlzVlo-QbKtl7AZYFw2" />
+    </item>
+    <item name="Id">
+      <value string="79a9e321-fff6-492f-b354-c4697f391178" />
+    </item>
+    <item name="FullName">
+      <value string="tufan Lamsal" />
+    </item>
+    <item name="Address">
+      <value string="Nepal" />
+    </item>
+    <item name="ContactNo">
+      <value string="444888" />
+    </item>
+    <item name="Email">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="SelectedRole">
+      <value string="Staff" />
+    </item>
+  </form>
+  <cookies>
+    <item name="glimpseOptions">
+      <value string="%7B%22glimpsePolicy%22%3Anull%7D" />
+    </item>
+    <item name="glimpsePolicy">
+      <value string="" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="euCSIQSVhBHaWg7bnny15DBtkBv6S9cK4ge6BzXPvMI4BVyoHVXke_x7xofrYmGwEnVrZCf7BEIDVq2Bn-kPldFZcjzuC2bjZAF7o8teTiM1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="gA6H6Ej1tQ5aYXCTzs7TD0Snkx95ZRXkg2em5pr-nLIZDhMlu7a8BHddWke7OwocPQBYXIU1dKGpfcHXHHz1hnnwrFlRRnwFXRlH90F0M51Oebce4s4oJ51sOEvOtsxeo_sZrpmPXNYUhL1xMDdrF6TwRrqtKiOoqidgJk-QoYXOyLDP5uabZ1KAhDnxSp3rQr9M7gQcTdaKyc62vrU4Ts8qzj5i7oUz7ORoFPIeAB9eRKk-PqP7d81w2L8TQhCzSU-ObfvQqU621DGCb2S94MEz13N2pzQcRIzgCGPO7KnPPmQZhjI2NpoRqTImzQm6gwYxCmXBMWIIx3HpWexBGPfxqKViIJS0DVgvluXj3Sc4tSCD97DnOVwbobVJxvYXXtCR-BJulo5YyBf1jH-d5vkStKQPtZRGrQySvh8RRKTTgNY8MShMbn-lQxBa5lJDlsozRyPO__YeFZNbF86Oqr9xe9kD3ElJohMmmJIm_fZvVp5Fgv0RXyb3wN5Lcqw1FkeJbBQUiN9n6zCDlIuHppK5M86Bv8x2tKe5O9KjMsk" />
+    </item>
+  </cookies>
+</error>

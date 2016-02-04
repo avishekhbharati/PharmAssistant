@@ -1,0 +1,60 @@
+﻿@model IEnumerable<IdentitySample.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="box box-body box-primary">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr class="dataTableHead">
+            <th>
+                Full Name
+            </th>
+            <th>
+                Email
+            </th>
+
+            <th>Email confirmed?</th>
+            <th>
+                Actions
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+
+        <td>
+            @*Html.DisplayFor(modelItem => item.EmailConfirmed)*@
+            @{if (item.EmailConfirmed == true)
+                  {
+                <span style="color:Green"> Active </span>
+                  }
+                  else
+                  {
+                <span style="color:red"> InActive </span>
+                  }
+
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+    }
+
+    </table>
+
+</div>

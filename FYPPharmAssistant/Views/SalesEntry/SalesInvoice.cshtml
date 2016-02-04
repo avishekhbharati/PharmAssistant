@@ -1,0 +1,155 @@
+﻿@model FYPPharmAssistant.Models.Sales
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<section class="invoice">
+    <!-- title row -->
+    <div class=" row">
+        <div class="col-xs-12">
+            <h2 class="page-header">
+                <i class="fa fa-globe"></i> Pharmacy Name, Inc.
+                <small class="pull-right">Date: @Model.Date </small>
+            </h2>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- info row -->
+    <div class="row invoice-info">
+        <div class="col-sm-4 invoice-col">
+            <address>
+                <strong>Invoice No : #@Model.ID </strong><br>
+                Address<br>
+                Phone: (804) 123-5432<br>
+                Email: xyz@email.com
+            </address>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    <!-- Table row -->
+    <div class="row">
+        <div class="col-xs-12 table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Item</th>
+                        <th>Qty</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @{int count2 = 1;}
+                    @foreach (var item in Model.SalesItems)
+                    {
+                        <tr>
+                            <td>
+                                @count2
+                            </td>
+                            <td>
+                                @item.Stock.Item.Name
+                            </td>
+                            <td>
+                                @item.Qty
+                            </td>
+                            <td>
+                                @item.Rate
+                            </td>
+                            <td>
+                                @item.Amount
+                            </td>
+                            @{count2++;}
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+        <!-- accepted payments column -->
+        <div class="col-xs-6">
+            <p class="lead">Summary</p>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th style="width:50%">Sub Total:</th>
+                            <td>Rs. @Model.Amount</td>
+                        </tr>
+                        <tr>
+                            <th>Tax</th>
+                            <td>Rs. @Model.Tax</td>
+                        </tr>
+                        <tr>
+                            <th>Discount:</th>
+                            <td>Rs. @Model.Discount</td>
+                        </tr>
+                        <tr>
+                            <th>Grand Total:</th>
+                            <td>Rs. @Model.GrandTotal</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-6">
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <div class="row">
+        <hr />
+
+        <div class="col-md-12" style="text-align:center">
+            <i>
+                If product is damaged. Please return within 3 days of sold date.<br />
+                Thank You !
+            </i>
+
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- this row will not appear when printing -->
+    <div class="row no-print">
+        <div class="col-xs-12">
+            <a href="#" onclick="window.print();" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print</a>
+            <a href="/SalesEntry/index" class="btn btn-warning"><i class="fa fa-angle-left"></i> Back to Sales Entry</a>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+

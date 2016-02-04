@@ -1,0 +1,242 @@
+﻿@model FYPPharmAssistant.Models.Sales
+
+@{
+    ViewBag.Title = "Sales Returns";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal amount = Model.Amount;
+    decimal discount = Model.Discount;
+    decimal discountPercent = (discount * 100) / amount;
+
+    int count = 0;
+}
+
+
+<div class="box box-primary">
+    <form id="form1"></form>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Sales Summary</h3>
+            <table class="table table-condensed">
+                <tr>
+                    <td>Sales ID:</td>
+                    <td>@Model.ID <input type="hidden" name="SalesID" value="@Model.ID" form="form1" /></td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td> @Model.Date </td>
+                </tr>
+                <tr>
+                    <td>Sub Total :</td>
+                    <td> @Model.Amount </td>
+                </tr>
+                <tr>
+                    <td>Discount % :</td>
+                    <td><span id="disPer">@discountPercent</span> </td>
+                </tr>
+                <tr>
+                    <td>Grand Total </td>
+                    <td>@Model.GrandTotal</td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="col-md-8"></div>       
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead class="dataTableHead">
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Stock ID</th>
+                        <th>Batch No</th>
+                        <th>Qty</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                        <th>Return Qty</th>
+                        <th>Associated amt</th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model.SalesItems)
+                {
+                    <tr>
+                        @{count++;}
+                        <td>@item.Stock.Item.Name </td>
+                        <td>@item.StockID <input type="hidden" name="StockID_@count" value="@item.StockID" form="form1" />  </td>
+                        <td>@item.Stock.BatchNo <input type="hidden" name="BatchNo_@count" value="@item.Stock.BatchNo" form="form1" />  </td>
+                        <td id="qty"><b>@item.Qty <input type="hidden" id="qty_@count" value="@item.Qty" class="actualQty" /> </b></td>
+                        <td id="rate" class="rate">@item.Rate <input type="hidden" name="Rate_@count" value="@item.Rate" form="form1" /> </td>
+                        <td>@item.Amount</td>
+                        <td><input type="text" tabindex="@count" style="width:60px" name="Qty_@count" id="retQty_@count" class="retQty" onblur="calculate(this, @count);" onkeyup="validateQty(@count);" form="form1" /></td>
+                        <td><input type="text" class="returnsAmt border-left" name="Amount_@count" readonly id="amtHere_@count" form="form1" /></td>
+                    </tr>
+                }
+                
+            </table>
+            <button type="button" style="background-color:#16a085; color:white" class="btn pull-right" data-toggle="modal" id="btnGenerateSummary" data-target="#myModal">
+                Generate return summary
+            </button>
+            
+        </div>
+    </div>
+    <hr />
+
+    <!-- Modal -->
+
+    <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Returns summary</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <table>
+                        <tr>
+                            <td><label>Sub Total</label></td>
+                            <td>
+                                @* <span id="returnSubTotal">0</span>*@
+                                <input type="text" class="borderless" readonly id="returnSubTotal" name="SubTotal" form="form1" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>Discount @@ @discountPercent % : </label></td>
+                            <td>
+                                @*<span id="discountAmount">0</span>*@
+                                <input type="text" class="borderless" readonly id="discountAmount" name="Discount" form="form1" />
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td><label>Net total :</label></td>
+                            <td>
+                                @*<span id="NetTotal"> 0</span>*@
+                                <input type="text" readonly class="borderless" id="NetTotal" name="NetTotal" form="form1" />
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" id="btnSalesReturn" class="btn btn-primary" value="Return Sales !" form="form1" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @****** Counter *****@
+    <input type="hidden" value="@count" name="counter" form="form1" />
+
+</div>
+
+
+
+<script>
+   
+    function calculate(obj, retQty) {
+        var rate = Number($.trim($(obj).closest('tr').children('td.rate').text()));
+        var qty = Number($.trim($(obj).closest('tr').children().children('input.retQty').val()));
+        var actualQty = Number($.trim($(obj).closest('tr').children().children('input.actualQty').val()));
+
+        
+        //calculate returns amount
+        var amount = rate * qty;
+        //set returns amount
+        $(obj).closest('tr').children().children('input.returnsAmt').val(amount);
+        
+        //Number($.trim($(obj).closest('tr').children().children('input.returnsAmt').val()));
+
+        //calculate subTotal
+        var tempSubTotal =  $.trim($('#returnSubTotal').html());
+        tempSubTotal = tempSubTotal + amount;
+
+
+        var discountPer = @discountPercent;
+        var discountAmt = discountPer *0.01*amount; //calculating discount amount from returns subtotal
+        var netTotal = amount - discountAmt ;
+
+        //set values in the respective fields
+    }
+    var netTotal=0;
+    $("#btnGenerateSummary").on('click', function(){
+        var temp_x = 0;
+        for(var i = 1; i<= @count; i++){
+            temp_x +=  Number($.trim($('#amtHere_'+i).val()));
+        }
+
+        
+            $('#returnSubTotal').val(temp_x);
+            var discountPer = @discountPercent;
+            var discountAmt = discountPer *0.01*temp_x; //calculating discount amount from returns subtotal
+            $('#discountAmount').val(discountAmt);
+
+             netTotal = temp_x - discountAmt ;
+            $('#NetTotal').val(netTotal); 
+                  
+
+    });
+
+    //allow numbers only
+    $('.retQty').keyup(function () { 
+        this.value = this.value.replace(/[^0-9\.]/g,'');
+    });
+
+
+    //POST data
+    $('#btnSalesReturn').on('click', function(){
+
+        if(netTotal == 0){
+            alert("Please enter qty to be returned.");
+            return false;
+        }
+        else{       
+            $.post('../../SalesReturn/ReturnItems', $('#form1').serialize(), function(){
+            
+            },'Json');
+        }
+    
+    });
+
+
+    //check the input amount 
+   
+
+    function validateQty(i){
+        var returnQty = Number($('#retQty_'+i).val());
+        var actualQty = Number($('#qty_'+i).val());
+
+        if(returnQty > actualQty){
+            alert('New alert : return qty greater!');
+            $('#retQty_'+i).val('');
+        }
+    }
+
+
+    //Calculate amount based on input qty
+    $('#getQty').keyup(function () {
+        var available = Number($('#getAvailability').val());
+        var quantity = Number($('#getQty').val());
+        var rate = Number($('#getRate').val());
+        if (quantity > available) {
+            $('#getQty').val(available);
+            quantity = available;
+        }
+        var amount = (quantity * rate).toFixed(2);
+        $('#getAmount').val(amount);
+    });
+
+</script>
+
+<style>
+    .borderless{
+        border:none;
+    }
+</style>

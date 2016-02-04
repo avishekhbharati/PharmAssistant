@@ -1,0 +1,95 @@
+﻿@model IdentitySample.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<div class="container row" style=" margin:auto">
+    <div class="col-lg-4"></div>
+    <div class=" container col-lg-4" style="  margin:auto">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
+                @Html.AntiForgeryToken()
+                <h2 style="text-align:center"><b>Pharm</b>ASSISTANT</h2>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" , placeholder = "Email"})
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" , placeholder="Password"})
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                
+                  
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                                <div class="form-group">
+                                    <div class="checkbox" style="margin-left:30px">
+                                        @Html.CheckBoxFor(m => m.RememberMe, new { @class =  "x"})
+                                        @Html.LabelFor(m => m.RememberMe )
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-md-1"></div>
+                    </div>              
+                
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <div class="pull-right" style="margin-right:20px;">
+                                <input type="submit" value="Log in" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">@Html.ActionLink("Forget your password?", "ForgotPassword")</div>
+                    <div class="col-md-3"></div>
+                </div>               
+            }
+        </section>
+        <hr />
+    </div>
+    <div class="col-lg-4"></div>
+</div>
+
+
+
+
+<link href="~/Scripts/AdminLTE/plugins/iCheck/square/blue.css" rel="stylesheet" />
+
+<script src="~/Scripts/AdminLTE/plugins/iCheck/icheck.min.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+}
+<script>
+    $(document).ready(function () {
+        $('.x').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+    });
+
+</script>

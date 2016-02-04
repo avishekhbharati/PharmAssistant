@@ -1,0 +1,115 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.Sales>
+@using Microsoft.AspNet.Identity
+@using IdentitySample.Models
+
+<table class="table datatable table-striped" id="datatable">
+    <thead>
+        <tr class="dataTableHead">
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                Bill No.
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tax)
+            </th>
+            <th>
+                Total
+            </th>
+            <th>
+                Transaction By
+                
+            </th>
+        </tr>
+    </thead>
+    @{decimal GrandTtl = 0;}
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+
+                @{
+                    decimal percent = item.Discount / item.Amount * 100;
+                }
+                <text>(@Math.Round(percent, 2) %)</text>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrandTotal)
+
+                @{GrandTtl += (decimal)item.GrandTotal;}
+            </td>
+            <td>
+                @*Html.DisplayFor(modelItem => item.UserID)*@
+
+                @{  ApplicationDbContext db = new ApplicationDbContext();
+                  var fullname = db.Users.Where(u => u.Id == item.UserID).First().FullName ?? "n/a";}
+                @fullname
+            </td>
+        </tr>
+        
+    }
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>Grand Total : </b></td>
+            <td><strong>@GrandTtl</strong> </td>
+            <td></td>
+    </tr>
+</tfoot>
+</table>
+
+<script>
+    $(document).ready(function () {
+        var table = $('#datatable').dataTable({
+            "paging": false,
+            "info": true,
+            "filter":false
+        });
+        var tableTools = new $.fn.dataTable.TableTools(table, {
+            'aButtons': [
+                {
+                    'sExtends': 'xls',
+                    'sButtonText': 'Save to Excel',
+                    'sFileName': 'DailySales.xls'
+                },
+                {
+                    'sExtends': 'print',
+                    'bShowAll': true,
+                },
+                {
+                    'sExtends': 'pdf',
+                    'bFooter': true,
+                    'bShowAll': true,
+                    'sPdfMessage': 'Your custom message would go here.'
+                },
+                'copy'
+            ],
+            'sSwfPath': 'http://cdn.datatables.net/tabletools/2.2.4/swf/copy_csv_xls_pdf.swf'
+        });
+        $(tableTools.fnContainer()).insertBefore('#datatable_wrapper');
+    });
+</script>

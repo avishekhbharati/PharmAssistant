@@ -1,0 +1,662 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FluentValidationNA</name>
+    </assembly>
+    <members>
+        <member name="T:FluentValidationNA.ArgumentValidation`1">
+            <summary>
+            Provides state information regarding the argument currently being validated.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+        </member>
+        <member name="T:FluentValidationNA.Validation">
+            <summary>
+            The base class for various validation state objects and place holders.  Provides support for the Fluent Validation library and not intended to be used directly.
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.ArgumentValidation`1.ParameterName">
+            <summary>
+            The name of the Parameter being validated.
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.ArgumentValidation`1.ArgumentValue">
+            <summary>
+            The value of the argument being validated.
+            </summary>
+        </member>
+        <member name="T:FluentValidationNA.AssumptionValidation">
+            <summary>
+            A place holder for assumption validations. Provides support for the Fluent Validation library and not intended to be used directly.
+            </summary>
+        </member>
+        <member name="T:FluentValidationNA.AssumptionValidationExtensions">
+            <summary>
+            Provides checks for assumption validations.
+            </summary>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.Assumptions(FluentValidationNA.IValidation)">
+            <summary>
+            Begins a new Assumptions validation.
+            </summary>
+            <param name="validation">Extensions placeholder. Can be <c>null</c>.</param>
+            <returns>A null place holder.</returns>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsNotNull``1(FluentValidationNA.AssumptionValidation,``0)">
+            <summary>
+            Checks that the evaluated result is not null.
+            </summary>
+            <typeparam name="T">The type to be evaluated.</typeparam>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="value">The value to be evaluated.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the value is <c>null</c>.</exception>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsNotNull``1(FluentValidationNA.AssumptionValidation,System.Nullable{``0})">
+            <summary>
+            Checks that the evaluated result is not null.
+            </summary>
+            <typeparam name="T">The type to be evaluated.</typeparam>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="value">The value to be evaluated.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the value is <c>null</c>.</exception>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsNull``1(FluentValidationNA.AssumptionValidation,``0)">
+            <summary>
+            Checks that the evaluated result is null.
+            </summary>
+            <typeparam name="T">The type to be evaluated.</typeparam>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="value">The value to be evaluated.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the value is not <c>null</c>.</exception>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsNull``1(FluentValidationNA.AssumptionValidation,System.Nullable{``0})">
+            <summary>
+            Checks that the evaluated result is null.
+            </summary>
+            <typeparam name="T">The type to be evaluated.</typeparam>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="value">The value to be evaluated.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the value is not <c>null</c>.</exception>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsNotDefault``1(FluentValidationNA.AssumptionValidation,``0)">
+            <summary>
+            Checks that the evaluated result is not its default value.
+            </summary>
+            <typeparam name="T">The type to be evaluated.</typeparam>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="value">The value to be evaluated.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the value is its default value.</exception>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsDefault``1(FluentValidationNA.AssumptionValidation,``0)">
+            <summary>
+            Checks that the evaluated result is its default value.
+            </summary>
+            <typeparam name="T">The type to be evaluated.</typeparam>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="value">The value to be evaluated.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the value is not its default value.</exception>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsNotNullOrEmpty(FluentValidationNA.AssumptionValidation,System.String)">
+            <summary>
+            Checks that the evaluated string is not null or empty.
+            </summary>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="value">The string to be evaluated.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the value is <c>null</c> or empty.</exception>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsNotNullOrEmpty``1(FluentValidationNA.AssumptionValidation,``0)">
+            <summary>
+            Checks that the evaluated enumerable is not null or empty.
+            </summary>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="enumerable">The enumerable to be evaluated.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the value is <c>null</c> or empty.</exception>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsType``1(FluentValidationNA.AssumptionValidation,System.Object)">
+            <summary>
+            Checks that the evaluated object is of type T.  If value is null, no check is performed.
+            </summary>
+            <typeparam name="T">The type that value must be a type of.</typeparam>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="value">The object to be evaluated.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the value is not of type T.</exception>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsFalse(FluentValidationNA.AssumptionValidation,System.Boolean,System.String)">
+            <summary>
+            Checks that the evaluated bool is false.
+            </summary>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="condition">An expression that must evaluate to false, or it will fail the validation.</param>
+            <param name="message">An optional message to throw with the exception.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the value is not false.</exception>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsFalse(FluentValidationNA.AssumptionValidation,System.Boolean)">
+            <summary>
+            Checks that the evaluated bool is false.
+            </summary>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="condition">An expression that must evaluate to false, or it will fail the validation.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the value is not false.</exception>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsTrue(FluentValidationNA.AssumptionValidation,System.Boolean,System.String)">
+            <summary>
+            Checks that the evaluated bool is true.
+            </summary>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="condition">An expression that must evaluate to true, or it will fail the validation.</param>
+            <param name="message">An optional message to throw with the exception.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the value is not true.</exception>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsTrue(FluentValidationNA.AssumptionValidation,System.Boolean)">
+            <summary>
+            Checks that the evaluated bool is true.
+            </summary>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="condition">An expression that must evaluate to true, or it will fail the validation.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the value is not true.</exception>
+        </member>
+        <member name="M:FluentValidationNA.AssumptionValidationExtensions.IsServicePresent``1(FluentValidationNA.AssumptionValidation,``0)">
+            <summary>
+            Checks that the evaluated service object is not null.
+            </summary>
+            <param name="validation">The current assumptions that is being validated.</param>
+            <param name="service">The service to verify existance.</param>
+            <returns>The current assumptions that is being validated.</returns>
+            <exception cref="T:FluentValidationNA.InternalErrorException">Thrown if the service is null.</exception>
+        </member>
+        <member name="T:FluentValidationNA.FailedToCheckValidationException">
+            <summary>
+            An exception that will be thrown at some point if Check() is not called on validations.
+            </summary>
+        </member>
+        <member name="M:FluentValidationNA.FailedToCheckValidationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FluentValidationNA.FailedToCheckValidationException"/> class.
+            </summary>
+        </member>
+        <member name="M:FluentValidationNA.FailedToCheckValidationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FluentValidationNA.FailedToCheckValidationException"/> class with the specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:FluentValidationNA.FailedToCheckValidationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FluentValidationNA.FailedToCheckValidationException"/> class with a specified error message 
+            and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException"> The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
+        </member>
+        <member name="M:FluentValidationNA.Helpers.TrimGenericWrapper(System.Type,System.Type)">
+            <summary>
+            Trims away a given surrounding type, returning just the generic type argument,
+            if the given type is in fact a generic type with just one type argument and
+            the generic type matches a given wrapper type.  Otherwise, it returns the original type.
+            </summary>
+            <param name="type">The type to trim, or return unmodified.</param>
+            <param name="wrapper">The SomeType&lt;&gt; generic type definition to trim away from <paramref name="type"/> if it is present.</param>
+            <returns><paramref name="type"/>, if it is not a generic type instance of <paramref name="wrapper"/>; otherwise the type argument.</returns>
+        </member>
+        <member name="T:FluentValidationNA.IDisposedObservable">
+            <summary>
+            A disposable object that also provides a safe way to query its disposed status.
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.IDisposedObservable.IsDisposed">
+            <summary>
+            Gets a value indicating whether this instance has been disposed.
+            </summary>
+        </member>
+        <member name="T:FluentValidationNA.InternalErrorException">
+            <summary>
+            The exception that is thrown when an Assumption Check fails.
+            </summary>
+        </member>
+        <member name="M:FluentValidationNA.InternalErrorException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FluentValidationNA.InternalErrorException"/> class.
+            </summary>
+        </member>
+        <member name="M:FluentValidationNA.InternalErrorException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FluentValidationNA.InternalErrorException"/> class.
+            </summary>
+            <param name="message">An optional message that will replace the default exception message.</param>
+        </member>
+        <member name="M:FluentValidationNA.InternalErrorException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FluentValidationNA.InternalErrorException"/> class.
+            </summary>
+            <param name="message">An optional message that will replace the default exception message.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="T:FluentValidationNA.StateValidation`1">
+            <summary>
+            Provides state information regarding the object currently being validated.
+            </summary>
+            <typeparam name="T">The type of the object being validated.</typeparam>
+        </member>
+        <member name="P:FluentValidationNA.StateValidation`1.Object">
+            <summary>
+            The object being validated.
+            </summary>
+        </member>
+        <member name="T:FluentValidationNA.StateValidationExtensions">
+            <summary>
+            Provides checks for state validations.
+            </summary>
+        </member>
+        <member name="M:FluentValidationNA.StateValidationExtensions.State``1(FluentValidationNA.IValidation,``0)">
+            <summary>
+            Begins a new State validation.
+            </summary>
+            <typeparam name="T">The type of the object being validated.</typeparam>
+            <param name="validation">Extensions placeholder. Can be <c>null</c>.</param>
+            <param name="objectToValidate">The object to be validated.</param>
+            <returns>A new <see cref="T:FluentValidationNA.StateValidation`1"/> instance.</returns>
+        </member>
+        <member name="M:FluentValidationNA.StateValidationExtensions.Operation``1(FluentValidationNA.StateValidation{``0},System.Predicate{``0},System.String)">
+            <summary>
+            Checks that the provided condition evaluated to True.  If not, an <see cref="T:System.InvalidOperationException"/> is thrown.
+            </summary>
+            <typeparam name="T">The type of the object being validated.</typeparam>
+            <param name="validation">The current object validation to check against.</param>
+            <param name="condition">An expression that must evaluate to true, or it will fail the validation.</param>
+            <param name="message">An optional message to throw with the exception.</param>
+            <returns>The current object validation to check against.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="condition"/> is null.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if <paramref name="condition"/> evaluated to false.</exception>
+        </member>
+        <member name="M:FluentValidationNA.StateValidationExtensions.Operation``1(FluentValidationNA.StateValidation{``0},System.Predicate{``0})">
+            <summary>
+            Checks that the provided condition evaluated to True.  If not, an <see cref="T:System.InvalidOperationException"/> is thrown.
+            </summary>
+            <typeparam name="T">The type of the object being validated.</typeparam>
+            <param name="validation">The current object validation to check against.</param>
+            <param name="condition">An expression that must evaluate to true, or it will fail the validation.</param>
+            <returns>The current object validation to check against.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="condition"/> is null.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if <paramref name="condition"/> evaluated to false.</exception>
+        </member>
+        <member name="M:FluentValidationNA.StateValidationExtensions.Operation``1(FluentValidationNA.StateValidation{``0},System.Predicate{``0},System.String,System.Object[])">
+            <summary>
+            Checks that the provided condition evaluated to True.  If not, an <see cref="T:System.InvalidOperationException"/> is thrown.
+            </summary>
+            <typeparam name="T">The type of the object being validated.</typeparam>
+            <param name="validation">The current object validation to check against.</param>
+            <param name="condition">An expression that must evaluate to true, or it will fail the validation.</param>
+            <param name="format"> A composite format string.</param>
+            <param name="args">An object array that contains zero or more objects to format.</param>
+            <returns>The current object validation to check against.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="condition"/> is null.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if <paramref name="condition"/> evaluated to false.</exception>
+        </member>
+        <member name="M:FluentValidationNA.StateValidationExtensions.IsNotDisposed``1(FluentValidationNA.StateValidation{``0},System.Predicate{``0},System.String)">
+            <summary>
+            Checks that the provided condition evaluated to True.  If not, an <see cref="T:System.ObjectDisposedException"/> is thrown.
+            </summary>
+            <typeparam name="T">The type of the object being validated.</typeparam>
+            <param name="validation">The current object validation to check against.</param>
+            <param name="condition">An expression that must evaluate to true, or it will fail the validation.</param>
+            <param name="message">An optional message to throw with the exception.</param>
+            <returns>The current object validation to check against.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="condition"/> is null.</exception>
+            <exception cref="T:System.ObjectDisposedException">Thrown if <paramref name="condition"/> evaluated to false.</exception>
+        </member>
+        <member name="M:FluentValidationNA.StateValidationExtensions.IsNotDisposed``1(FluentValidationNA.StateValidation{``0},System.Predicate{``0})">
+            <summary>
+            Checks that the provided condition evaluated to True.  If not, an <see cref="T:System.ObjectDisposedException"/> is thrown.
+            </summary>
+            <typeparam name="T">The type of the object being validated.</typeparam>
+            <param name="validation">The current object validation to check against.</param>
+            <param name="condition">An expression that must evaluate to true, or it will fail the validation.</param>
+            <returns>The current object validation to check against.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="condition"/> is null.</exception>
+            <exception cref="T:System.ObjectDisposedException">Thrown if <paramref name="condition"/> evaluated to false.</exception>
+        </member>
+        <member name="M:FluentValidationNA.StateValidationExtensions.IsNotDisposed``1(FluentValidationNA.StateValidation{``0},System.String)">
+            <summary>
+            Checks that the provided <see cref="T:FluentValidationNA.IDisposedObservable"/> is not disposed. If so, an <see cref="T:System.ObjectDisposedException"/> is thrown.
+            </summary>
+            <typeparam name="T">The type of the object being validated. Must implement <see cref="T:FluentValidationNA.IDisposedObservable"/>.</typeparam>
+            <param name="validation">The current object validation to check against.</param>
+            <param name="message">An optional message to throw with the exception.</param>
+            <returns>The current object validation to check against.</returns>
+            <exception cref="T:System.ObjectDisposedException">Thrown if the object is disposed.</exception>
+        </member>
+        <member name="M:FluentValidationNA.StateValidationExtensions.IsNotDisposed``1(FluentValidationNA.StateValidation{``0})">
+            <summary>
+            Checks that the provided <see cref="T:FluentValidationNA.IDisposedObservable"/> is not disposed. If so, an <see cref="T:System.ObjectDisposedException"/> is thrown.
+            </summary>
+            <typeparam name="T">The type of the object being validated. Must implement <see cref="T:FluentValidationNA.IDisposedObservable"/>.</typeparam>
+            <param name="validation">The current object validation to check against.</param>
+            <returns>The current object validation to check against.</returns>
+            <exception cref="T:System.ObjectDisposedException">Thrown if the object is disposed.</exception>
+        </member>
+        <member name="T:FluentValidationNA.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.Strings.Argument_ConvertStringFail">
+            <summary>
+              Looks up a localized string similar to &apos;{0}&apos; value must be convertible to type &apos;{1}&apos;..
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.Strings.Argument_EmptyEnumerable">
+            <summary>
+              Looks up a localized string similar to &apos;{0}&apos; must have one or more elements..
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.Strings.Argument_EmptyString">
+            <summary>
+              Looks up a localized string similar to &apos;String&apos; cannot be empty..
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.Strings.Argument_EmptyValue">
+            <summary>
+              Looks up a localized string similar to &apos;{0}&apos; was expected to not be empty..
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.Strings.Argument_NotEmptyValue">
+            <summary>
+              Looks up a localized string similar to &apos;{0}&apos; was expected to be empty..
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.Strings.Argument_NotNullValue">
+            <summary>
+              Looks up a localized string similar to &apos;{0}&apos; was expected to be null..
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.Strings.Argument_WhiteSpaceString">
+            <summary>
+              Looks up a localized string similar to &apos;String&apos; cannot contain only white space..
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.Strings.DefaultAggregateExceptionMessage">
+            <summary>
+              Looks up a localized string similar to Multiple Exceptions Occurred..
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.Strings.InternalExceptionMessage">
+            <summary>
+              Looks up a localized string similar to An internal error occurred. Please contact support..
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.Strings.ServiceMissing">
+            <summary>
+              Looks up a localized string similar to Cannot find an instance of the &apos;{0}&apos; service..
+            </summary>
+        </member>
+        <member name="P:FluentValidationNA.Strings.Validation_NoCheck">
+            <summary>
+              Looks up a localized string similar to A Validation.Check() was never called. Make sure all Validations end with Check().  The fail to call Check() did not necessarily occur at the location this exception was thrown..
+            </summary>
+        </member>
+        <member name="T:FluentValidationNA.IValidation">
+            <summary>
+            A place holder for subsequent validation checks.  Provides support for the Fluent Validation library and not intended to be used directly. 
+            </summary>
+        </member>
+        <member name="T:FluentValidationNA.Validate">
+            <summary>
+            The starting location for the Fluent Validation API.
+            </summary>
+        </member>
+        <member name="M:FluentValidationNA.Validate.Argument``1(``0,System.String)">
+            <summary>
+            Begins a new Argument validation.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="value">The value of the argument being validated.</param>
+            <param name="parameterName">The name of the parameter being validated. Optional.</param>
+            <returns>A new <see cref="T:FluentValidationNA.ArgumentValidation`1"/> instance.</returns>
+        </member>
+        <member name="M:FluentValidationNA.Validate.Argument``1(``0)">
+            <summary>
+            Begins a new Argument validation.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="value">The value of the argument being validated.</param>
+            <returns>A new <see cref="T:FluentValidationNA.ArgumentValidation`1"/> instance.</returns>
+        </member>
+        <member name="M:FluentValidationNA.Validate.State``1(``0)">
+            <summary>
+            Begins a new State validation.
+            </summary>
+            <typeparam name="T">The type of the object being validated.</typeparam>
+            <param name="objectToValidate">The object to be validated.</param>
+            <returns>A new <see cref="T:FluentValidationNA.StateValidation`1"/> instance.</returns>
+        </member>
+        <member name="M:FluentValidationNA.Validate.Assumptions">
+            <summary>
+            Begins a new Assumptions validation.
+            </summary>
+            <returns>A null place holder.</returns>
+        </member>
+        <member name="T:FluentValidationNA.ValidatedNotNullAttribute">
+            <summary>
+            Indicates to Code Analysis that a method validates a particular parameter.
+            </summary>
+        </member>
+        <member name="T:FluentValidationNA.ArgumentValidationExtensions">
+            <summary>
+            Provides checks for argument validations.
+            </summary>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.Argument``1(FluentValidationNA.IValidation,``0,System.String)">
+            <summary>
+            Begins a new Argument validation.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="validation">Extensions placeholder. Can be <c>null</c>.</param>
+            <param name="value">The value of the argument being validated.</param>
+            <param name="parameterName">The name of the parameter being validated. Optional.</param>
+            <returns>A new <see cref="T:FluentValidationNA.ArgumentValidation`1"/> instance.</returns>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.Argument``1(FluentValidationNA.IValidation,``0)">
+            <summary>
+            Begins a new Argument validation.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="validation">Extensions placeholder. Can be <c>null</c>.</param>
+            <param name="value">The value of the argument being validated.</param>
+            <returns>A new <see cref="T:FluentValidationNA.ArgumentValidation`1"/> instance.</returns>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.IsNotNull``1(FluentValidationNA.ArgumentValidation{``0})">
+            <summary>
+            Checks that the argument is not null.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="validation">The current argument that is being validated.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if the argument is <c>null</c>.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.IsNotNull``1(FluentValidationNA.ArgumentValidation{System.Nullable{``0}})">
+            <summary>
+            Checks that the argument is not null.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="validation">The current argument that is being validated.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if the argument is <c>null</c>.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.IsNull``1(FluentValidationNA.ArgumentValidation{``0})">
+            <summary>
+            Checks that the argument is null.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="validation">The current argument that is being validated.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if the argument is not <c>null</c>.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.IsNull``1(FluentValidationNA.ArgumentValidation{System.Nullable{``0}})">
+            <summary>
+            Checks that the argument is null.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="validation">The current argument that is being validated.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if the argument is not <c>null</c>.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.IsNotDefault``1(FluentValidationNA.ArgumentValidation{``0})">
+            <summary>
+            Checks that the argument is not its default value.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="validation">The current argument that is being validated.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if the argument is its default value.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.IsDefault``1(FluentValidationNA.ArgumentValidation{``0})">
+            <summary>
+            Checks that the argument is its default value.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="validation">The current argument that is being validated.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if the argument is not its default value.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.IsNotEmpty(FluentValidationNA.ArgumentValidation{System.String})">
+            <summary>
+            Checks that the string argument is not empty. If the argument is <c>null</c>, this check is ignored.
+            </summary>
+            <param name="validation">The current argument that is being validated.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if the string argument is empty.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.IsNotWhiteSpace(FluentValidationNA.ArgumentValidation{System.String})">
+            <summary>
+            Checks that the string argument does not contain only white space. If the argument is <c>null</c>, this check is ignored.
+            </summary>
+            <param name="validation">The current argument that is being validated.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if the string argument is empty or only white space.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.IsNotEmpty``1(FluentValidationNA.ArgumentValidation{``0})">
+            <summary>
+            Checks that the enumerable contains at least 1 element. If the argument is <c>null</c>, this check is ignored.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated. Must implement interface IEnumerable.</typeparam>
+            <param name="validation">The current argument that is being validated.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if the enumerable is empty.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.CanConvertTo``2(FluentValidationNA.ArgumentValidation{``0},``1@)">
+            <summary>
+            Checks that the argument can be converted to another type. 
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <typeparam name="T">The type to convert the argument value into.</typeparam>
+            <param name="validation">The current argument that is being validated.</param>
+            <param name="conversionResult">The resulting value of the conversion.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if the argument cannot be converted.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.IsInRange``1(FluentValidationNA.ArgumentValidation{``0},System.Predicate{``0},System.String)">
+            <summary>
+            Checks that the provided condition evaluated to True.  If not, an <see cref="T:System.ArgumentOutOfRangeException"/> is thrown.  If the argument is <c>null</c>, this check is ignored.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="validation">The current argument that is being validated.</param>
+            <param name="condition">An expression that must evaluate to true, or it will fail the validation.</param>
+            <param name="message">An optional message to throw with the exception.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="condition"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown if <paramref name="condition"/> evaluated to false.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.IsInRange``1(FluentValidationNA.ArgumentValidation{``0},System.Predicate{``0})">
+            <summary>
+            Checks that the provided condition evaluated to True.  If not, an <see cref="T:System.ArgumentOutOfRangeException"/> is thrown.  If the argument is <c>null</c>, this check is ignored.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="validation">The current argument that is being validated.</param>
+            <param name="condition">An expression that must evaluate to true, or it will fail the validation.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="condition"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown if <paramref name="condition"/> evaluated to false.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.IsInRange``1(FluentValidationNA.ArgumentValidation{``0},System.Predicate{``0},System.String,System.Object[])">
+            <summary>
+            Checks that the provided condition evaluated to True.  If not, an <see cref="T:System.ArgumentOutOfRangeException"/> is thrown.  If the argument is <c>null</c>, this check is ignored.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="validation">The current argument that is being validated.</param>
+            <param name="condition">An expression that must evaluate to true, or it will fail the validation.</param>
+            <param name="format"> A composite format string.</param>
+            <param name="args">An object array that contains zero or more objects to format.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="condition"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown if <paramref name="condition"/> evaluated to false.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.That``1(FluentValidationNA.ArgumentValidation{``0},System.Predicate{``0},System.String)">
+            <summary>
+            Checks that the provided condition evaluated to True.  If not, an <see cref="T:System.ArgumentException"/> is thrown.  If the argument is null, this check is ignored.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="validation">The current argument that is being validated.</param>
+            <param name="condition">An expression that must evaluate to true, or it will fail the validation.</param>
+            <param name="message">An optional message to throw with the exception.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="condition"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown if <paramref name="condition"/> evaluated to false.</exception>
+        </member>
+        <member name="M:FluentValidationNA.ArgumentValidationExtensions.That``1(FluentValidationNA.ArgumentValidation{``0},System.Predicate{``0},System.String,System.Object[])">
+            <summary>
+            Checks that the provided condition evaluated to True.  If not, an <see cref="T:System.ArgumentException"/> is thrown.  If the argument is null, this check is ignored.
+            </summary>
+            <typeparam name="TArg">The type of the argument being validated.</typeparam>
+            <param name="validation">The current argument that is being validated.</param>
+            <param name="condition">An expression that must evaluate to true, or it will fail the validation.</param>
+            <param name="format"> A composite format string.</param>
+            <param name="args">An object array that contains zero or more objects to format.</param>
+            <returns>The current argument that is being validated.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="condition"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown if <paramref name="condition"/> evaluated to false.</exception>
+        </member>
+        <member name="T:FluentValidationNA.ValidationExtensions">
+            <summary>
+            Provides common checks for all types of validations.
+            </summary>
+        </member>
+        <member name="M:FluentValidationNA.ValidationExtensions.Check(FluentValidationNA.Validation)">
+            <summary>
+            Performs the validation for the current validation. The first pending validation exception is thrown here.
+            </summary>
+            <param name="validation">The current validation.</param>
+            <returns>A <c>null</c> placeholder.</returns>
+        </member>
+        <member name="M:FluentValidationNA.ValidationExtensions.CheckAll(FluentValidationNA.Validation)">
+            <summary>
+            Performs the validation for the current validation. All pending validation exception are thrown here.
+            </summary>
+            <param name="validation">The current validation.</param>
+            <returns>A <c>null</c> placeholder.</returns>
+        </member>
+    </members>
+</doc>

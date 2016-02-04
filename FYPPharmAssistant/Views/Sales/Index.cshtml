@@ -1,0 +1,107 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.Sales>
+@using Microsoft.AspNet.Identity
+@using IdentitySample.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ApplicationDbContext db = new ApplicationDbContext();
+}
+
+<br />
+<div class="box box-primary box-body">
+    
+
+        <table class="table table-striped table-responsive" id="dtaTable">
+            <thead>
+                <tr class="dataTableHead">
+                    <th>
+                        @Html.DisplayNameFor(model => model.ID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Discount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tax)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GrandTotal)
+                    </th>
+                    <th>
+                        Sold by
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Discount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tax)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GrandTotal)
+                    </td>
+                    <td>
+                        @*Html.DisplayFor(modelItem => item.UserID)*@
+                        @{var fullname = db.Users.Where(u => u.Id == item.UserID).First().FullName ?? "n/a";}
+                        @fullname
+
+
+
+                    </td>
+
+
+                    <td>
+
+                        <div class="dropdown">
+                            <button style="background-color:#e74c3c; color:white; padding:2px 5px" class="btn btn-default btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Actions
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <li>@Html.ActionLink("Edit", "Edit", new { id = item.ID })</li>
+                                <li>@Html.ActionLink("Details", "Details", new { id = item.ID })</li>
+                                <li><a href="~/SalesEntry/SalesInvoice/@item.ID">Invoice</a></li>
+                                <li><a href="~/SalesReturn/Returns/@item.ID">Sales Return</a> </li>
+                            </ul>
+                        </div>
+                        
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+<br />
+<br />
+<script>
+    $(document).ready(function () {
+        $('#dtaTable').DataTable({
+            "order": [[1, "desc"]],
+           // "pageLength": 50,    //shows default page length to be 50
+            // "lengthMenu": [[10, 25, 50,100, -1], [10, 25, 50,100, "All"]]
+            "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]]
+        });
+    });
+    
+</script>

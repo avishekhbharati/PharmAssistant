@@ -1,0 +1,194 @@
+﻿<error errorId="b45ef213-9530-4365-bc3c-b76e35eea246" host="AVISHEKH" type="System.Web.Mvc.HttpAntiForgeryException" message="The provided anti-forgery token was meant for a different claims-based user than the current user." source="System.Web.WebPages" detail="System.Web.Mvc.HttpAntiForgeryException (0x80004005): The provided anti-forgery token was meant for a different claims-based user than the current user.&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.TokenValidator.ValidateTokens(HttpContextBase httpContext, IIdentity identity, AntiForgeryToken sessionToken, AntiForgeryToken fieldToken)&#xD;&#xA;   at System.Web.Helpers.AntiXsrf.AntiForgeryWorker.Validate(HttpContextBase httpContext)&#xD;&#xA;   at System.Web.Helpers.AntiForgery.Validate()&#xD;&#xA;   at System.Web.Mvc.ValidateAntiForgeryTokenAttribute.OnAuthorization(AuthorizationContext filterContext)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__19(AsyncCallback asyncCallback, Object asyncState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallBeginDelegate(AsyncCallback callback, Object callbackState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.Begin[TResult](AsyncCallback callback, Object state, BeginInvokeDelegate beginDelegate, EndInvokeDelegate`1 endDelegate, Object tag, Int32 timeout)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeAction(ControllerContext controllerContext, String actionName, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1c(AsyncCallback asyncCallback, Object asyncState, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallBeginDelegate(AsyncCallback callback, Object callbackState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.Begin[TState](AsyncCallback callback, Object callbackState, BeginInvokeDelegate`1 beginDelegate, EndInvokeVoidDelegate`1 endDelegate, TState invokeState, Object tag, Int32 timeout, SynchronizationContext callbackSyncContext)&#xD;&#xA;   at System.Web.Mvc.Controller.BeginExecuteCore(AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__14(AsyncCallback asyncCallback, Object callbackState, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallBeginDelegate(AsyncCallback callback, Object callbackState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.Begin[TState](AsyncCallback callback, Object callbackState, BeginInvokeDelegate`1 beginDelegate, EndInvokeVoidDelegate`1 endDelegate, TState invokeState, Object tag, Int32 timeout, SynchronizationContext callbackSyncContext)&#xD;&#xA;   at System.Web.Mvc.Controller.BeginExecute(RequestContext requestContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.BeginExecute(RequestContext requestContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__4(AsyncCallback asyncCallback, Object asyncState, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallBeginDelegate(AsyncCallback callback, Object callbackState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.Begin[TState](AsyncCallback callback, Object callbackState, BeginInvokeDelegate`1 beginDelegate, EndInvokeVoidDelegate`1 endDelegate, TState invokeState, Object tag, Int32 timeout, SynchronizationContext callbackSyncContext)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="ilimintrix@gmail.com" time="2015-12-29T15:41:54.5848716Z" statusCode="500">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:no-cache&#xD;&#xA;HTTP_CONNECTION:Keep-Alive&#xD;&#xA;HTTP_CONTENT_LENGTH:213&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html, application/xhtml+xml, image/jxr, */*&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en-CA;q=0.7,en;q=0.3&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=uPnEmEh0TX--MCulTOvIhADCquj83NSqfu1S9BLLWEFIiCQtHBAZRTs7k9ReKIq4K_ZNrXMjYX-Nq4RH10sZ5LAzdaSA63uU9A-B--zSXtY1; .AspNet.ApplicationCookie=KBZ3qFCIhok5LUT2hINnjiJvNp5iqvT8dVby_LL1rkslmB1phJRsS2SLKbIbNuoSL_2LhUofVFdqnwFuLODD8yd8NKHdVn1ErizW8razNdXCd5yKle9fGrPCxh9QM-7GvPxd86y1o66CaJNRLB02ynSpRnShVnXXlo9HH82wQn6Pc7JrmycQiP6nhEt4ztJKztHixKgwTeFG4RQ5gzd6jxtuYz8h-EgR2AWSYdqv4GOEXxIxA3yu-J6SdsdssCAd6SW4EDNJGzajQM6Yc4Rq8Bq6xZhBMfCTQsL8M2-P1SUaKk-ZqikgAzNPXtZRXNIekCqSWcsr7YfNlO9fzah4EOrEFtNIiciBWZdN444zyHeROCYhXr845vNeYWQFnVkhNcdil4cROK_nNkO4gV4X1Tp0iZedbe4p_UesgaIzFiTsfjj3GMrE54213goKgsxXenmT2fnSiE_7exfrNrnGKBv51fMFkFS33RcK5X3gE_Ewc_7PX07_GZDzsRVtzUzz5BOdm5y9F8P5k08nA261MQ&#xD;&#xA;HTTP_HOST:localhost:5789&#xD;&#xA;HTTP_REFERER:http://localhost:5789/Account/Login?ReturnUrl=%2FHome%2FIndex&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: no-cache&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Content-Length: 213&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html, application/xhtml+xml, image/jxr, */*&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US,en-CA;q=0.7,en;q=0.3&#xD;&#xA;Cookie: __RequestVerificationToken=uPnEmEh0TX--MCulTOvIhADCquj83NSqfu1S9BLLWEFIiCQtHBAZRTs7k9ReKIq4K_ZNrXMjYX-Nq4RH10sZ5LAzdaSA63uU9A-B--zSXtY1; .AspNet.ApplicationCookie=KBZ3qFCIhok5LUT2hINnjiJvNp5iqvT8dVby_LL1rkslmB1phJRsS2SLKbIbNuoSL_2LhUofVFdqnwFuLODD8yd8NKHdVn1ErizW8razNdXCd5yKle9fGrPCxh9QM-7GvPxd86y1o66CaJNRLB02ynSpRnShVnXXlo9HH82wQn6Pc7JrmycQiP6nhEt4ztJKztHixKgwTeFG4RQ5gzd6jxtuYz8h-EgR2AWSYdqv4GOEXxIxA3yu-J6SdsdssCAd6SW4EDNJGzajQM6Yc4Rq8Bq6xZhBMfCTQsL8M2-P1SUaKk-ZqikgAzNPXtZRXNIekCqSWcsr7YfNlO9fzah4EOrEFtNIiciBWZdN444zyHeROCYhXr845vNeYWQFnVkhNcdil4cROK_nNkO4gV4X1Tp0iZedbe4p_UesgaIzFiTsfjj3GMrE54213goKgsxXenmT2fnSiE_7exfrNrnGKBv51fMFkFS33RcK5X3gE_Ewc_7PX07_GZDzsRVtzUzz5BOdm5y9F8P5k08nA261MQ&#xD;&#xA;Host: localhost:5789&#xD;&#xA;Referer: http://localhost:5789/Account/Login?ReturnUrl=%2FHome%2FIndex&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/642749131/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="ilimintrix@gmail.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="ilimintrix@gmail.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="213" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="642749131" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/642749131" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="ReturnUrl=%2FHome%2FIndex" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="53379" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="5789" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="no-cache" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="Keep-Alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="213" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html, application/xhtml+xml, image/jxr, */*" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en-CA;q=0.7,en;q=0.3" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=uPnEmEh0TX--MCulTOvIhADCquj83NSqfu1S9BLLWEFIiCQtHBAZRTs7k9ReKIq4K_ZNrXMjYX-Nq4RH10sZ5LAzdaSA63uU9A-B--zSXtY1; .AspNet.ApplicationCookie=KBZ3qFCIhok5LUT2hINnjiJvNp5iqvT8dVby_LL1rkslmB1phJRsS2SLKbIbNuoSL_2LhUofVFdqnwFuLODD8yd8NKHdVn1ErizW8razNdXCd5yKle9fGrPCxh9QM-7GvPxd86y1o66CaJNRLB02ynSpRnShVnXXlo9HH82wQn6Pc7JrmycQiP6nhEt4ztJKztHixKgwTeFG4RQ5gzd6jxtuYz8h-EgR2AWSYdqv4GOEXxIxA3yu-J6SdsdssCAd6SW4EDNJGzajQM6Yc4Rq8Bq6xZhBMfCTQsL8M2-P1SUaKk-ZqikgAzNPXtZRXNIekCqSWcsr7YfNlO9fzah4EOrEFtNIiciBWZdN444zyHeROCYhXr845vNeYWQFnVkhNcdil4cROK_nNkO4gV4X1Tp0iZedbe4p_UesgaIzFiTsfjj3GMrE54213goKgsxXenmT2fnSiE_7exfrNrnGKBv51fMFkFS33RcK5X3gE_Ewc_7PX07_GZDzsRVtzUzz5BOdm5y9F8P5k08nA261MQ" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:5789" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:5789/Account/Login?ReturnUrl=%2FHome%2FIndex" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240" />
+    </item>
+  </serverVariables>
+  <queryString>
+    <item name="ReturnUrl">
+      <value string="/Home/Index" />
+    </item>
+  </queryString>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="F5p8VY-ompVMN9Y7dclok6U9evCmrnocvSS2z5PkxhiklAFEHyx1UPlpTn88Psm-CUSjY9E6YCfz-FZ66TmO44maXg8QO88wtNalqTTBWAY1" />
+    </item>
+    <item name="Email">
+      <value string="ilimintrix@gmail.com" />
+    </item>
+    <item name="Password">
+      <value string="aaaaaa" />
+    </item>
+    <item name="RememberMe">
+      <value string="true" />
+      <value string="false" />
+    </item>
+  </form>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="uPnEmEh0TX--MCulTOvIhADCquj83NSqfu1S9BLLWEFIiCQtHBAZRTs7k9ReKIq4K_ZNrXMjYX-Nq4RH10sZ5LAzdaSA63uU9A-B--zSXtY1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="KBZ3qFCIhok5LUT2hINnjiJvNp5iqvT8dVby_LL1rkslmB1phJRsS2SLKbIbNuoSL_2LhUofVFdqnwFuLODD8yd8NKHdVn1ErizW8razNdXCd5yKle9fGrPCxh9QM-7GvPxd86y1o66CaJNRLB02ynSpRnShVnXXlo9HH82wQn6Pc7JrmycQiP6nhEt4ztJKztHixKgwTeFG4RQ5gzd6jxtuYz8h-EgR2AWSYdqv4GOEXxIxA3yu-J6SdsdssCAd6SW4EDNJGzajQM6Yc4Rq8Bq6xZhBMfCTQsL8M2-P1SUaKk-ZqikgAzNPXtZRXNIekCqSWcsr7YfNlO9fzah4EOrEFtNIiciBWZdN444zyHeROCYhXr845vNeYWQFnVkhNcdil4cROK_nNkO4gV4X1Tp0iZedbe4p_UesgaIzFiTsfjj3GMrE54213goKgsxXenmT2fnSiE_7exfrNrnGKBv51fMFkFS33RcK5X3gE_Ewc_7PX07_GZDzsRVtzUzz5BOdm5y9F8P5k08nA261MQ" />
+    </item>
+  </cookies>
+</error>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="MyConnectionString-Web.config Connection String" description="MyConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=AVISHEKH\SQLEXPRESS; Initial Catalog= NewDb_FYPPharmAssistant; Integrated Security=SSPI;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\islington\\MyFYP\\VisualStudio\\FYPPharmAssistant\\FYPPharmAssistant\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyConnectionString']/@connectionString" />
+  </parameter>
+  <parameter name="MyConnectionString_DatabasePublish-Web.config Connection String" description="MyConnectionString_DatabasePublish Connection String used in web.config by the application to access the database." defaultValue="MyConnectionString_DatabasePublish.ConnetionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\islington\\MyFYP\\VisualStudio\\FYPPharmAssistant\\FYPPharmAssistant\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyConnectionString_DatabasePublish']/@connectionString" />
+  </parameter>
+</parameters>

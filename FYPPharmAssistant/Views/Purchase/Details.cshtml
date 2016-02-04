@@ -1,0 +1,96 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.PurchaseModel.PurchaseItem>
+
+@{
+    ViewBag.Title = "Purchased Items";
+}
+
+<div class="box box-primary box-body">
+
+    <dl class="dl-horizontal">   
+        
+        <dt>Purchase ID</dt>
+        <dd>@Model.First().PurchaseID</dd>
+        <dt>Date</dt>
+        <dd>@Model.First().Purchase.Date</dd>
+        <dt>Description</dt>
+        <dd>@Model.First().Purchase.Description</dd>
+   
+    </dl>
+
+    <table class="table table-striped" id="dtaTable">
+        <thead>
+            <tr class="dataTableHead">
+                <th>
+                    @Html.DisplayNameFor(model => model.PurchaseID)
+                </th>
+                <th>
+                    Item ID
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Item.Name)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Batch)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Qty)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CostPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SellingPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Expiry)
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+    {        
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Batch)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CostPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SellingPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Expiry)
+                </td>
+            </tr>
+    }
+
+    </table>
+   
+</div>
+
+
+<script>
+    /*
+    $(document).ready(function () {
+        $('#dtaTable').DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true
+        });
+    });*/
+
+</script>

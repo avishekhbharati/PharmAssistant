@@ -1,0 +1,115 @@
+﻿@model IEnumerable<FYPPharmAssistant.ViewModel.MonthTotalVM>
+
+@{
+    ViewBag.Title = "YearlySalesByMonth";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    System.Globalization.DateTimeFormatInfo mfi = new System.Globalization.DateTimeFormatInfo();
+}
+
+<div class=" box box-primary box-body">
+    <div class="row">
+        <div class="col-md-9">
+            <label class="pull-right">Select Year </label>
+        </div>
+        <div class="col-md-3">
+            <form action="YearlySalesByMonth" method="post">
+                
+                <select name="year" class="form-control  inline" style="width:100px">
+                    <option value="">--Year--</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                </select>
+                <input type="submit" class="btn btn-primary  inline" value="Display" />
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class=" box box-primary box-body">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-responsive table-condensed" id="datatable">
+                <thead>
+                    <tr class="dataTableHead">
+                        <th>
+                            Year
+                        </th>
+                        <th>
+                            Month
+                        </th>
+                        <th>
+                            Sales
+                        </th>
+                    </tr>
+                </thead>
+                @{decimal _Total = 0;}
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Year
+                        </td>
+                        <td>
+                            @mfi.GetMonthName(item.Month)
+                        </td>
+                        <td>
+                            @item.GrandTotal
+                            @{ _Total += item.GrandTotal;}
+                        </td>
+                    </tr>
+                }
+                <tfoot>
+                    <tr class="tfoot">
+                        <td></td>
+                        <td><h4>Total yearly Sales :</h4> </td>
+                        <td><h4>@_Total</h4></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+         var table = $('#datatable').dataTable({
+            "paging": false,
+            "info": true,
+            "filter":false
+        });
+
+        var tableTools = new $.fn.dataTable.TableTools(table, {
+            'aButtons': [
+                {
+                    'sExtends': 'xls',
+                    'sButtonText': 'Save to Excel',
+                    'sFileName': 'DailySales.xls'
+                },
+                {
+                    'sExtends': 'print',
+                    'bShowAll': true,
+                },
+                {
+                    'sExtends': 'pdf',
+                    'bFooter': true,
+                    'bShowAll': true,
+                    'sPdfMessage': 'Your custom message would go here.'
+                },
+                'copy'
+            ],
+            'sSwfPath': 'http://cdn.datatables.net/tabletools/2.2.4/swf/copy_csv_xls_pdf.swf'
+        });
+
+        $(tableTools.fnContainer()).insertBefore('#datatable_wrapper');
+
+    });
+
+</script>
+
+

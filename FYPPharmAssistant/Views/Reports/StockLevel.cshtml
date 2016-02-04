@@ -1,0 +1,61 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.InventoryModel.Stock>
+<div style="background-color:#ffffff; border:1px solid grey">
+    <form action="StockLevel" method="post">
+        <fieldset>
+            <legend>Filter</legend>
+            <label>Select:</label>
+            <select name="option">
+                <option value="0">--Select one--</option>
+                <option value="BelowMin">Below minimum</option>
+                <option value="UnSold">Unsold </option>
+            </select>
+            <br />
+            <label>Batch: </label><input type="text" name="batch" placeholder="enter batch number" /> <br />
+            <label>Name: </label> <input type="text" name="name" placeholder="enter name" /><br />
+            <input type="submit" value="submit" />
+        </fieldset>
+    </form>
+</div>
+    
+<table class="table">
+    <tr>
+        <th>
+            Stock ID
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Item.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BatchNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpiryDate)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.ID
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BatchNo)
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.Qty)
+        </td>       
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpiryDate)
+        </td>   
+        
+    </tr>
+}
+
+</table>

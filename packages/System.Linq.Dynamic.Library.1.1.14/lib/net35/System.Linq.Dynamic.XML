@@ -1,0 +1,429 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.Linq.Dynamic</name>
+    </assembly>
+    <members>
+        <member name="T:System.Linq.Dynamic.BasicQueryable">
+            <summary>
+            Provides a set of static (Shared in Visual Basic) methods for querying data 
+            structures that implement <see cref="T:System.Linq.IQueryable"/>. It adds basic methods to <see cref="T:System.Linq.IQueryable"/> that would
+            normally require <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.BasicQueryable.Take(System.Linq.IQueryable,System.Int32)">
+            <summary>
+            Returns a specified number of contiguous elements from the start of a sequence.
+            </summary>
+            <param name="source">The sequence to return elements from.</param>
+            <param name="count">The number of elements to return.</param>
+            <returns>A <see cref="T:System.Linq.IQueryable"/> that contains the specified number of elements from the start of source.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.BasicQueryable.Skip(System.Linq.IQueryable,System.Int32)">
+            <summary>
+            Bypasses a specified number of elements in a sequence and then returns the remaining elements.
+            </summary>
+            <param name="source">A <see cref="T:System.Linq.IQueryable"/> to return elements from.</param>
+            <param name="count">The number of elements to skip before returning the remaining elements.</param>
+            <returns>A <see cref="T:System.Linq.IQueryable"/> that contains elements that occur after the specified index in the input sequence.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.BasicQueryable.Reverse(System.Linq.IQueryable)">
+            <summary>
+            Inverts the order of the elements in a sequence.
+            </summary>
+            <param name="source">A sequence of values to reverse.</param>
+            <returns>A <see cref="T:System.Linq.IQueryable"/> whose elements correspond to those of the input sequence in reverse order.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.BasicQueryable.Any(System.Linq.IQueryable)">
+            <summary>
+            Determines whether a sequence contains any elements.
+            </summary>
+            <param name="source">A sequence to check for being empty.</param>
+            <returns>true if the source sequence contains any elements; otherwise, false.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.BasicQueryable.Count(System.Linq.IQueryable)">
+            <summary>
+            Returns the number of elements in a sequence.
+            </summary>
+            <param name="source">The <see cref="T:System.Linq.IQueryable"/> that contains the elements to be counted.</param>
+            <returns>The number of elements in the input sequence.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.BasicQueryable.Sum(System.Linq.IQueryable)">
+            <summary>
+            Computes the sum of a sequence of numeric values.
+            </summary>
+            <param name="source">A sequence of numeric values to calculate the sum of.</param>
+            <returns>The sum of the values in the sequence.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.BasicQueryable.Single(System.Linq.IQueryable)">
+            <summary>
+            Returns the only element of a sequence, and throws an exception if there
+            is not exactly one element in the sequence.
+            </summary>
+            <param name="source">A <see cref="T:System.Linq.IQueryable"/> to return the single element of.</param>
+            <returns>The single element of the input sequence.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.BasicQueryable.SingleOrDefault(System.Linq.IQueryable)">
+            <summary>
+            Returns the only element of a sequence, or a default value if the sequence
+            is empty; this method throws an exception if there is more than one element
+            in the sequence.
+            </summary>
+            <param name="source">A <see cref="T:System.Linq.IQueryable"/> to return the single element of.</param>
+            <returns>The single element of the input sequence, or default(TSource) if the sequence contains no elements.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.BasicQueryable.First(System.Linq.IQueryable)">
+            <summary>
+            Returns the first element of a sequence.
+            </summary>
+            <param name="source">The <see cref="T:System.Linq.IQueryable"/> to return the first element of.</param>
+            <returns>The first element in source.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.BasicQueryable.FirstOrDefault(System.Linq.IQueryable)">
+            <summary>
+            Returns the first element of a sequence, or a default value if the sequence contains no elements.
+            </summary>
+            <param name="source">The <see cref="T:System.Linq.IQueryable"/> to return the first element of.</param>
+            <returns>default(TSource) if source is empty; otherwise, the first element in source.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.BasicQueryable.Last(System.Linq.IQueryable)">
+            <summary>
+            Returns the last element of a sequence.
+            </summary>
+            <param name="source">The <see cref="T:System.Linq.IQueryable"/> to return the last element of.</param>
+            <returns>The last element in source.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.BasicQueryable.LastOrDefault(System.Linq.IQueryable)">
+            <summary>
+            Returns the last element of a sequence, or a default value if the sequence contains no elements.
+            </summary>
+            <param name="source">The <see cref="T:System.Linq.IQueryable"/> to return the last element of.</param>
+            <returns>default(TSource) if source is empty; otherwise, the last element in source.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.BasicQueryable.AsEnumerable(System.Linq.IQueryable)">
+            <summary>
+            Returns the input typed as <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:System.Object"/>./&gt;
+            </summary>
+            <param name="source">The sequence to type as <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:System.Object"/>.</param>
+            <returns>The input typed as <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:System.Object"/>.</returns>
+        </member>
+        <member name="T:System.Linq.Dynamic.DynamicClass">
+            <summary>
+            Provides a base class for dynamic objects created by using the <see cref="M:System.Linq.Dynamic.DynamicQueryable.Select(System.Linq.IQueryable,System.String,System.Object[])"/> 
+            method. For internal use only.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicClass.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="T:System.Linq.Dynamic.DynamicLinqTypeAttribute">
+            <summary>
+            Indicates to Dynamic Linq to consider the Type as a valid dynamic linq type. Use only when
+            <see cref="T:System.Linq.Dynamic.GlobalConfig"/>.CustomTypeProvider is set to <see cref="T:System.Linq.Dynamic.DefaultDynamicLinqCustomTypeProvider"/>.
+            </summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.DefaultDynamicLinqCustomTypeProvider">
+            <summary>
+            The default <see cref="T:System.Linq.Dynamic.IDynamicLinkCustomTypeProvider"/>. Scans the current <see cref="T:System.AppDomain"/> for all types marked with 
+            <see cref="T:System.Linq.Dynamic.DynamicLinqTypeAttribute"/>, and adds them as custom Dynamic Link types.
+            </summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.IDynamicLinkCustomTypeProvider">
+            <summary>
+            Interface for providing custom types for Dynamic Linq.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.IDynamicLinkCustomTypeProvider.GetCustomTypes">
+            <summary>
+            Returns a list of custom types that Dynamic Linq will understand.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.DefaultDynamicLinqCustomTypeProvider.GetCustomTypes">
+            <summary>
+            Returns a list of custom types that Dynamic Linq will understand.
+            </summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.DynamicQueryable">
+            <summary>
+            Provides a set of static (Shared in Visual Basic) methods for querying data 
+            structures that implement <see cref="T:System.Linq.IQueryable"/>. It allows dynamic string based querying. 
+            Very handy when, at compile time, you don't know the type of queries that will be generated, 
+            or when downstream components only return column names to sort and filter by.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.Where``1(System.Linq.IQueryable{``0},System.String,System.Object[])">
+            <summary>
+            Filters a sequence of values based on a predicate.
+            </summary>
+            <typeparam name="TSource">The type of the elements of source.</typeparam>
+            <param name="source">A <see cref="T:System.Linq.IQueryable`1"/> to filter.</param>
+            <param name="predicate">An expression string to test each element for a condition.</param>
+            <param name="args">An object array that contains zero or more objects to insert into the predicate as parameters.  Similiar to the way String.Format formats strings.</param>
+            <returns>A <see cref="T:System.Linq.IQueryable`1"/> that contains elements from the input sequence that satisfy the condition specified by predicate.</returns>
+            <example>
+            <code>
+            var result1 = list.Where("NumberProperty=1");
+            var result2 = list.Where("NumberProperty=@0", 1);
+            var result3 = list.Where("NumberProperty=@0", SomeIntValue);
+            </code>
+            </example>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.Where(System.Linq.IQueryable,System.String,System.Object[])">
+            <summary>
+            Filters a sequence of values based on a predicate.
+            </summary>
+            <param name="source">A <see cref="T:System.Linq.IQueryable"/> to filter.</param>
+            <param name="predicate">An expression string to test each element for a condition.</param>
+            <param name="args">An object array that contains zero or more objects to insert into the predicate as parameters.  Similiar to the way String.Format formats strings.</param>
+            <returns>A <see cref="T:System.Linq.IQueryable"/> that contains elements from the input sequence that satisfy the condition specified by predicate.</returns>
+            <example>
+            <code>
+            var result1 = list.Where("NumberProperty=1");
+            var result2 = list.Where("NumberProperty=@0", 1);
+            var result3 = list.Where("NumberProperty=@0", SomeIntValue);
+            </code>
+            </example>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.Select(System.Linq.IQueryable,System.String,System.Object[])">
+            <summary>
+            Projects each element of a sequence into a new form.
+            </summary>
+            <param name="source">A sequence of values to project.</param>
+            <param name="selector">A projection string expression to apply to each element.</param>
+            <param name="args">An object array that contains zero or more objects to insert into the predicate as parameters.  Similiar to the way String.Format formats strings.</param>
+            <returns>An <see cref="T:System.Linq.IQueryable"/> whose elements are the result of invoking a projection string on each element of source.</returns>
+            <example>
+            <code>
+            var singleField = qry.Select("StringProperty");
+            var dynamicObject = qry.Select("new (StringProperty1, StringProperty2 as OtherStringPropertyName)");
+            </code>
+            </example>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.SelectMany(System.Linq.IQueryable,System.String,System.Object[])">
+            <summary>
+            Projects each element of a sequence to an <see cref="T:System.Linq.IQueryable"/> and combines the 
+            resulting sequences into one sequence.
+            </summary>
+            <param name="source">A sequence of values to project.</param>
+            <param name="selector">A projection string expression to apply to each element.</param>
+            <param name="args">An object array that contains zero or more objects to insert into the predicate as parameters.  Similiar to the way String.Format formats strings.</param>
+            <returns>An <see cref="T:System.Linq.IQueryable"/> whose elements are the result of invoking a one-to-many projection function on each element of the input sequence.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.OrderBy``1(System.Linq.IQueryable{``0},System.String,System.Object[])">
+            <summary>
+            Sorts the elements of a sequence in ascending or descending order according to a key.
+            </summary>
+            <typeparam name="TSource">The type of the elements of source.</typeparam>
+            <param name="source">A sequence of values to order.</param>
+            <param name="ordering">An expression string to indicate values to order by.</param>
+            <param name="args">An object array that contains zero or more objects to insert into the predicate as parameters.  Similiar to the way String.Format formats strings.</param>
+            <returns>A <see cref="T:System.Linq.IQueryable`1"/> whose elements are sorted according to the specified <paramref name="ordering"/>.</returns>
+            <example>
+            <code>
+            var result = list.OrderBy("NumberProperty, StringProperty DESC");
+            </code>
+            </example>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.OrderBy(System.Linq.IQueryable,System.String,System.Object[])">
+            <summary>
+            Sorts the elements of a sequence in ascending or decsending order according to a key.
+            </summary>
+            <param name="source">A sequence of values to order.</param>
+            <param name="ordering">An expression string to indicate values to order by.</param>
+            <param name="args">An object array that contains zero or more objects to insert into the predicate as parameters.  Similiar to the way String.Format formats strings.</param>
+            <returns>A <see cref="T:System.Linq.IQueryable"/> whose elements are sorted according to the specified <paramref name="ordering"/>.</returns>
+            <example>
+            <code>
+            var result = list.OrderBy("NumberProperty, StringProperty DESC");
+            </code>
+            </example>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.GroupBy(System.Linq.IQueryable,System.String,System.String,System.Object[])">
+            <summary>
+            Groups the elements of a sequence according to a specified key string function 
+            and creates a result value from each group and its key.
+            </summary>
+            <param name="source">A <see cref="T:System.Linq.IQueryable"/> whose elements to group.</param>
+            <param name="keySelector">A string expression to specify the key for each element.</param>
+            <param name="resultSelector">A string expression to specify a result value from each group.</param>
+            <param name="args">An object array that contains zero or more objects to insert into the predicate as parameters.  Similiar to the way String.Format formats strings.</param>
+            <returns>A <see cref="T:System.Linq.IQueryable"/> where each element represents a projection over a group and its key.</returns>
+            <example>
+            <code>
+            var groupResult1 = qry.GroupBy("NumberPropertyAsKey", "StringProperty");
+            var groupResult2 = qry.GroupBy("new (NumberPropertyAsKey, StringPropertyAsKey)", "new (StringProperty1, StringProperty2)");
+            </code>
+            </example>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.GroupBy(System.Linq.IQueryable,System.String,System.String)">
+            <summary>
+            Groups the elements of a sequence according to a specified key string function 
+            and creates a result value from each group and its key.
+            </summary>
+            <param name="source">A <see cref="T:System.Linq.IQueryable"/> whose elements to group.</param>
+            <param name="keySelector">A string expression to specify the key for each element.</param>
+            <param name="resultSelector">A string expression to specify a result value from each group.</param>
+            <returns>A <see cref="T:System.Linq.IQueryable"/> where each element represents a projection over a group and its key.</returns>
+            <example>
+            <code>
+            var groupResult1 = qry.GroupBy("NumberPropertyAsKey", "StringProperty");
+            var groupResult2 = qry.GroupBy("new (NumberPropertyAsKey, StringPropertyAsKey)", "new (StringProperty1, StringProperty2)");
+            </code>
+            </example>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.GroupBy(System.Linq.IQueryable,System.String,System.Object[])">
+            <summary>
+            Groups the elements of a sequence according to a specified key string function 
+            and creates a result value from each group and its key.
+            </summary>
+            <param name="source">A <see cref="T:System.Linq.IQueryable"/> whose elements to group.</param>
+            <param name="keySelector">A string expression to specify the key for each element.</param>
+            <param name="args">An object array that contains zero or more objects to insert into the predicate as parameters.  Similiar to the way String.Format formats strings.</param>
+            <returns>A <see cref="T:System.Linq.IQueryable"/> where each element represents a projection over a group and its key.</returns>
+            <example>
+            <code>
+            var groupResult1 = qry.GroupBy("NumberPropertyAsKey");
+            var groupResult2 = qry.GroupBy("new (NumberPropertyAsKey, StringPropertyAsKey)");
+            </code>
+            </example>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.GroupBy(System.Linq.IQueryable,System.String)">
+            <summary>
+            Groups the elements of a sequence according to a specified key string function 
+            and creates a result value from each group and its key.
+            </summary>
+            <param name="source">A <see cref="T:System.Linq.IQueryable"/> whose elements to group.</param>
+            <param name="keySelector">A string expression to specify the key for each element.</param>
+            <returns>A <see cref="T:System.Linq.IQueryable"/> where each element represents a projection over a group and its key.</returns>
+            <example>
+            <code>
+            var groupResult1 = qry.GroupBy("NumberPropertyAsKey");
+            var groupResult2 = qry.GroupBy("new (NumberPropertyAsKey, StringPropertyAsKey)");
+            </code>
+            </example>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.GroupByMany``1(System.Collections.Generic.IEnumerable{``0},System.String[])">
+            <summary>
+            Groups the elements of a sequence according to multiple specified key string functions 
+            and creates a result value from each group (and subgroups) and its key.
+            </summary>
+            <typeparam name="TElement"></typeparam>
+            <param name="source">A <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+            <param name="keySelectors"><see cref="T:System.String"/> expressions to specify the keys for each element.</param>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerable`1"/> of type <see cref="T:System.Linq.Dynamic.GroupResult"/> where each element represents a projection over a group, its key, and its subgroups.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.GroupByMany``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Object}[])">
+            <summary>
+            Groups the elements of a sequence according to multiple specified key functions 
+            and creates a result value from each group (and subgroups) and its key.
+            </summary>
+            <typeparam name="TElement"></typeparam>
+            <param name="source">A <see cref="T:System.Collections.Generic.IEnumerable`1"/> whose elements to group.</param>
+            <param name="keySelectors">Lambda expressions to specify the keys for each element.</param>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerable`1"/> of type <see cref="T:System.Linq.Dynamic.GroupResult"/> where each element represents a projection over a group, its key, and its subgroups.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.Join(System.Linq.IQueryable,System.Collections.IEnumerable,System.String,System.String,System.String,System.Object[])">
+            <summary>
+            Correlates the elements of two sequences based on matching keys. The default equality comparer is used to compare keys.
+            </summary>
+            <param name="outer">The first sequence to join.</param>
+            <param name="inner">The sequence to join to the first sequence.</param>
+            <param name="outerKeySelector">A dynamic function to extract the join key from each element of the first sequence.</param>
+            <param name="innerKeySelector">A dynamic function to extract the join key from each element of the second sequence.</param>
+            <param name="resultSelector">A dynamic function to create a result element from two matching elements.</param>
+            <param name="args">An object array that contains zero or more objects to insert into the predicates as parameters.  Similiar to the way String.Format formats strings.</param>
+            <returns>An <see cref="T:System.Linq.IQueryable"/> obtained by performing an inner join on two sequences.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.DynamicQueryable.Join``1(System.Linq.IQueryable{``0},System.Collections.Generic.IEnumerable{``0},System.String,System.String,System.String,System.Object[])">
+            <summary>
+            Correlates the elements of two sequences based on matching keys. The default equality comparer is used to compare keys.
+            </summary>
+            <typeparam name="TElement">The type of the elements of both sequences, and the result.</typeparam>
+            <param name="outer">The first sequence to join.</param>
+            <param name="inner">The sequence to join to the first sequence.</param>
+            <param name="outerKeySelector">A dynamic function to extract the join key from each element of the first sequence.</param>
+            <param name="innerKeySelector">A dynamic function to extract the join key from each element of the second sequence.</param>
+            <param name="resultSelector">A dynamic function to create a result element from two matching elements.</param>
+            <param name="args">An object array that contains zero or more objects to insert into the predicates as parameters.  Similiar to the way String.Format formats strings.</param>
+            <remarks>This overload only works on elements where both sequences and the resulting element match.</remarks>
+            <returns>An <see cref="T:System.Linq.IQueryable`1"/> that has elements of type TResult obtained by performing an inner join on two sequences.</returns>
+        </member>
+        <member name="T:System.Linq.Dynamic.GlobalConfig">
+            <summary>
+            Static configuration class for Dynamic Linq.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.GlobalConfig.CustomTypeProvider">
+            <summary>
+            Gets or sets the <see cref="T:System.Linq.Dynamic.IDynamicLinkCustomTypeProvider"/>.  Defaults to <see cref="T:System.Linq.Dynamic.DefaultDynamicLinqCustomTypeProvider"/>.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.GlobalConfig.AreContextKeywordsEnabled">
+            <summary>
+            Determines if the context keywords (it, parent, and root) are valid and usable inside a Dynamic Linq string expression.  
+            Does not affect the usability of the equivalent context symbols ($, ^ and ~).
+            </summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.GroupResult">
+            <summary>
+            The result of a call to a <see cref="T:System.Linq.Dynamic.DynamicQueryable"/>.GroupByMany() overload.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.GroupResult.ToString">
+            <summary>
+            Returns a string showing the key of the group and the number of items in the group.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.GroupResult.Key">
+            <summary>
+            The key value of the group.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.GroupResult.Count">
+            <summary>
+            The number of resulting elements in the group.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.GroupResult.Items">
+            <summary>
+            The resulting elements in the group.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.GroupResult.Subgroups">
+            <summary>
+            The resulting subgroups in the group.
+            </summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.ParseException">
+            <summary>
+            Represents errors that occur while parsing dynamic linq string expressions.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.ParseException.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Linq.Dynamic.ParseException"/> class with a specified error message and position.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="position">The location in the parsed string that produced the <see cref="T:System.Linq.Dynamic.ParseException"/></param>
+        </member>
+        <member name="M:System.Linq.Dynamic.ParseException.ToString">
+            <summary>
+            Creates and returns a string representation of the current exception.
+            </summary>
+            <returns>A string representation of the current exception.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.ParseException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Supports Serialization
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.ParseException.Position">
+            <summary>
+            The location in the parsed string that produced the <see cref="T:System.Linq.Dynamic.ParseException"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

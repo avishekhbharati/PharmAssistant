@@ -1,0 +1,75 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.InventoryModel.Item>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="box box-body box-primary">
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="mainTable">
+    <thead>
+        <tr class="dataTableHead">
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Manufacturer
+            </th>
+            <th>
+                Generic Name
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Alert Qty
+            </th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DrugGenericName.GenericName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categeory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlertQty)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+</tbody>
+</table>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#mainTable').DataTable();
+    });
+</script>

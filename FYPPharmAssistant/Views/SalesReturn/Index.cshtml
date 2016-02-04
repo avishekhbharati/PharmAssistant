@@ -1,0 +1,69 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.SalesReturn>
+
+@{
+    ViewBag.Title = "Sales Return";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box box-body box-primary">
+    <table class="table">
+        <thead class="dataTableHead">
+            <tr>
+                <th>
+                    Sales ID
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Sub Total
+                </th>
+                <th>
+                    Discount Deducted
+                </th>
+                <th>
+                    Net Returned Amount
+                </th>
+                @*<th>
+                    Descriptions
+                </th>*@
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+       
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.SalesID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subtotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NetTotal)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>*@
+                <td>
+                    
+                    @Html.ActionLink("Details", "ReturnDetails", new { id = item.ID })
+                    
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

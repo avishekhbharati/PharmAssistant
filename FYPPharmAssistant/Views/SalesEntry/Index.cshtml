@@ -1,0 +1,436 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.InventoryModel.Stock>
+@using FYPPharmAssistant.Models;
+@{
+    ViewBag.Title = "Sales Entry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@****  loading Spinner ******@
+<div id="fade"></div>
+<div id="modalSpinner">
+    <img id="loader" src="~/Content/images/477.GIF" />
+</div>
+@**************************@
+
+<div class="row">
+    <div id="MainDiv" class="col-md-8">
+       <div class="box box-danger box-body">
+           <div class="row">
+               <div class="col-md-12">
+                   <table class="table table-striped">
+                       <tr>
+                           <td>
+                               <input type="hidden" name="StockID" id="getStockID" readonly />
+                               <strong>Item</strong><br />
+                               <input type="text" id="getItem" readonly class="form-control input-sm" />
+                           </td>
+                           <td>
+                               <input type="hidden" id="getAvailability" readonly class="form-control input-sm" />
+                               <strong>Qty</strong><br />
+                               <input type="text" tabindex="1" name="Qty" id="getQty" class="form-control input-sm NumbersOnly" />
+                           </td>
+                           <td>
+                               <strong>Rate</strong><br />
+                               <input type="text" name="Rate" id="getRate" readonly class="form-control input-sm " />
+                           </td>
+                           <td>
+                               <strong>Amount</strong><br />
+                               <input type="text" id="getAmount" readonly class="form-control input-sm" />
+                           </td>
+                           <td>
+                               <br />
+                               <input type="button" tabindex="2" value="Add to list" id="btnAdd" style="float:right; margin-right:10px" class="btn btn-primary btn-sm" />
+                           </td>
+                       </tr>
+                   </table>
+               </div>
+           </div>
+
+
+           <div class="row">
+               <div class="col-md-12">
+                   @using (Html.BeginForm())
+                   {
+                       <table class="table table-striped table-hover" id="maintable">
+                           <thead>
+                               <tr style="background-color:#3d566e; color:#ecf0f1">
+                                   <th>
+                                       StockID
+                                   </th>
+                                   <th>
+                                       Item
+                                   </th>
+                                   <th>
+                                       Generic Name
+                                   </th>
+                                   <th>
+                                       Qty
+                                   </th>
+                                   <th>
+                                       Rate
+                                   </th>
+                                   <th>
+                                       Expiry
+                                   </th>
+                               </tr>
+                           </thead>
+                           @foreach (var item in Model)
+                           {
+                               <tr class="rows">
+                                   <td>
+                                       @Html.DisplayFor(modelItem => item.ID)
+                                   </td>
+                                   <td>
+                                       @Html.DisplayFor(modelItem => item.Item.Name)
+                                   </td>
+                                   <td>
+                                       @Html.DisplayFor(modelItem => item.Item.DrugGenericName.GenericName)
+                                   </td>
+                                   <td>
+                                       @Html.DisplayFor(modelItem => item.Qty)
+                                   </td>
+                                   <td>
+                                       @Html.DisplayFor(modelItem => item.SellingPrice)
+                                   </td>
+                                   <td>
+                                       @Html.DisplayFor(modelItem => item.ExpiryDate)
+                                   </td>
+                               </tr>
+                           }
+                       </table>
+                   }
+               </div>
+           </div>
+       </div>
+           
+        
+    </div>
+
+    <div class="col-sm-4 " >
+        <div class="box box-danger box-body" style="height:450px">
+            <!-- Begin of Form to be serialized  -->
+            <form id="formSerialized">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12" style="">
+                                <h4 style=" align-content:center">&nbsp;<span class="glyphicon glyphicon-list"></span> &nbsp; &nbsp; Sales Items</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" style="height:250px; ">
+                                <table class="table table-condensed table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Qty</th>
+                                            <th>Rate</th>
+                                            <th>Amt</th>
+                                            <th><span class="glyphicon glyphicon-trash"></span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblAppendHere"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-6"> <h3 class="pull-right">Total :</h3> </div>
+                            <div class="col-md-6"> <input type="hidden" class="setTotal" style="width:90px; border:hidden;" readonly /> <h3><span class="setTotalText pull-right">XXX</span></h3></div>
+                        </div>
+
+                      @*   <div class="row">
+                            <div class="col-md-12">
+                                <!-- Button trigger modal -->
+                                  <button type="button" id="btnModalTrigger" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" style="padding:6px 50px 6px 50px">
+                <b>Next</b> &nbsp; &nbsp;<span class="glyphicon glyphicon-menu-right"></span>
+            </button>
+
+
+        </div>
+    </div>*@
+                        @*  test *@
+                        <div class="row footer" id="btnModalTrigger">
+                            <div class="col-md-12">
+                                <button data-toggle="modal" class="btn-block" data-target="#myModal" style="background-color:#16a085; cursor:pointer">
+                                    <h4 style="color:#ffffff; text-align:center;"> NEXT &nbsp;<span class="glyphicon glyphicon-forward"></span> &nbsp; &nbsp; </h4>
+                                </button>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <!-- Modal -->
+                <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color:#c0392b; color:white;">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Check out</h4>
+                            </div>
+                            <div class="modal-body" style="margin:auto">
+
+                                <table class="table table-striped">
+                                    <tr>
+                                        <td>Total</td>
+                                        <td><input type="text" name="Total" class="form-control setTotal" style=" border:hidden" readonly /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Discount %</td>
+                                        <td><input type="text" tabindex="3" maxlength="1" class="form-control NumbersAndDecimal" name="discountPercent" id="discountPercent" required /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Discount amt</td>
+                                        <td><input type="text" name="Discount" class="form-control " id="discountAmount" readonly /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Payable</td>
+                                        <td><input type="text" name="GrandTotal" class="form-control " id="grandTotal" readonly /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Paid</td>
+                                        <td><input type="text" tabindex="4" class="form-control NumbersAndDecimal" id="receivedAmt" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Change</td>
+                                        <td><input type="text" readonly class="form-control " id="returnAmt" /></td>
+                                    </tr>
+                                   
+
+                                </table>
+
+
+
+                            </div>
+
+                            <div class="modal-footer" style="padding:3px;background-color:#16a085; cursor:pointer" tabindex="5" id="btnCheckOut">
+
+                                <h4 style="color:#ffffff; text-align:center"> Done &nbsp;<span class="glyphicon glyphicon-check glyphicon-align-right"></span> &nbsp; &nbsp; </h4>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End of form to be serialized-->
+            </form>
+        </div>       
+        
+    </div>
+    
+
+</div>
+
+
+<!-- ***********  Scripts  ************-->
+<script type="text/javascript">
+    //loading jquery datatable
+    $(document).ready(function () {
+        $('#maintable').DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true
+        });
+
+    });
+
+   
+    
+
+    //On clicking table row
+    document.getElementById('maintable').onclick = function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement;
+        while (target && target.nodeName != 'TR') {
+            target = target.parentElement;
+        }
+        var cells = target.cells;
+        if (!cells.length || target.parentNode.nodeName == 'THEAD') {
+            return;
+        }
+        //alert(cells[1].innerHTML);
+        $(function () {
+            $('#getStockID').val($.trim(cells[0].innerHTML));
+            $('#getItem').val($.trim(cells[1].innerHTML));
+            $('#getAvailability').val($.trim(cells[3].innerHTML));
+            $('#getRate').val($.trim(cells[4].innerHTML));
+        });
+        //clears qty and amt field
+        $('#getQty').val('');
+        $('#getAmount').val('');
+        //focuses cursor on Qty field
+        document.getElementById('getQty').focus();
+    }
+
+    //Calculate amount based on input qty
+    $('#getQty').keyup(function () {
+        var available = Number($('#getAvailability').val());
+        var quantity = Number($('#getQty').val());
+        var rate = Number($('#getRate').val());
+        if (quantity > available) {
+            $('#getQty').val(available);
+            quantity = available;
+        }
+        var amount = (quantity * rate).toFixed(2);
+        $('#getAmount').val(amount);
+    });
+
+    //populates RHS list
+    $('#btnAdd').on('click', function () {
+        //Validation : Check if salesID and Qty is null
+        if ($('#getQty').val() == '' || $('#getStockID').val() == '' || $('#getQty').val() == 0 || !$.isNumeric($('#getQty').val())) {
+            sweetAlert("Oops...", 'Looks like you forgot to enter quantity.', "error");
+            //alert();
+        }
+        else {
+            //check for duplication
+            if (CheckStockDuplication($('#getStockID').val())) {
+                sweetAlert("Redundant Record", 'This Stock has already been added. If you want to re-enter, please remove it form the list first!', "error");
+
+            }
+            else {
+                var $table = $('#tblAppendHere');
+                $table.append(
+                    '<tr class="dynamicRows">' +
+                    //gets sales ID for name , value (for form collection) but shows stock id in the list (for UX purpose)
+                    '<td>'+ $('#getStockID').val() + '</td>' +
+                    '<td><input type="hidden" class="txtStockID" name="StockID"  value= "' + $('#getStockID').val() + '"/>' + $('#getItem').val() + '</td>' +
+                    '<td><input type="hidden" name="Qty"     value="' + $('#getQty').val() + '"  style="width:60px;"/>' + $('#getQty').val() + '</td>' +
+                    '<td><input type="hidden" name="Rate"    value= "' + $('#getRate').val() + '"/>' + $('#getRate').val() + '</td>' +
+                    '<td><input type="hidden" name="Amount" value="' + $('#getAmount').val() + '"  class="subAmt"/>' + $('#getAmount').val() + '</td>' +
+                    //remove icon
+                    '<td><a href="#" class="glyphicon glyphicon-remove" onclick="removeItem(this)"></a></td>'
+                    + '</tr>'
+                    );
+
+                //cleans form
+                $(function () {
+                    $clear = '';
+                    $('#getStockID').val('');
+                    $('#getItem').val('');
+                    $('#getQty').val('');
+                    $('#getRate').val('');
+                    $('#getAvailability').val('');
+                    $('#getAmount').val('');
+                });
+
+                //calculate sub total
+                update_total();
+                return false;
+            }
+        }
+    });
+
+    //check if stock ID already exists in the list
+    function CheckStockDuplication(stockid) {
+        var flag = false;
+        $('.dynamicRows').each(function () {
+            if ($(this).find('.txtStockID').val() == stockid) {
+                flag = true;
+            }
+        });
+        return flag;
+    };
+
+    //calculate sub total amount
+    function update_total() {
+        var rows = $('.dynamicRows');
+        var total = Number();
+
+        $.each(rows, function (index, item) {
+            total += Number($(this).children('td').eq(4).text());
+        });
+        $('.setTotal').val(total.toFixed(2));
+        $('.setTotalText').text(total.toFixed(2));
+    };
+
+    //on clicking Next button
+    $('#btnModalTrigger').click(function () {
+        $('#discountPercent').val('');
+        $('#discountAmount').val('0');
+        $('#grandTotal').val('');
+        $('#receivedAmt').val('');
+        $('#returnAmt').val('');
+    });
+
+    //focuses cursor on discount txtbox on modal load
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#discountPercent').focus();
+    })
+
+    //Calculate Discount
+    $('#discountPercent').keyup(function () {
+        var total = Number($('.setTotal').val());
+        var percent = Number($('#discountPercent').val());
+        var discountAmount = ((percent / 100) * total).toFixed(2);
+        var grandTotal = total - discountAmount;
+        $('#discountAmount').val(discountAmount);
+        $('#grandTotal').val(grandTotal.toFixed(2));
+    });
+
+    //calculate return amount
+    $('#receivedAmt').keyup(function () {
+        var grandTotal = Number($('#grandTotal').val());
+        var received = Number($('#receivedAmt').val());
+        var returnAmt = (received - grandTotal).toFixed(2);
+        $('#returnAmt').val(returnAmt);
+    });
+
+    //removes record on clicking remove icon
+    function removeItem(obj) {
+        $(obj).parent().parent().remove();
+        //updatae total amount
+        update_total();
+    };
+
+    //on clicking checkout button
+    $('#btnCheckOut').on('click', function () {
+        $('#btnCheckOut').removeAttr("disabled");
+
+
+        
+
+        if (($('.setTotal').val() == "" || $('.setTotal').val() == NaN || $('.setTotal').val() == null) || $('#grandTotal').val() == "")
+        {
+            alert("No data");
+            closeModal();
+        }
+        else {
+
+            //close bootstrap modal 
+            $('#myModal').modal('hide');
+            //open loader
+            openModal();
+
+            //post form 
+            $.post('../../../SalesEntry/SerializeFormData', $('#formSerialized').serialize(), function (data) {
+                if (data == null) {
+                    closeModal();
+                    swal("Some inputs may be missing!");
+                }
+                else {
+                    closeModal();
+                    window.location.href = "../../../SalesEntry/SalesInvoice/" + data;                    
+                }
+            }, 'json');
+            return false;
+        }      
+        
+    });
+
+</script>
+
+<style>
+    .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #847BAA;
+    color:#ecf0f1;
+    cursor:pointer;
+    }
+</style>

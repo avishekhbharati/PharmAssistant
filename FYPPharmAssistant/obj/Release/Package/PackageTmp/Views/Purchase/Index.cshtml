@@ -1,0 +1,88 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.PurchaseModel.Purchase>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<table class="table table-hover table-striped table-responsive">
+    <thead>
+        <tr style="background-color:#3d566e; color:#ecf0f1">
+            <th>
+                ID
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GrandTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsPaid)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem=>item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Supplier.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GrandTotal)
+        </td>
+        <td class="txtCheckBox">
+            @{
+                if (item.IsPaid)
+                {                    
+                    <a href="#" style="padding: 3px 10px 3px 10px; background-color:green " class="badge" readonly>Paid</a>
+                }
+                else
+                {
+                    <a href="#" style="padding: 3px 10px 3px 10px; background-color:red " class="badge" readonly>Due</a>
+                }
+            }       
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+</table>
+
+<script>    
+    $(document).ready(function () {
+        $('.table').dataTable();
+    });    
+</script>

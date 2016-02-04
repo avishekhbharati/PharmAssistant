@@ -1,0 +1,127 @@
+﻿@model FYPPharmAssistant.ViewModel.SalesVM
+
+@{
+    ViewBag.Title = "Monthly Sales";
+    DateTime date =  Model.Date;
+    int year = date.Year;
+    int mnth = date.Month;
+}
+
+<div class="box box-body box-primary test123">
+    <form method="post" action="MonthlySalesByDate">
+        <label>Year </label><input class="form-control inline NumbersOnly" min="4" maxlength="4" type="text" name="_year" />
+        <label>Month </label>
+        <select name="_month" class="form-control inline">
+            <option value="1">Jan</option>
+            <option value="2">Feb</option>
+            <option value="3">Mar</option>
+            <option value="4">Apr</option>
+            <option value="5">May</option>
+            <option value="6">Jun</option>
+            <option value="7">Jul</option>
+            <option value="8">Aug</option>
+            <option value="9">Sep</option>
+            <option value="10">Oct</option>
+            <option value="11">Nov</option>
+            <option value="12">Dec</option>
+        </select>
+        <input type="submit" class="btn btn-primary" value="submit" />
+    </form>
+
+</div>
+
+<div class="box box-body">
+    <table class="table table-striped" id="datatable">
+        <thead>
+            <tr class="dataTableHead">
+                <th>Day</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        @{decimal total = 0;}
+        @for (int i = 0; i < Model.Days.Count; i++)
+        {
+            <tr>
+                <td>
+                    @{
+                        <text>@year - @mnth - </text>
+                        @Html.DisplayFor(m => m.Days[i].Day);
+                                                            DateTime dateValue = new DateTime(year, mnth, Model.Days[i].Day);
+                                                            <text> :  @dateValue.ToString("dddd")</text>
+
+                    }
+                </td>
+                <td class="sales">
+
+                    @{
+
+            if (Convert.ToString(Html.DisplayFor(m => m.Days[i].Total)) != "0.00")
+            {
+                <strong style="color:#4800ff;"><strong> @Html.DisplayFor(m => m.Days[i].Total) </strong></strong>
+            }
+            else
+            {
+                @Html.DisplayFor(m => m.Days[i].Total)
+            }
+                    }
+                    @{total += (decimal)(Model.Days[i].Total);}
+                </td>
+
+            </tr>
+        }
+        <tfoot class="dataTableHead">
+            <tr>
+                <td>
+                    <h4 class="pull-right">Total :</h4>
+                </td>
+                <td>
+                    <h4>@total</h4>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<script src="~/Scripts/MyJs/my.js"></script>
+<script>
+    $(document).ready(function () {
+        $('table tr').each(function () {
+            var value = $('.sales').html();
+            if (value != 0) {
+                $('<tr>').css('background-color', '#16a085');
+            }
+        });
+
+        var table = $('#datatable').dataTable({
+            "paging": false,
+            "info": true,
+            "filter":false
+        });
+
+        var tableTools = new $.fn.dataTable.TableTools(table, {
+            'aButtons': [
+                {
+                    'sExtends': 'xls',
+                    'sButtonText': 'Save to Excel',
+                    'sFileName': 'DailySales.xls'
+                },
+                {
+                    'sExtends': 'print',
+                    'bShowAll': true,
+                },
+                {
+                    'sExtends': 'pdf',
+                    'bFooter': true,
+                    'bShowAll': true,
+                    'sPdfMessage': 'Your custom message would go here.'
+                },
+                'copy'
+            ],
+            'sSwfPath': 'http://cdn.datatables.net/tabletools/2.2.4/swf/copy_csv_xls_pdf.swf'
+        });
+
+        $(tableTools.fnContainer()).insertBefore('#datatable_wrapper');
+
+    });
+
+</script>
+

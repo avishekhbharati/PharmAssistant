@@ -1,0 +1,200 @@
+﻿<error errorId="81b66cde-5fcd-4ea1-9455-8d256de7a1af" host="AVISHEKH" type="System.InvalidOperationException" message="Attaching an entity of type 'FYPPharmAssistant.Models.InventoryModel.Manufacturer' failed because another entity of the same type already has the same primary key value. This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values. This may be because some entities are new and have not yet received database-generated key values. In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate." source="EntityFramework" detail="System.InvalidOperationException: Attaching an entity of type 'FYPPharmAssistant.Models.InventoryModel.Manufacturer' failed because another entity of the same type already has the same primary key value. This can happen when using the 'Attach' method or setting the state of an entity to 'Unchanged' or 'Modified' if any entities in the graph have conflicting key values. This may be because some entities are new and have not yet received database-generated key values. In this case use the 'Add' method or the 'Added' entity state to track the graph and then set the state of non-new entities to 'Unchanged' or 'Modified' as appropriate.&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.VerifyRootForAdd(Boolean doAttach, String entitySetName, IEntityWrapper wrappedEntity, EntityEntry existingEntry, EntitySet&amp; entitySet, Boolean&amp; isNoOperation)&#xD;&#xA;   at System.Data.Entity.Core.Objects.ObjectContext.AttachTo(String entitySetName, Object entity)&#xD;&#xA;   at System.Data.Entity.Internal.Linq.InternalSet`1.&lt;&gt;c__DisplayClassa.&lt;Attach&gt;b__9()&#xD;&#xA;   at System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)&#xD;&#xA;   at System.Data.Entity.Internal.Linq.InternalSet`1.Attach(Object entity)&#xD;&#xA;   at System.Data.Entity.DbSet`1.Attach(TEntity entity)&#xD;&#xA;   at FYPPharmAssistant.Controllers.ManufacturerController.Edit(Manufacturer manufacturer) in e:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\Controllers\Inventory\ManufacturerController.cs:line 167&#xD;&#xA;   at lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;BeginInvokeSynchronousActionMethod&gt;b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3d()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass46.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__3f()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass33.&lt;BeginInvokeActionMethodWithFilters&gt;b__32(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="avishekh.bharati@live.com" time="2015-12-15T18:58:58.9312778Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_CONTENT_LENGTH:220&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.8&#xD;&#xA;HTTP_COOKIE:.AspNet.TwoFactorRememberBrowser=7tjMKMiDngEii9a33etBoxdUqzazA_7vzL9YXCFq6SdcQFVppeh9a6DYjTaC0qQ-UDMrXLWXLi3dkGGjVpzcyjsAI5ir96Nh-tHDHIU0KXxtPLbzsWkWIM--6jqWCjJrUsf6WNOjsbe4-L17ulEuP5jzWUxFSPgcZDkkO4jlOdNx4uBXUJt-q5Wy1GhJskRW6Pj8mWowj7uLZxOYpdAxptIvq_riLCyMnxr2XGY_0TARBdqE6PH-fqPtgsX3RhAaPzGaSHeKOc38TsvvZ5EEZ10-l4VzSmLNQo39sgVYnfeY8qAizmFdbbR252IywvS_MIAJ-p-PTj-HB-ndciDYEPFGwqD3-sCwhFC2X21uiS0; glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; glimpsePolicy=; __RequestVerificationToken=iCBIgEtXokQYU97S7-Jrsl1CkPIuh6VXiQgHaOOqyyi2VE9W1dC65WWA8YCt3tSG-TJItVMlmdOW_OIiqdULBaRClGPV0pdZBjPaOhSZAJY1; .AspNet.ApplicationCookie=J0ioseJpW_r0snsHdRzajaqNC-f9uIKEqY27XZixHfUSX1Xkso8_yQepmHs0_NMUxvEnEvfVGLBc7RfQFkUBiAfvdzsmWPWlRf0GJNNBpk6FscfzQUKmthrQvV953Ix6HYLB_wgvPHejLKBvteN6CRDrrA9VsWKDrUzNe6k8tpIGsLnuRmfJ4SWWQBBIq9VKRU7V8EveH4j3Kw2123iAllqOkNCaUVJhyxGrQXVige92zwpd-LcLshWOUftXO8deDie4esXoq1yVJT45Et7lpEqyMy4aNOVCLS9qaDzTiRBbJWO3dTHv4PXHO5I4TXQyh6lYl6P1tjgMYQa8IXkFreVt5WawNQvEvwE7vO2-Rt4C6YYatfshU9yJpjU6-kD3zJQ--Jivqaij6dwDja-KEN3xkAIXuC8hR5M5J7aMjYv0JjFSdgln_mt30B-MfU2YywJd1jendZrK6ff3TOAegcRZMVkGVxyqBYkDb-sW7b7x-T08QWgtA9PXu1hUnKnF3dsPpW-k8nSagPHJJGEWLA&#xD;&#xA;HTTP_HOST:localhost:5789&#xD;&#xA;HTTP_REFERER:http://localhost:5789/Manufacturer/Edit/22&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:http://localhost:5789&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Content-Length: 220&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US,en;q=0.8&#xD;&#xA;Cookie: .AspNet.TwoFactorRememberBrowser=7tjMKMiDngEii9a33etBoxdUqzazA_7vzL9YXCFq6SdcQFVppeh9a6DYjTaC0qQ-UDMrXLWXLi3dkGGjVpzcyjsAI5ir96Nh-tHDHIU0KXxtPLbzsWkWIM--6jqWCjJrUsf6WNOjsbe4-L17ulEuP5jzWUxFSPgcZDkkO4jlOdNx4uBXUJt-q5Wy1GhJskRW6Pj8mWowj7uLZxOYpdAxptIvq_riLCyMnxr2XGY_0TARBdqE6PH-fqPtgsX3RhAaPzGaSHeKOc38TsvvZ5EEZ10-l4VzSmLNQo39sgVYnfeY8qAizmFdbbR252IywvS_MIAJ-p-PTj-HB-ndciDYEPFGwqD3-sCwhFC2X21uiS0; glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; glimpsePolicy=; __RequestVerificationToken=iCBIgEtXokQYU97S7-Jrsl1CkPIuh6VXiQgHaOOqyyi2VE9W1dC65WWA8YCt3tSG-TJItVMlmdOW_OIiqdULBaRClGPV0pdZBjPaOhSZAJY1; .AspNet.ApplicationCookie=J0ioseJpW_r0snsHdRzajaqNC-f9uIKEqY27XZixHfUSX1Xkso8_yQepmHs0_NMUxvEnEvfVGLBc7RfQFkUBiAfvdzsmWPWlRf0GJNNBpk6FscfzQUKmthrQvV953Ix6HYLB_wgvPHejLKBvteN6CRDrrA9VsWKDrUzNe6k8tpIGsLnuRmfJ4SWWQBBIq9VKRU7V8EveH4j3Kw2123iAllqOkNCaUVJhyxGrQXVige92zwpd-LcLshWOUftXO8deDie4esXoq1yVJT45Et7lpEqyMy4aNOVCLS9qaDzTiRBbJWO3dTHv4PXHO5I4TXQyh6lYl6P1tjgMYQa8IXkFreVt5WawNQvEvwE7vO2-Rt4C6YYatfshU9yJpjU6-kD3zJQ--Jivqaij6dwDja-KEN3xkAIXuC8hR5M5J7aMjYv0JjFSdgln_mt30B-MfU2YywJd1jendZrK6ff3TOAegcRZMVkGVxyqBYkDb-sW7b7x-T08QWgtA9PXu1hUnKnF3dsPpW-k8nSagPHJJGEWLA&#xD;&#xA;Host: localhost:5789&#xD;&#xA;Referer: http://localhost:5789/Manufacturer/Edit/22&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36&#xD;&#xA;Origin: http://localhost:5789&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/642749131/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="220" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="642749131" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/642749131" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Manufacturer/Edit/22" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\Manufacturer\Edit\22" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="17548" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Manufacturer/Edit/22" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="5789" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/Manufacturer/Edit/22" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="220" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.8" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string=".AspNet.TwoFactorRememberBrowser=7tjMKMiDngEii9a33etBoxdUqzazA_7vzL9YXCFq6SdcQFVppeh9a6DYjTaC0qQ-UDMrXLWXLi3dkGGjVpzcyjsAI5ir96Nh-tHDHIU0KXxtPLbzsWkWIM--6jqWCjJrUsf6WNOjsbe4-L17ulEuP5jzWUxFSPgcZDkkO4jlOdNx4uBXUJt-q5Wy1GhJskRW6Pj8mWowj7uLZxOYpdAxptIvq_riLCyMnxr2XGY_0TARBdqE6PH-fqPtgsX3RhAaPzGaSHeKOc38TsvvZ5EEZ10-l4VzSmLNQo39sgVYnfeY8qAizmFdbbR252IywvS_MIAJ-p-PTj-HB-ndciDYEPFGwqD3-sCwhFC2X21uiS0; glimpseOptions=%7B%22glimpsePolicy%22%3Anull%7D; glimpsePolicy=; __RequestVerificationToken=iCBIgEtXokQYU97S7-Jrsl1CkPIuh6VXiQgHaOOqyyi2VE9W1dC65WWA8YCt3tSG-TJItVMlmdOW_OIiqdULBaRClGPV0pdZBjPaOhSZAJY1; .AspNet.ApplicationCookie=J0ioseJpW_r0snsHdRzajaqNC-f9uIKEqY27XZixHfUSX1Xkso8_yQepmHs0_NMUxvEnEvfVGLBc7RfQFkUBiAfvdzsmWPWlRf0GJNNBpk6FscfzQUKmthrQvV953Ix6HYLB_wgvPHejLKBvteN6CRDrrA9VsWKDrUzNe6k8tpIGsLnuRmfJ4SWWQBBIq9VKRU7V8EveH4j3Kw2123iAllqOkNCaUVJhyxGrQXVige92zwpd-LcLshWOUftXO8deDie4esXoq1yVJT45Et7lpEqyMy4aNOVCLS9qaDzTiRBbJWO3dTHv4PXHO5I4TXQyh6lYl6P1tjgMYQa8IXkFreVt5WawNQvEvwE7vO2-Rt4C6YYatfshU9yJpjU6-kD3zJQ--Jivqaij6dwDja-KEN3xkAIXuC8hR5M5J7aMjYv0JjFSdgln_mt30B-MfU2YywJd1jendZrK6ff3TOAegcRZMVkGVxyqBYkDb-sW7b7x-T08QWgtA9PXu1hUnKnF3dsPpW-k8nSagPHJJGEWLA" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:5789" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="http://localhost:5789/Manufacturer/Edit/22" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.0.10338 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="http://localhost:5789" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="ywwaWsA7t-EMAAdVEXI6zfdI1J8bj8Ah6IroI9HKChS2G6Lfdk6twZtCKhruR1vwBQoSe7LFB2_ljTK8nccMRNDvPUo3W4aNJPTHtP55KbmdCrvYwIrdqoKdEzG8Rjt8aeT-R_z-RFqnNvv_cSiTRg2" />
+    </item>
+    <item name="ID">
+      <value string="22" />
+    </item>
+    <item name="ManufacturerName">
+      <value string="hatim" />
+    </item>
+    <item name="Description">
+      <value string="" />
+    </item>
+  </form>
+  <cookies>
+    <item name=".AspNet.TwoFactorRememberBrowser">
+      <value string="7tjMKMiDngEii9a33etBoxdUqzazA_7vzL9YXCFq6SdcQFVppeh9a6DYjTaC0qQ-UDMrXLWXLi3dkGGjVpzcyjsAI5ir96Nh-tHDHIU0KXxtPLbzsWkWIM--6jqWCjJrUsf6WNOjsbe4-L17ulEuP5jzWUxFSPgcZDkkO4jlOdNx4uBXUJt-q5Wy1GhJskRW6Pj8mWowj7uLZxOYpdAxptIvq_riLCyMnxr2XGY_0TARBdqE6PH-fqPtgsX3RhAaPzGaSHeKOc38TsvvZ5EEZ10-l4VzSmLNQo39sgVYnfeY8qAizmFdbbR252IywvS_MIAJ-p-PTj-HB-ndciDYEPFGwqD3-sCwhFC2X21uiS0" />
+    </item>
+    <item name="glimpseOptions">
+      <value string="%7B%22glimpsePolicy%22%3Anull%7D" />
+    </item>
+    <item name="glimpsePolicy">
+      <value string="" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="iCBIgEtXokQYU97S7-Jrsl1CkPIuh6VXiQgHaOOqyyi2VE9W1dC65WWA8YCt3tSG-TJItVMlmdOW_OIiqdULBaRClGPV0pdZBjPaOhSZAJY1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="J0ioseJpW_r0snsHdRzajaqNC-f9uIKEqY27XZixHfUSX1Xkso8_yQepmHs0_NMUxvEnEvfVGLBc7RfQFkUBiAfvdzsmWPWlRf0GJNNBpk6FscfzQUKmthrQvV953Ix6HYLB_wgvPHejLKBvteN6CRDrrA9VsWKDrUzNe6k8tpIGsLnuRmfJ4SWWQBBIq9VKRU7V8EveH4j3Kw2123iAllqOkNCaUVJhyxGrQXVige92zwpd-LcLshWOUftXO8deDie4esXoq1yVJT45Et7lpEqyMy4aNOVCLS9qaDzTiRBbJWO3dTHv4PXHO5I4TXQyh6lYl6P1tjgMYQa8IXkFreVt5WawNQvEvwE7vO2-Rt4C6YYatfshU9yJpjU6-kD3zJQ--Jivqaij6dwDja-KEN3xkAIXuC8hR5M5J7aMjYv0JjFSdgln_mt30B-MfU2YywJd1jendZrK6ff3TOAegcRZMVkGVxyqBYkDb-sW7b7x-T08QWgtA9PXu1hUnKnF3dsPpW-k8nSagPHJJGEWLA" />
+    </item>
+  </cookies>
+</error>

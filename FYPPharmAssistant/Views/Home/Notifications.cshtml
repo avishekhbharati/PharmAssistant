@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "Notifications";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="nav-tabs-custom">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#fa-icons" data-toggle="tab" aria-expanded="false">Expiry Notifications</a></li>
+        <li ><a href="#glyphicons" data-toggle="tab" aria-expanded="true">Low Stock</a></li>
+    </ul>
+    <div class="tab-content">
+        <!-- Font Awesome Icons -->
+        <div class="tab-pane active" id="fa-icons">
+            <form method="post" action="" id="form-table">
+                <div class="row">
+                    <div class="col-md-12" id="form1"> </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12" id="form1">
+                        <input type="submit" id="btn-delete" class="btn btn-danger pull-right" value="Delete" />
+                        <button type="submit" id="btn-returns" class="btn btn-primary pull-right">Generate Returns</button> &nbsp;
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        
+
+        <!-- /#fa-icons -->
+        <!-- glyphicons-->
+        <div class="tab-pane" id="glyphicons">
+            <div class="row">
+                <div class="col-md-12" id="tblLowStock"></div>
+            </div>
+            <div class="row">
+
+               <!-- <div class="col-md-12"><button id="GenerateOrder" class="btn btn-primary pull-right"> Genereate Purchase Order</button></div>   -->
+            </div>
+         
+            
+          
+        </div>
+        <!-- /#ion-icons -->
+
+    </div>
+    <!-- /.tab-content -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+
+        //Renders partial view
+        $.get('StockExpiry', null, function (data) {
+            $('#form1').html(data);
+        });
+        //Another partial view
+        $.get('LowStock', null, function (data) {
+            $('#tblLowStock').html(data);
+        });
+
+        // Decorate with dataTable
+        $('.dataTable').DataTable({
+            "scrollY": "300px",
+            "scrollCollapse": true,
+            "paging": false,
+            "filter": false,
+            "info": false
+        });
+
+        //on clicking delete button
+        $("#btn-delete").on('click', function () {
+            var count = $("input[name='stocksID']:checked").length;
+            if (count == 0) {
+                alert("No rows selected to delete");
+                return false;
+            }            
+            else if (confirm("Are you sure?"))
+            {
+                $("#form-table").prop("action", "DeleteSelectedExpiry");
+                $("#form-table").submit();
+            }
+            return false;           
+        });
+
+        //for generating returns
+        $("#btn-returns").on('click', function () {
+            var count = $("input[name='stocksID']:checked").length;
+            if (count == 0) {
+                alert("No rows selected to delete");
+                return false;
+            }             
+            $("#form-table").prop("action", "GenerateExpiryReturns");
+            $("#form-table").submit();           
+        });
+    }); 
+</script>
+
+<style>
+    #div1 {
+        background-color:white;
+        height: auto;
+        margin-bottom:20px;
+    }
+    #tblLowStockCss {
+        background-color:white;
+        height: 470px;               
+    }
+    #form1{
+        height:auto;
+        margin-bottom:5px;
+    }
+</style>

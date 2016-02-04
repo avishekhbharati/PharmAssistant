@@ -1,0 +1,60 @@
+﻿@model IEnumerable<FYPPharmAssistant.Models.InventoryModel.Manufacturer>
+
+@{
+    ViewBag.Title = "List of Manufacturers";
+}
+
+
+
+<div class="box box-primary box-body">
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <table class="table table-hover" id="dtaTable">
+        <thead>
+            <tr class="dataTableHead">
+                <th>
+                    ManufacturerName
+                </th>
+                <th>
+                    Description
+                </th>
+                <th></th>
+
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManufacturerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#dtaTable').DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": true
+        });
+    });
+</script>

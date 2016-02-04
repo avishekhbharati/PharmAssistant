@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Default Web Site/fyp" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\islington\\MyFYP\\VisualStudio\\FYPPharmAssistant\\FYPPharmAssistant\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^E:\\islington\\MyFYP\\VisualStudio\\FYPPharmAssistant\\FYPPharmAssistant\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="MyConnectionString-Web.config Connection String" description="" value="Data Source=AVISHEKH\SQLEXPRESS;Initial Catalog=NewDb_FYPPharmAssistant(Production);Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="E:\\islington\\MyFYP\\VisualStudio\\FYPPharmAssistant\\FYPPharmAssistant\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

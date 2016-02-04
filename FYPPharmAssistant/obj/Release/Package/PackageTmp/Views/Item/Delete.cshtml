@@ -1,0 +1,102 @@
+﻿@model FYPPharmAssistant.Models.InventoryModel.Item
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GenericName.GenericName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GenericName.GenericName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.ManufacturerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.ManufacturerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categeory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categeory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeasurementID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeasurementID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlertQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlertQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdated)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

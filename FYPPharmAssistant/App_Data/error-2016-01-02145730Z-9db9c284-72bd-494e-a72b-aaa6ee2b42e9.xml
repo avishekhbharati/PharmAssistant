@@ -1,0 +1,165 @@
+﻿<error errorId="9db9c284-72bd-494e-a72b-aaa6ee2b42e9" host="AVISHEKH" type="System.Web.HttpException" message="A public action method 'GenerateExpiryReturns' was not found on controller 'IdentitySample.Controllers.HomeController'." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): A public action method 'GenerateExpiryReturns' was not found on controller 'IdentitySample.Controllers.HomeController'.&#xD;&#xA;   at System.Web.Mvc.Controller.HandleUnknownAction(String actionName)&#xD;&#xA;   at System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="avishekh.bharati@live.com" time="2016-01-02T14:57:30.7081585Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:en-US,en;q=0.5&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=I7o0VgXOXhbdtoh1XUJMaIIU4JxzwuAR9EYLOXTe8E1nSEc1axy7yXiVEocGpuwIllOGZHkke1YgQjCveqZYDwxc3y549UUFiPAksGJWG9U1; .AspNet.ApplicationCookie=gXaWoOhE6zkwMIBTysFRzST3MmE5sKDzd_Ng8ARU6pNLES5RMROUzT7riZny6RvVsVp2-ou5h82E3vsY93FyVgPHFLb04re339wJM8Yk1BwAmy_1qeiWevrV2KHBX0fOHXJddDON_vYy41FpMMp2q6ePvRdkiinF34jDlgZnjKG4mguWp5UL17O014eMR3JJud2Q1rgB_ftGCyXVbhgufr9TrE-TYPl18kiD5BvfMyZ0mkQXhLXb7W2G4eSwHsvLSwFWKdiTxp5rHKeeYKPrMyxIw8g4sgbZvArWoDCrE0dhwnRPd74CHcKwB71ebamqbNZlDWZadWL0ChM_Xz3Itunm3W6SJAUQI3tLEU-2NC24MtaOmYBZLjOcRbcMJn61NDuETiUxK-AHiUk0FJk2N_WGaKvotihVJbtLo-XmHOY0FMlXz1BjYw0PhQ35s5pbHHxLv3WuCPi8yqp8ThkdIZdqGosVAkF6pBb1Ii5-LVdul7GIfLWgeROOIXKB5o0wPj6anZHa_E_iyeGF_SrW4g&#xD;&#xA;HTTP_HOST:localhost:5789&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0&#xD;&#xA;HTTP_DNT:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate&#xD;&#xA;Accept-Language: en-US,en;q=0.5&#xD;&#xA;Cookie: __RequestVerificationToken=I7o0VgXOXhbdtoh1XUJMaIIU4JxzwuAR9EYLOXTe8E1nSEc1axy7yXiVEocGpuwIllOGZHkke1YgQjCveqZYDwxc3y549UUFiPAksGJWG9U1; .AspNet.ApplicationCookie=gXaWoOhE6zkwMIBTysFRzST3MmE5sKDzd_Ng8ARU6pNLES5RMROUzT7riZny6RvVsVp2-ou5h82E3vsY93FyVgPHFLb04re339wJM8Yk1BwAmy_1qeiWevrV2KHBX0fOHXJddDON_vYy41FpMMp2q6ePvRdkiinF34jDlgZnjKG4mguWp5UL17O014eMR3JJud2Q1rgB_ftGCyXVbhgufr9TrE-TYPl18kiD5BvfMyZ0mkQXhLXb7W2G4eSwHsvLSwFWKdiTxp5rHKeeYKPrMyxIw8g4sgbZvArWoDCrE0dhwnRPd74CHcKwB71ebamqbNZlDWZadWL0ChM_Xz3Itunm3W6SJAUQI3tLEU-2NC24MtaOmYBZLjOcRbcMJn61NDuETiUxK-AHiUk0FJk2N_WGaKvotihVJbtLo-XmHOY0FMlXz1BjYw0PhQ35s5pbHHxLv3WuCPi8yqp8ThkdIZdqGosVAkF6pBb1Ii5-LVdul7GIfLWgeROOIXKB5o0wPj6anZHa_E_iyeGF_SrW4g&#xD;&#xA;Host: localhost:5789&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0&#xD;&#xA;DNT: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/642749131/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="avishekh.bharati@live.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="642749131" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/642749131" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Home/GenerateExpiryReturns" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="E:\islington\MyFYP\VisualStudio\FYPPharmAssistant\FYPPharmAssistant\Home\GenerateExpiryReturns" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="40523" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Home/GenerateExpiryReturns" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="5789" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/8.0" />
+    </item>
+    <item name="URL">
+      <value string="/Home/GenerateExpiryReturns" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="en-US,en;q=0.5" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=I7o0VgXOXhbdtoh1XUJMaIIU4JxzwuAR9EYLOXTe8E1nSEc1axy7yXiVEocGpuwIllOGZHkke1YgQjCveqZYDwxc3y549UUFiPAksGJWG9U1; .AspNet.ApplicationCookie=gXaWoOhE6zkwMIBTysFRzST3MmE5sKDzd_Ng8ARU6pNLES5RMROUzT7riZny6RvVsVp2-ou5h82E3vsY93FyVgPHFLb04re339wJM8Yk1BwAmy_1qeiWevrV2KHBX0fOHXJddDON_vYy41FpMMp2q6ePvRdkiinF34jDlgZnjKG4mguWp5UL17O014eMR3JJud2Q1rgB_ftGCyXVbhgufr9TrE-TYPl18kiD5BvfMyZ0mkQXhLXb7W2G4eSwHsvLSwFWKdiTxp5rHKeeYKPrMyxIw8g4sgbZvArWoDCrE0dhwnRPd74CHcKwB71ebamqbNZlDWZadWL0ChM_Xz3Itunm3W6SJAUQI3tLEU-2NC24MtaOmYBZLjOcRbcMJn61NDuETiUxK-AHiUk0FJk2N_WGaKvotihVJbtLo-XmHOY0FMlXz1BjYw0PhQ35s5pbHHxLv3WuCPi8yqp8ThkdIZdqGosVAkF6pBb1Ii5-LVdul7GIfLWgeROOIXKB5o0wPj6anZHa_E_iyeGF_SrW4g" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:5789" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0" />
+    </item>
+    <item name="HTTP_DNT">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="I7o0VgXOXhbdtoh1XUJMaIIU4JxzwuAR9EYLOXTe8E1nSEc1axy7yXiVEocGpuwIllOGZHkke1YgQjCveqZYDwxc3y549UUFiPAksGJWG9U1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="gXaWoOhE6zkwMIBTysFRzST3MmE5sKDzd_Ng8ARU6pNLES5RMROUzT7riZny6RvVsVp2-ou5h82E3vsY93FyVgPHFLb04re339wJM8Yk1BwAmy_1qeiWevrV2KHBX0fOHXJddDON_vYy41FpMMp2q6ePvRdkiinF34jDlgZnjKG4mguWp5UL17O014eMR3JJud2Q1rgB_ftGCyXVbhgufr9TrE-TYPl18kiD5BvfMyZ0mkQXhLXb7W2G4eSwHsvLSwFWKdiTxp5rHKeeYKPrMyxIw8g4sgbZvArWoDCrE0dhwnRPd74CHcKwB71ebamqbNZlDWZadWL0ChM_Xz3Itunm3W6SJAUQI3tLEU-2NC24MtaOmYBZLjOcRbcMJn61NDuETiUxK-AHiUk0FJk2N_WGaKvotihVJbtLo-XmHOY0FMlXz1BjYw0PhQ35s5pbHHxLv3WuCPi8yqp8ThkdIZdqGosVAkF6pBb1Ii5-LVdul7GIfLWgeROOIXKB5o0wPj6anZHa_E_iyeGF_SrW4g" />
+    </item>
+  </cookies>
+</error>
